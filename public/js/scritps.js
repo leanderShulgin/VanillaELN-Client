@@ -336,7 +336,7 @@ function leerTodosLosCampos() {
     encabezado: leerEncabezado(),
     objetivo: objetivo.value,
     reaccion: reaccion.value,
-    reactivos: reactivos.value,
+    reactivos: reactivos,
     seguridad: seguridad.value,
     equipo: equipo.value,
     journal: registros,
