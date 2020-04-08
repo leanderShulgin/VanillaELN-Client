@@ -1,0 +1,1 @@
+8-4-20: cuando la pagina de reporte carga el editor de chemdoodle scrollea hasta donde está en lugar de mostrar el encabezado
