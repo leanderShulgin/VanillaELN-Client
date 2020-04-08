@@ -38,7 +38,7 @@
       }
       #widget-container {
         overflow-x: auto;
-        padding:30px 0px;
+        padding: 30px 0px;
         /* background: grey; */
       }
     </style>
@@ -111,7 +111,11 @@
       </header>
       <!--Encabezado (info general) -->
       <section id="sec-encabezado">
-        <h3 style="padding: 20px 30px;">Información general</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Información general</h3>
+          </div>
+        </div>
         <div class="row" id="form-encabezado">
           <div class="col-md-4 columna">
             <div class="form-group">
@@ -223,7 +227,10 @@
         <div class="row">
           <div class="col-md-12" id="col-tabla-reactivos">
             <h4>Tabla de reactivos</h4>
-            <table class="table table-responsive-md" id="tabla-reactivos">
+            <table
+              class="table table-responsive-md table-striped"
+              id="tabla-reactivos"
+            >
               <thead class="thead-dark">
                 <tr>
                   <th>Nombre</th>

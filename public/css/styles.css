@@ -37,7 +37,7 @@ section {
 }
 
 .columna {
-  padding: 0px 40px;
+  padding: 0px 20px;
 }
 
 /* Botones*/
@@ -62,7 +62,7 @@ section {
 
 /* Tabla de reactivos*/
 #col-tabla-reactivos {
-  padding: 0px 40px;
+  padding: 0px 20px;
 }
 
 /* Journal (Registros del experimento) */
