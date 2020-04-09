@@ -376,10 +376,9 @@ function guardarEstado() {
   console.log("se enviará al servidor el siguiente estado: ");
   console.log(state);
   var data = JSON.stringify(state);
-  var misCabeceras = new Headers();
+  // var misCabeceras = new Headers();
   var miInit = {
     method: "POST",
-    headers: misCabeceras,
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
