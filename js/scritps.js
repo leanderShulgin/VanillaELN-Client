@@ -378,7 +378,7 @@ function guardarEstado() {
   var data = JSON.stringify(state);
   let header = new Headers({
     "Access-Control-Allow-Origin": "",
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
   });
   var miInit = {
     method: "POST",
