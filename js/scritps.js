@@ -236,7 +236,6 @@ btnEquipo.addEventListener("click", function (e) {
   toggleEquipo();
 });
 
-
 // JOURNAL (Registro del experimento)--------------
 
 // variables
@@ -367,7 +366,24 @@ btnGuardarEstado.addEventListener("click", function (e) {
   guardarEstado();
 });
 
+// function guardarEstado() {
+//   state = leerTodosLosCampos();
+//   console.log(state);
+// }
+
 function guardarEstado() {
   state = leerTodosLosCampos();
   console.log(state);
+  var data = JSON.stringify(state);
+  var misCabeceras = new Headers();
+  fetch("127.0.0.1:5000/api/reporte", miInit).then((response) => {
+    console.log(response);
+  });
+
+  var miInit = {
+    method: "POST",
+    headers: misCabeceras,
+    mode: "cors",
+    cache: "default",
+  };
 }
