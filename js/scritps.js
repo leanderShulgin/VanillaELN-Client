@@ -379,6 +379,7 @@ function guardarEstado() {
   var misCabeceras = new Headers();
   var miInit = {
     method: "POST",
+    headers: misCabeceras,
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
