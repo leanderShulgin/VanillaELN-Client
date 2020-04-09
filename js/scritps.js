@@ -384,7 +384,7 @@ function guardarEstado() {
       'Content-Type': 'application/json'
     }
   };
-  fetch("127.0.0.1:5000/api/reporte", miInit).then((response) => {
+  fetch("localhost:5000/api/reporte", miInit).then((response) => {
     console.log(response);
   });
 }
