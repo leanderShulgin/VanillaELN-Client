@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabReportJson</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- 
+    <link rel="stylesheet" href="./chemdoodle/ChemDoodleWeb.css" />
+    <link
+      rel="stylesheet"
+      href="./chemdoodle/uis/jquery-ui-1.11.4.css"
+      type="text/css"
+    />
+    <style>
+      #composer-container {
+        width: 600px;
+        height: 400px;
+      }
+      /* #widget-container {
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 1px rgba(51, 32, 20, 0.6),
+          inset 0px 0px 5px 3px rgba(173, 123, 81, 0.2);
+      } */
+      .flex-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #widget-container {
+        overflow-x: auto;
+        padding: 30px 0px;
+        /* background: grey; */
+      }
+    </style>
+
+    <script src="./chemdoodle/ChemDoodleWeb.js"></script>
+    <script src="./chemdoodle/uis/ChemDoodleWeb-uis.js"></script> -->
+  </head>
+  <body>
+    <nav
+      class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
+      id="nav-planilla-ensayo"
+    >
+      <a class="navbar-brand" href="#">LDS</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Inicio <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Secciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <!-- <a class="dropdown-item" href="#sec-encabezado"
+                >Información General</a
+              >
+              <a class="dropdown-item" href="#sec-objetivo">Objetivo</a>
+              <a class="dropdown-item" href="#sec-reaccion">Reacción</a>
+              <a class="dropdown-item" href="#sec-reactivos">Reactivos</a>
+              <a class="dropdown-item" href="#sec-seguridad">Seguridad</a>
+              <a class="dropdown-item" href="#sec-equipo">Equipo</a>
+              <a class="dropdown-item" href="#sec-journal">Journal</a>
+              <a class="dropdown-item" href="#sec-resultados">Resultados</a>
+              <a class="dropdown-item" href="#sec-conclusiones">Conclusiones</a> -->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid" id="main-container">
+      <header>
+        <div class="row">
+          <div class="col-md-12 columna">
+            <h1>Nuevo proyecto</h1>
+            <p>
+              Completa en los siguientes campos toda la información del nuevo
+              proyecto.
+            </p>
+          </div>
+        </div>
+      </header>
+      <!--Encabezado (info general) -->
+      <section id="sec-nuevo-proyecto">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="tipo-proyecto">Tipo de proyecto:</label>
+              <select name="tipo-proyecto" id="tipo-proyecto">
+                <option value="tipo-sintesis-target"
+                  >Síntesis Molécula Target</option
+                >
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="form-encabezado">
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="id-proyecto">Código (ID):</label>
+              <input type="number" class="form-control" id="id-proyecto" />
+            </div>
+            <div class="form-group">
+              <label for="nombre-proyecto">Nombre del proyecto:</label>
+              <input type="text" class="form-control" id="nombre-proyecto" />
+            </div>
+          </div>
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="responsable-proyecto"
+                >Responsable del proyecto:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="responsable-proyecto"
+              />
+            </div>
+          </div>
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="responsable">Responsable:</label>
+              <input type="text" class="form-control" id="responsable" />
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-nuevo-proyecto">
+              Registrar proyecto
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="molecula-target">Molécula Target (Smiles):</label>
+              <input type="text" class="form-control" id="molecula-target" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Estructura</h3>
+            <div id="composer-container"></div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <ul>
+          <li><a href="./index.html">Abrir ensayo</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script src="js/scritps.js"></script>
+    <script src="js/nuevoProyecto.js"></script>
+    <!-- Bootstrap-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

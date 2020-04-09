@@ -363,7 +363,7 @@ function toggleBtn(btn, value) {
 var btnGuardarEstado = document.getElementById("btn-guardar-estado");
 btnGuardarEstado.addEventListener("click", function (e) {
   e.preventDefault();
-  guardarEstado();
+  guardarEstado(state);
 });
 
 // function guardarEstado() {
@@ -371,7 +371,7 @@ btnGuardarEstado.addEventListener("click", function (e) {
 //   console.log(state);
 // }
 
-function guardarEstado() {
+function guardarEstado(state) {
   state = leerTodosLosCampos();
   console.log("se enviará al servidor el siguiente estado: ");
   console.log(state);

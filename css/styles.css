@@ -28,11 +28,14 @@ label {
 }
 
 header {
-  padding-top: 80px;
   color: rgb(58, 113, 175);
 }
 
 section {
+  padding-top: 56px;
+}
+
+#main-container {
   padding-top: 56px;
 }
 
