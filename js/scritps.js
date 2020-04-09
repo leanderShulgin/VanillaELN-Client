@@ -376,15 +376,14 @@ function guardarEstado() {
   console.log("se enviará al servidor el siguiente estado: ");
   console.log(state);
   var data = JSON.stringify(state);
-  // var misCabeceras = new Headers();
+  let header = new Headers({
+    "Access-Control-Allow-Origin": "",
+    "Content-Type": "multipart/form-data",
+  });
   var miInit = {
     method: "POST",
     body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Accept": "application/json",
-    },
+    headers: header,
     mode: "cors",
   };
   fetch("http:\\localhost:5000/api/reporte", miInit).then((response) => {
