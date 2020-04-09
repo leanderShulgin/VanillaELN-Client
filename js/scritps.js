@@ -381,8 +381,11 @@ function guardarEstado() {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
-      'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Accept": "application/json",
+    },
+    mode: "cors",
   };
   fetch("http:\\localhost:5000/api/reporte", miInit).then((response) => {
     console.log(response);
