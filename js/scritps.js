@@ -373,17 +373,18 @@ btnGuardarEstado.addEventListener("click", function (e) {
 
 function guardarEstado() {
   state = leerTodosLosCampos();
+  console.log("se enviará al servidor el siguiente estado: ");
   console.log(state);
   var data = JSON.stringify(state);
   var misCabeceras = new Headers();
+  var miInit = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
   fetch("127.0.0.1:5000/api/reporte", miInit).then((response) => {
     console.log(response);
   });
-
-  var miInit = {
-    method: "POST",
-    headers: misCabeceras,
-    mode: "cors",
-    cache: "default",
-  };
 }
