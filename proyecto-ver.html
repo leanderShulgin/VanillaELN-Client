@@ -11,40 +11,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="./chemdoodle/ChemDoodleWeb.css" />
-    <link
-      rel="stylesheet"
-      href="./chemdoodle/uis/jquery-ui-1.11.4.css"
-      type="text/css"
-    />
-    <style>
-      #composer-container {
-        width: 600px;
-        height: 400px;
-      }
-      /* #widget-container {
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 5px 1px rgba(51, 32, 20, 0.6),
-          inset 0px 0px 5px 3px rgba(173, 123, 81, 0.2);
-      } */
-      .flex-center {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      #widget-container {
-        overflow-x: auto;
-        padding: 30px 0px;
-        /* background: grey; */
-      }
-    </style>
-
-    <script src="./chemdoodle/ChemDoodleWeb.js"></script>
-    <script src="./chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
   </head>
   <body>
     <nav
@@ -102,10 +68,10 @@
       <header>
         <div class="row">
           <div class="col-md-12 columna">
-            <h1>Vanilla ELN Dashboard</h1>
+            <h1>ID - Nombre del proyecto</h1>
             <p>
-              Esta es una demostración conceptual de un cuaderno de laboratorio
-              electrónico.
+              Esta es una demostración conceptual de la interfaz web de un
+              reporte de laboratorio digital
             </p>
           </div>
         </div>
@@ -114,16 +80,45 @@
       <section id="sec-encabezado">
         <div class="row">
           <div class="col-md-12">
-            <h3>Links</h3>
+            <h3>Información general</h3>
+          </div>
+        </div>
+      </section>
+      <section id="sec-reactivos">
+        <div class="row" id="form-reactivos">
+          <div class="col-md-12 columna">
+            <h3>Índice de Ensayos</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="col-tabla-ensayos">
+            <table
+              class="table table-responsive-md table-striped"
+              id="tabla-ensayos"
+            >
+              <thead class="thead-dark">
+                <tr>
+                  <th>Número de ensayo</th>
+                  <th>Vía</th>
+                  <th>Etapa</th>
+                  <th>Objetivo</th>
+                  <th>Impacto en SST y Ambiente</th>
+                  <th>Rendimiento</th>
+                  <th>Conclusiones</th>
+                </tr>
+              </thead>
+              <tbody id="body-tabla-ensayos"></tbody>
+            </table>
+            <hr />
           </div>
         </div>
       </section>
       <footer>
         <ul>
           <li><a href="./proyecto-nuevo.html">Nuevo Proyecto</a></li>
-          <li><a href="./proyecto-ver.html">Ver Proyecto</a></li>
-          <li><a href="./reporte-nuevo.html">Nuevo Ensayo</a></li>
+          <li><a href="./reporte-nuevo.html">Nuevo Reporte</a></li>
           <li><a href="./reporte-ver.html">Ver ensayo</a></li>
+          <li><a href="./index.html">Inicio</a></li>
         </ul>
       </footer>
     </div>

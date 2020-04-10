@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabReportJson</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="./chemdoodle/ChemDoodleWeb.css" />
+    <link
+      rel="stylesheet"
+      href="./chemdoodle/uis/jquery-ui-1.11.4.css"
+      type="text/css"
+    />
+    <style>
+      #composer-container {
+        width: 600px;
+        height: 400px;
+      }
+      /* #widget-container {
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 1px rgba(51, 32, 20, 0.6),
+          inset 0px 0px 5px 3px rgba(173, 123, 81, 0.2);
+      } */
+      .flex-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #widget-container {
+        overflow-x: auto;
+        padding: 30px 0px;
+        /* background: grey; */
+      }
+    </style>
+
+    <script src="./chemdoodle/ChemDoodleWeb.js"></script>
+    <script src="./chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
+  </head>
+  <body>
+    <nav
+      class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
+      id="nav-planilla-ensayo"
+    >
+      <a class="navbar-brand" href="#">LDS</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Inicio <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Secciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#sec-encabezado"
+                >Información General</a
+              >
+              <a class="dropdown-item" href="#sec-objetivo">Objetivo</a>
+              <a class="dropdown-item" href="#sec-reaccion">Reacción</a>
+              <a class="dropdown-item" href="#sec-reactivos">Reactivos</a>
+              <a class="dropdown-item" href="#sec-seguridad">Seguridad</a>
+              <a class="dropdown-item" href="#sec-equipo">Equipo</a>
+              <a class="dropdown-item" href="#sec-journal">Journal</a>
+              <a class="dropdown-item" href="#sec-resultados">Resultados</a>
+              <a class="dropdown-item" href="#sec-conclusiones">Conclusiones</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid" id="main-container">
+      <header>
+        <div class="row">
+          <div class="col-md-12 columna">
+            <h1>Reporte de laboratorio de síntesis</h1>
+            <p>
+              Esta es una demostración conceptual de la interfaz web de un
+              reporte de laboratorio digital
+            </p>
+          </div>
+        </div>
+      </header>
+      <!--Encabezado (info general) -->
+      <section id="sec-encabezado">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Información general</h3>
+          </div>
+        </div>
+        <div class="row" id="form-encabezado">
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="codigo-proyecto">Código del proyecto:</label>
+              <input type="number" class="form-control" id="codigo-proyecto" />
+            </div>
+
+            <div class="form-group">
+              <label for="nro-ensayo">Número de ensayo:</label>
+              <input type="text" class="form-control" id="nro-ensayo" />
+            </div>
+            <div class="form-group">
+              <label for="etapa">Etapa:</label>
+              <input type="text" class="form-control" id="etapa" />
+            </div>
+          </div>
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="fecha">Fecha:</label>
+              <input type="date" class="form-control" id="fecha" />
+            </div>
+
+            <div class="form-group">
+              <label for="responsable">Referencias:</label>
+              <input type="text" class="form-control" id="referencias" />
+            </div>
+            <div class="form-group">
+              <label for="autor">Autor:</label>
+              <input type="text" class="form-control" id="autor" />
+            </div>
+          </div>
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="responsable">Responsable:</label>
+              <input type="text" class="form-control" id="responsable" />
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-encabezado">
+              Registrar ensayo
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--Objetivo-->
+      <section id="sec-objetivo">
+        <div class="row" id="form-objetivo">
+          <div class="col-md-12 columna">
+            <h3>Objetivo</h3>
+            <div class="form-group">
+              <textarea
+                name="objetivo"
+                id="objetivo"
+                cols="30"
+                rows="5"
+                class="form-control custom-textarea"
+                style="overflow-y: auto;"
+              ></textarea>
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-objetivo">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--Reacción-->
+      <section id="sec-reaccion">
+        <div class="row" id="form-reaccion">
+          <div class="col-md-12 columna">
+            <h3>Reacción</h3>
+            <div class="form-group">
+              <label for="reaccion">Reacción en estudio (Smiles):</label>
+              <textarea
+                name="reaccion"
+                id="reaccion"
+                cols="30"
+                rows="3"
+                class="form-control"
+              ></textarea>
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-reaccion">
+              Guardar
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="widget-container" class="flex-center">
+              <!-- SCRIPT PARA CARGAR EL WIDGET:  -->
+
+              <script>
+                //requier que se le pase el id para el canvas, el ancho y alto del canvas en pixeles y un objeto con opciones
+                var sketcher = new ChemDoodle.SketcherCanvas(
+                  "composer-container",
+                  600,
+                  350,
+                  { useServices: true, oneMolecule: false }
+                );
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Reactivos-->
+      <section id="sec-reactivos">
+        <div class="row" id="form-reactivos">
+          <div class="col-md-12 columna">
+            <h3>Reactivos</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="col-tabla-reactivos">
+            <h4>Tabla de reactivos</h4>
+            <table
+              class="table table-responsive-md table-striped"
+              id="tabla-reactivos"
+            >
+              <thead class="thead-dark">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Origen</th>
+                  <th>masa [g]</th>
+                  <th>Pureza [%p/p]</th>
+                  <th>PM [g/mol]</th>
+                  <th>Moles</th>
+                  <th>RM</th>
+                </tr>
+              </thead>
+              <tbody id="body-tabla-reactivos"></tbody>
+            </table>
+            <hr />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 style="padding-left: 30px;">Agregar un reactivo</h4>
+          </div>
+        </div>
+        <form action="#">
+          <div class="row">
+            <div class="col-md-4 columna">
+              <div class="form-group">
+                <label for="nombre-reactivo">Nombre:</label>
+                <input
+                  type="text"
+                  name="nombre-reactivo"
+                  id="nombre-reactivo"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="origen-reactivo">Origen:</label>
+                <input
+                  type="text"
+                  name="origen-reactivo"
+                  id="origen-reactivo"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="masa-reactivo">Masa [g]:</label>
+                <input
+                  type="number"
+                  name="masa-reactivo"
+                  id="masa-reactivo"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 columna">
+              <div class="form-group">
+                <label for="pureza-reactivo">Pureza [%p/p]:</label>
+                <input
+                  type="text"
+                  name="pureza-reactivo"
+                  id="pureza-reactivo"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="pm-reactivo">PM [g/mol]:</label>
+                <input
+                  type="number"
+                  name="pm-reactivo"
+                  id="pm-reactivo"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="moles-reactivo">Moles:</label>
+                <input
+                  type="number"
+                  name="moles-reactivo"
+                  id="moles-reactivo"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 columna">
+              <div class="form-group">
+                <label for="rm-reactivo">Relación molar:</label>
+                <input
+                  type="number"
+                  name="rm-reactivo"
+                  id="rm-reactivo"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" style="margin: 0px; padding-left: 25px;">
+                <input
+                  type="submit"
+                  class="custom-btn-dark-blue"
+                  value="Agregar reactivo"
+                  id="btn-agregar-reactivo"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+      <!--Seguridad-->
+      <section id="sec-seguridad">
+        <div class="row" id="form-seguridad">
+          <div class="col-md-12 columna">
+            <h3>Seguridad</h3>
+            <div class="form-group">
+              <label for="form-seguridad">Consideraciones de seguridad:</label>
+              <textarea
+                name="seguridad"
+                id="seguridad"
+                cols="30"
+                rows="5"
+                class="form-control"
+              ></textarea>
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-seguridad">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--Equipo-->
+      <section id="sec-equipo">
+        <div class="row" id="form-equipo">
+          <div class="col-md-12 columna">
+            <h3>Equipo</h3>
+            <div class="form-group">
+              <label for="equipo">Descripción del quipo de laboratorio:</label>
+              <textarea
+                name="equipo"
+                id="equipo"
+                cols="30"
+                rows="5"
+                class="form-control"
+              ></textarea>
+            </div>
+            <button class="custom-btn-dark-blue" id="btn-equipo">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--Journal-->
+      <section id="sec-journal">
+        <div class="row" id="form-journal">
+          <div class="col-md-12 columna">
+            <h3>Journal</h3>
+
+            <div id="visor-de-registros"></div>
+            <hr />
+            <form action="#">
+              <div class="form-group">
+                <label for="registro"
+                  >Utiliza la caja de texto de abajo para registrar todo lo que
+                  haces y observas durante el experimento:</label
+                >
+                <textarea
+                  name="registro"
+                  id="registro"
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                  id="txtarea-registro"
+                ></textarea>
+                <button class="custom-btn-dark-blue" id="btn-agregar-entrada">
+                  Agregar entrada
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 columna"></div>
+        </div>
+      </section>
+      <!-- Resultados y ambiental -->
+      <section id="sec-resultados">
+        <div class="row" id="form-resultados">
+          <div class="col-md-6 columna">
+            <!--Resultados-->
+            <h3>Resultados</h3>
+            <div class="form-group">
+              <label for="masa-producto">Masa obtenida de producto (g):</label>
+              <input
+                type="number"
+                name="masa-producto"
+                id="masa-producto"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="pureza-producto">Pureza del producto (% p/p):</label>
+              <input
+                type="number"
+                name="pureza-producto"
+                id="pureza-producto"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="masa-teorica">Masa teórica a obtener (g):</label>
+              <input
+                type="number"
+                name="masa-teorica"
+                id="masa-teorica"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="rendimiento">Rendimiento (%):</label>
+              <input
+                type="number"
+                name="rendimiento"
+                id="rendimiento"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 columna">
+            <!--Ambiental-->
+            <h3>Ambiental</h3>
+            <div class="form-group">
+              <label for="efluentes-organicos"
+                >Masa de efluentes orgánicos (g):</label
+              >
+              <input
+                type="number"
+                name="efluentes-organicos"
+                id="efluentes-organicos"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="efluentes-acuosos"
+                >Masa de efluentes acuosos (g):</label
+              >
+              <input
+                type="number"
+                name="efluentes-acuosos"
+                id="efluentes-acuosos"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="factorE">Factor E:</label>
+              <input
+                type="number"
+                name="factorE"
+                id="factorE"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Conclusiones-->
+      <section id="sec-conclusiones">
+        <div class="row" id="form-conclusiones">
+          <div class="col-md-12 columna">
+            <h3>Conclusiones</h3>
+            <div class="form-group">
+              <textarea
+                name="conclusiones"
+                id="conclusiones"
+                cols="30"
+                rows="5"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <button
+          style="width: 100%;"
+          class="custom-btn-dark-blue"
+          id="btn-guardar-estado"
+        >
+          Guardar Cambios
+        </button>
+      </section>
+      <footer>
+        <ul>
+          <li><a href="./proyecto-nuevo.html">Nuevo Proyecto</a></li>
+          <li><a href="./proyecto-ver.html">Ver Proyecto</a></li>
+          <li><a href="./reporte-ver.html">Ver Ensayo</a></li>
+          <li><a href="./index.html">Inicio</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script src="js/scritps.js"></script>
+    <script src="js/nuevoReporte.js"></script>
+    <!-- Bootstrap-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
