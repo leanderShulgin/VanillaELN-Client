@@ -71,61 +71,156 @@
             <h1>Reporte NroXXX-XXX</h1>
             <h2>Proyecto: xxxxxx</h2>
             <h2>Etapa: xxxxxx</h2>
-            <hr>
+          </div>
+        </div>
+      </header>
+      <!--Encabezado (info general) -->
+      <section id="sec-ver-encabezado">
+        <div class="row">
+          <div class="col-md-12">
+            <hr />
+            <h3>Información general</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
             <h4>Objetivo</h4>
             <p>
               Esta es una demostración conceptual de la interfaz web de un
               reporte de laboratorio digital
             </p>
           </div>
-        </div>
-      </header>
-      <!--Encabezado (info general) -->
-      <section id="sec-encabezado">
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Información general</h3>
+          <div class="col-md-6">
+            <h4>Datos</h4>
+            <ul>
+              <li>Fecha de creación: xxxxxxxx</li>
+              <li>Autor: xxxxxxx</li>
+              <li>Responsable: xxxxxxxx</li>
+              <li>Referencia: xxxxxx</li>
+              <li></li>
+            </ul>
           </div>
         </div>
       </section>
-      <section id="sec-reactivos">
-        <div class="row" id="form-reactivos">
+
+      <section id="sec-ver-resultados">
+        <div class="row">
+          <div class="col-md-12">
+            <hr />
+            <h3>Resultados y factores ambientales</h3>
+          </div>
+        </div>
+        <div class="row" id="form-resultados">
+          <div class="col-md-6 columna">
+            <!--Resultados-->
+            <h4>Resultados</h4>
+            <ul>
+              <li>Masa de producto [g]:</li>
+              <li>Pureza [% p/p]:</li>
+              <li>Masa teórica [g]:</li>
+              <li>Rendimiento [%]:</li>
+            </ul>
+          </div>
+          <div class="col-md-6 columna">
+            <!--Ambiental-->
+            <h4>Ambiental</h4>
+            <ul>
+              <li>Masa de efluente acuoso [g]:</li>
+              <li>Masa de efluente orgánico [g]:</li>
+              <li>Factor E</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="sec-ver-conclusiones">
+        <div class="row">
+          <div class="col-md-12">
+            <hr />
+            <h3>Conclusiones</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
+              eum deserunt possimus id. Vitae dicta quisquam sapiente quam
+              asperiores est sed! Incidunt consequatur soluta quo quibusdam
+              ducimus qui odio voluptatibus.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="sec-ver-reactivos">
+        <div class="row" }>
           <div class="col-md-12 columna">
-            <h3>Índice de Ensayos</h3>
+            <hr />
+            <h3>Reactivos</h3>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12" id="col-tabla-ensayos">
+          <div class="col-md-12" id="col-tabla-reactivos">
             <table
               class="table table-responsive-md table-striped"
-              id="tabla-ensayos"
+              id="tabla-reactivos"
             >
               <thead class="thead-dark">
                 <tr>
-                  <th>Número de ensayo</th>
-                  <th>Vía</th>
-                  <th>Etapa</th>
-                  <th>Objetivo</th>
-                  <th>Impacto en SST y Ambiente</th>
-                  <th>Rendimiento</th>
-                  <th>Conclusiones</th>
+                  <th>Nombre</th>
+                  <th>Origen</th>
+                  <th>masa [g]</th>
+                  <th>Pureza [%p/p]</th>
+                  <th>PM [g/mol]</th>
+                  <th>Moles</th>
+                  <th>RM</th>
                 </tr>
               </thead>
-              <tbody id="body-tabla-ensayos"></tbody>
+              <tbody id="body-ver-tabla-reactivos"></tbody>
             </table>
-            <hr />
           </div>
         </div>
       </section>
-      <footer>
-        <ul>
-          <li><a href="./proyecto-nuevo.html">Nuevo Proyecto</a></li>
-          <li><a href="./proyecto-ver.html">Ver Proyecto</a></li>
-          <li><a href="./reporte-nuevo.html">Nuevo Ensayo</a></li>
-          <li><a href="./index.html">Inicio</a></li>
-        </ul>
-      </footer>
+      <section id="sec-ver-journal">
+        <div class="row" id="form-journal">
+          <div class="col-md-12 columna">
+            <hr />
+            <h3>Journal</h3>
+            <div id="ver-journal"></div>
+          </div>
+        </div>
+      </section>
+      <section id="sec-ver-experimental">
+        <div class="row">
+          <div class="col-md-12">
+            <hr />
+            <h3>Experiental</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Equipo</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+              animi fugit vel sed autem illum id, repudiandae vero nisi
+              perferendis tempore est ad ab quam cum voluptatum sequi? Facere,
+              fugiat.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h4>Seguridad</h4>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
+              excepturi dolor accusantium esse magnam maiores cumque provident,
+              architecto placeat? Libero placeat natus voluptate possimus
+              deleniti, dolorum rem facilis porro facere.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
+    <footer>
+      <ul>
+        <li><a href="./proyecto-nuevo.html">Nuevo Proyecto</a></li>
+        <li><a href="./proyecto-ver.html">Ver Proyecto</a></li>
+        <li><a href="./reporte-nuevo.html">Nuevo Ensayo</a></li>
+        <li><a href="./index.html">Inicio</a></li>
+      </ul>
+    </footer>
     <script src="js/scritps.js"></script>
     <!-- Bootstrap-->
     <script

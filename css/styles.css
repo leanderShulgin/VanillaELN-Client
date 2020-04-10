@@ -4,6 +4,7 @@
   font-family: "Noto Sans", sans-serif;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 h1 {
@@ -18,9 +19,12 @@ h3 {
 
 h4 {
   font-size: 1.3em;
-  color: rgb(64, 72, 94);
+  color: rgb(33, 37, 41);
   padding: 10px 0px;
   font-weight: bold;
+}
+hr {
+  opacity: 0.4;
 }
 
 label {
@@ -32,12 +36,27 @@ header {
   color: rgb(58, 113, 175);
 }
 
-section {
+section,
+header {
+  padding: 0px 10px;
   padding-top: 56px;
+  background: white;
+}
+
+footer {
+  background-color: rgb(33, 37, 41);
+  padding: 20px;
+  margin: 0;
+}
+
+footer a {
+  color: white;
 }
 
 #main-container {
   padding-top: 56px;
+  background-color: white;
+  min-height: ;
 }
 
 .columna {
