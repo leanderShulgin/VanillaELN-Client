@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/reporte-ver.css">
+    <link rel="stylesheet" href="css/reporte-ver.css" />
   </head>
   <body>
     <nav
@@ -69,8 +69,8 @@
       <header>
         <div class="row">
           <div class="col-md-12 columna">
-            <h1>Reporte:  <span id="idReporte"></span></h1>
-            <h2>Proyecto: <span id="proyecto"></span></h2>
+            <h1>Reporte: <span id="id-reporte"></span></h1>
+            <h2>Proyecto: <span id="id-proyecto"></span></h2>
             <h2>Etapa: <span id="etapa"></span></h2>
           </div>
         </div>
@@ -93,16 +93,15 @@
         <div class="row">
           <div class="col-md-6">
             <h4>Objetivo</h4>
-            <p id="objetivo">
-            </p>
+            <p id="objetivo"></p>
           </div>
           <div class="col-md-6">
             <h4>Datos</h4>
             <ul>
               <li>Fecha de creación: <span id="fecha"></span></li>
-              <li>Autor: <span id="autor"></li>
-              <li>Responsable: <span id="responsable"></li>
-              <li>Referencia: <span id="referencia"></li>
+              <li>Autor: <span id="autor"></span></li>
+              <li>Responsable: <span id="responsable"></span></li>
+              <li>Referencias: <span id="referencias"></span></li>
             </ul>
           </div>
         </div>
@@ -120,19 +119,24 @@
             <!--Resultados-->
             <h4>Resultados</h4>
             <ul>
-              <li>Masa de producto [g]:</li>
-              <li>Pureza [% p/p]:</li>
-              <li>Masa teórica [g]:</li>
-              <li>Rendimiento [%]:</li>
+              <li>Masa de producto [g]: <span id="masa-producto"></span></li>
+              <li>Pureza [% p/p]: <span id="pureza-producto"></span></li>
+              <li>Masa teórica [g]: <span id="masa-teorica"></span></li>
+              <li>Rendimiento [%]: <span id="rendimiento"></span></li>
             </ul>
           </div>
           <div class="col-md-6 columna">
             <!--Ambiental-->
             <h4>Ambiental</h4>
             <ul>
-              <li>Masa de efluente acuoso [g]:</li>
-              <li>Masa de efluente orgánico [g]:</li>
-              <li>Factor E</li>
+              <li>
+                Masa de efluente acuoso [g]: <span id="efluente-acuoso"></span>
+              </li>
+              <li>
+                Masa de efluente orgánico [g]:
+                <span id="efluente-organico"></span>
+              </li>
+              <li>Factor E <span id="factor-e"></span></li>
             </ul>
           </div>
         </div>
@@ -142,12 +146,7 @@
           <div class="col-md-12">
             <hr />
             <h3>Conclusiones</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-              eum deserunt possimus id. Vitae dicta quisquam sapiente quam
-              asperiores est sed! Incidunt consequatur soluta quo quibusdam
-              ducimus qui odio voluptatibus.
-            </p>
+            <p id="conclusiones"></p>
           </div>
         </div>
       </section>
@@ -199,21 +198,11 @@
         <div class="row">
           <div class="col-md-6">
             <h4>Equipo</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-              animi fugit vel sed autem illum id, repudiandae vero nisi
-              perferendis tempore est ad ab quam cum voluptatum sequi? Facere,
-              fugiat.
-            </p>
+            <p id="equipo"></p>
           </div>
           <div class="col-md-6">
             <h4>Seguridad</h4>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
-              excepturi dolor accusantium esse magnam maiores cumque provident,
-              architecto placeat? Libero placeat natus voluptate possimus
-              deleniti, dolorum rem facilis porro facere.
-            </p>
+            <p id="seguridad"></p>
           </div>
         </div>
       </section>
