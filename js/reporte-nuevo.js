@@ -15,19 +15,20 @@ var state = {
 
 // Variables
 var encabezado = {}; // Aqui almaceno los datos ingresados
-var codigo = document.getElementById("codigo-proyecto");
-var nroEnsayo = document.getElementById("nro-ensayo");
+var idProyecto = document.getElementById("id-proyecto");
+var idReporte = document.getElementById("id-reporte");
 var etapa = document.getElementById("etapa");
 var fecha = document.getElementById("fecha");
 var referencias = document.getElementById("referencias");
 var autor = document.getElementById("autor");
 var responsable = document.getElementById("responsable");
+var pmProducto = document.getElementById("pm-producto");
 
 var btnEncabezado = document.getElementById("btn-encabezado");
 
 btnEncabezado.addEventListener("click", function (e) {
   e.preventDefault();
-  if (codigo.disabled == false) {
+  if (id.disabled == false) {
     bloquearEncabezado(true);
     state.encabezado = leerEncabezado();
     toggleBtn(btnEncabezado, "off");
@@ -39,9 +40,10 @@ btnEncabezado.addEventListener("click", function (e) {
 
 function leerEncabezado() {
   return {
-    codigo: codigo.value,
-    nroEnsayo: nroEnsayo.value,
+    idProyecto: idProyecto.value,
+    idReporte: idReporte.value,
     etapa: etapa.value,
+    pmProducto: pmProducto.value,
     fecha: fecha.value,
     referencias: referencias.value,
     autor: autor.value,
@@ -120,6 +122,7 @@ var purezaReactivo = document.getElementById("pureza-reactivo");
 var pmReactivo = document.getElementById("pm-reactivo");
 var molesReactivo = document.getElementById("moles-reactivo");
 var rmReactivo = document.getElementById("rm-reactivo");
+var limitante = document.getElementById("limitante");
 var btnAgregarReactivo = document.getElementById("btn-agregar-reactivo");
 
 // eventos y funciones
@@ -138,6 +141,7 @@ function nuevoReactivo() {
     pm: pmReactivo.value,
     moles: molesReactivo.value,
     rm: rmReactivo.value,
+    limitante: limitante.value,
   };
 }
 
@@ -383,7 +387,7 @@ function cargarArchivoJSON(archivoJSON) {
 function cargarData(archivoJSON) {
   //Toma un objeto js con el contenido de un reporte
   //y los carga en la interfaz de lectura:
-  console.log("se va a cargar el archivo json")
+  console.log("se va a cargar el archivo json");
   var data = cargarArchivoJSON(archivoJSON);
   console.log("Se ha cargado la data");
   console.log(data);
