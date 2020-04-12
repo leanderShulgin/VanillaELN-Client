@@ -18,6 +18,9 @@ var conclusiones = document.getElementById("conclusiones");
 var equipo = document.getElementById("equipo");
 var seguridad = document.getElementById("seguridad");
 
+//Otras variables
+var visorJournal = document.getElementById("visor-journal");
+
 document
   .getElementById("btn-cargar-json")
   .addEventListener("click", function (event) {
@@ -33,6 +36,23 @@ function mostrarEncabezado(enc) {
   autor.innerHTML = enc.autor;
   responsable.innerHTML = enc.responsable;
   referencias.innerHTML = enc.referencias;
+}
+
+function mostrarReactivos(reactivos) {
+  console.log(reactivos);
+}
+
+function mostrarJournal(registros) {
+  console.log(registros);
+  for (var i = 0; i < registros.length; i++) {
+    visorJournal.innerHTML +=
+      "<p>" +
+      '<span class="timeStamp">' +
+      registros[i].hora +
+      " | </span>" +
+      registros[i].texto +
+      "</p>";
+  }
 }
 
 function mostrarResultados(results) {
@@ -52,6 +72,7 @@ function mostrarData(data) {
   mostrarEncabezado(data.encabezado);
   mostrarResultados(data.resultados);
   mostrarAmbiental(data.ambiental);
+  mostrarJournal(data.registros);
   objetivo.innerHTML = data.objetivo;
   conclusiones.innerHTML = data.conclusiones;
   equipo.innerHTML = data.equipo;
