@@ -17,6 +17,8 @@ var factorE = document.getElementById("factor-e");
 var conclusiones = document.getElementById("conclusiones");
 var equipo = document.getElementById("equipo");
 var seguridad = document.getElementById("seguridad");
+var tablaReactivos = document.getElementById("tabla-reactivos");
+var bodyTablaReactivos = document.getElementById("body-tabla-reactivos");
 
 //Otras variables
 var visorJournal = document.getElementById("visor-journal");
@@ -37,9 +39,40 @@ function mostrarEncabezado(enc) {
   responsable.innerHTML = enc.responsable;
   referencias.innerHTML = enc.referencias;
 }
-
+function generarFilasTabla(reactivos) {
+  filas = "";
+  for (var i = 0; i < reactivos.length; i++) {
+    //
+    filas +=
+      "<tr>" +
+      "<td>" +
+      reactivos[i].nombre +
+      "</td>" +
+      "<td>" +
+      reactivos[i].origen +
+      "</td>" +
+      "<td>" +
+      reactivos[i].masa +
+      "</td>" +
+      "<td>" +
+      reactivos[i].pureza +
+      "</td>" +
+      "<td>" +
+      reactivos[i].pm +
+      "</td>" +
+      "<td>" +
+      reactivos[i].moles +
+      "</td>" +
+      "<td>" +
+      reactivos[i].rm +
+      "</td>" +
+      "</tr>";
+  }
+  return filas;
+}
 function mostrarReactivos(reactivos) {
   console.log(reactivos);
+  bodyTablaReactivos.innerHTML = generarFilasTabla(reactivos);
 }
 
 function mostrarJournal(registros) {
@@ -73,6 +106,7 @@ function mostrarData(data) {
   mostrarResultados(data.resultados);
   mostrarAmbiental(data.ambiental);
   mostrarJournal(data.registros);
+  mostrarReactivos(data.reactivos);
   objetivo.innerHTML = data.objetivo;
   conclusiones.innerHTML = data.conclusiones;
   equipo.innerHTML = data.equipo;
