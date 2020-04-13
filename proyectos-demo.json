@@ -1,0 +1,32 @@
+[
+  {
+    "tipo": "Síntesis Molécula Target",
+    "id": "134",
+    "nombreProyecto": "Sulfentramide",
+    "responsable": "Terry Faron",
+    "smilesTarget": "ccCncCNCNncCNCNncCNc",
+    "pmTarget": "324",
+    "descripcion": "Herbicida de acción selectiva",
+    "casTarget": "123-433-45565"
+  },
+  {
+    "tipo": "Síntesis Molécula Target",
+    "id": "140",
+    "nombreProyecto": "Clethosulam",
+    "responsable": "Alpa Chino",
+    "smilesTarget": "cccNcCNcIClcc",
+    "pmTarget": "427",
+    "descripcion": "Insecticida de acción efervescente",
+    "casTarget": "354-768-0034"
+  },
+  {
+    "tipo": "Síntesis Molécula Target",
+    "id": "146",
+    "nombreProyecto": "Flumetsazim",
+    "responsable": "Catalina Dlugui",
+    "smilesTarget": "cccccnFFCFSBrc",
+    "pmTarget": "576",
+    "descripcion": "Fungicida selectivo para maní y pies.",
+    "casTarget": "354-768-336609"
+  }
+]
