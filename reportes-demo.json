@@ -1,0 +1,98 @@
+[
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "226",
+      "etapa": "BCTP",
+      "pmProducto": "306",
+      "fecha": "01/04/2020",
+      "referencias": "134-225",
+      "autor": "Peter Cantropus",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Obtener BCTP para la síntesis de Sulfentramide. Evaluar Rendimiento.",
+    "conclusiones": "Buen rendimiento y pureza",
+    "resultados": { "rendimiento": "92.1" }
+  },
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "227",
+      "etapa": "SOGT",
+      "pmProducto": "198",
+      "fecha": "02/04/2020",
+      "referencias": "134-226",
+      "autor": "Jonathan Tolengo",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Estudiar tolueno como solvente en reacción de SOGT",
+    "conclusiones": "La reacción se plancha. Bajo rendimiento.",
+    "resultados": { "rendimiento": "57.2" }
+  },
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "228",
+      "etapa": "Sulfentramide",
+      "pmProducto": "324",
+      "fecha": "04/04/2020",
+      "referencias": "134-198",
+      "autor": "Gisela Murano",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Obtener sulfentramide para patrón",
+    "conclusiones": "Se obtiene el producto con buen rendimiento. Se purifica por recristalización",
+    "resultados": { "rendimiento": "96.7" }
+  },
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "229",
+      "etapa": "SOGT",
+      "pmProducto": "198",
+      "fecha": "06/04/2020",
+      "referencias": "134-227",
+      "autor": "Peter Cantropus",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Estudiar la filtración de SOGT",
+    "conclusiones": "SOGT filtra adecuadamente.",
+    "resultados": { "rendimiento": "" }
+  },
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "230",
+      "etapa": "ACPT",
+      "pmProducto": "256",
+      "fecha": "07/04/2020",
+      "referencias": "134-209",
+      "autor": "Jonathan Tolengo",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Producción",
+    "conclusiones": "Rendimiento normal.",
+    "resultados": { "rendimiento": "88.9" }
+  },
+  {
+    "encablezado": {
+      "idProyecto": "134",
+      "nombreProyecto": "Sulfentramide",
+      "idReporte": "231",
+      "etapa": "Sulfentramide",
+      "pmProducto": "324",
+      "fecha": "10/04/2020",
+      "referencias": "134-209",
+      "autor": "Gisela Murano",
+      "responsable": "Terry Faron"
+    },
+    "objetivo": "Sintesis de sulfentramide en DMF",
+    "conclusiones": "Se forma mucha impureza 7. Se observa bastante exotermia",
+    "resultados": { "rendimiento": "86.7" }
+  }
+]
