@@ -1,10 +1,10 @@
 {
-  "tipo": "Síntesis Molécula Target",
+  "casTarget": "123-433-45565",
+  "descripcion": "Herbicida de acción selectiva",
   "id": "134",
   "nombreProyecto": "Sulfentramide",
+  "pmTarget": "324",
   "responsable": "Terry Faron",
   "smilesTarget": "cccccccc",
-  "pmTarget": "324",
-  "descripcion": "Herbicida de acción selectiva",
-  "casTarget": "123-433-45565"
+  "tipo": "tipo-sintesis-target"
 }

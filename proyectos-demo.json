@@ -1,32 +1,32 @@
 [
   {
-    "tipo": "Síntesis Molécula Target",
+    "casTarget": "123-433-45565",
+    "descripcion": "Herbicida de acción selectiva",
     "id": "134",
     "nombreProyecto": "Sulfentramide",
+    "pmTarget": "324",
     "responsable": "Terry Faron",
     "smilesTarget": "ccCncCNCNncCNCNncCNc",
-    "pmTarget": "324",
-    "descripcion": "Herbicida de acción selectiva",
-    "casTarget": "123-433-45565"
+    "tipo": "tipo-sintesis-target"
   },
   {
-    "tipo": "Síntesis Molécula Target",
+    "casTarget": "354-768-0034",
+    "descripcion": "Insecticida de acción efervescente",
     "id": "140",
     "nombreProyecto": "Clethosulam",
+    "pmTarget": "427",
     "responsable": "Alpa Chino",
     "smilesTarget": "cccNcCNcIClcc",
-    "pmTarget": "427",
-    "descripcion": "Insecticida de acción efervescente",
-    "casTarget": "354-768-0034"
+    "tipo": "tipo-sintesis-target"
   },
   {
-    "tipo": "Síntesis Molécula Target",
+    "casTarget": "34-768-336609",
+    "descripcion": "Fungicida selectivo para maní y pies.",
     "id": "146",
     "nombreProyecto": "Flumetsazim",
+    "pmTarget": "576",
     "responsable": "Catalina Dlugui",
     "smilesTarget": "cccccnFFCFSBrc",
-    "pmTarget": "576",
-    "descripcion": "Fungicida selectivo para maní y pies.",
-    "casTarget": "354-768-336609"
+    "tipo": "tipo-sintesis-target"
   }
 ]
