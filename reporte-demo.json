@@ -1,7 +1,7 @@
 {
   "encabezado": {
     "idProyecto": "134",
-    "nombreProyecto": "Sulfentramide Propper",
+    "nombreProyecto": "Sulfentramide",
     "idReporte": "226",
     "etapa": "BCTP",
     "pmProducto": "324",
@@ -67,7 +67,7 @@
   "ambiental": {
     "efluentesOrganicos": "123",
     "efluentesAcuosos": "456",
-    "factorE" : "34.6"
+    "factorE": "34.6"
   },
   "conclusiones": "bla bla blabl bla blabl abla bla bla blab l"
 }
