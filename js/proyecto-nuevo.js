@@ -1,12 +1,12 @@
 var state = {};
 // Campos
-var casTarget = document.getElementById("cas-target");
+var cas = document.getElementById("cas-target");
 var descripcion = document.getElementById("descripcion");
 var id = document.getElementById("id-proyecto");
 var nombre = document.getElementById("nombre-proyecto");
-var pmTarget = document.getElementById("pm-target");
+var pm = document.getElementById("pm-target");
 var responsable = document.getElementById("responsable");
-var smilesTarget = document.getElementById("smiles-target");
+var smiles = document.getElementById("smiles-target");
 var tipo = document.getElementById("tipo-proyecto");
 
 //Botones
@@ -16,13 +16,14 @@ var btnGuardarProyecto = document.getElementById("btn-guardar-proyecto");
 
 function leerTodosLosCampos() {
   return {
-    casTarget: casTarget.value,
+    fecha: "xx-xx-xxxx", //agregar funcion que escriba fecha actual
+    cas: cas.value,
     descripcion: descripcion.value,
     id: id.value,
     nombreProyecto: nombre.value,
-    pmTarget: pmTarget.value,
+    pm: pm.value,
     responsable: responsable.value,
-    smilesTarget: smilesTarget.value,
+    smiles: smiles.value,
     tipo: tipo.value,
   };
 }

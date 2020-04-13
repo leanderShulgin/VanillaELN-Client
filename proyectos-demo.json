@@ -1,32 +1,35 @@
 [
   {
-    "casTarget": "123-433-45565",
+    "fecha": "xx-xx-xxxx",
+    "cas": "123-433-45565",
     "descripcion": "Herbicida de acción selectiva",
     "id": "134",
     "nombreProyecto": "Sulfentramide",
-    "pmTarget": "324",
+    "pm": "324",
     "responsable": "Terry Faron",
-    "smilesTarget": "ccCncCNCNncCNCNncCNc",
+    "smiles": "ccCncCNCNncCNCNncCNc",
     "tipo": "tipo-sintesis-target"
   },
   {
-    "casTarget": "354-768-0034",
+    "fecha": "xx-xx-xxxx",
+    "cas": "354-768-0034",
     "descripcion": "Insecticida de acción efervescente",
     "id": "140",
     "nombreProyecto": "Clethosulam",
-    "pmTarget": "427",
+    "pm": "427",
     "responsable": "Alpa Chino",
-    "smilesTarget": "cccNcCNcIClcc",
+    "smiles": "cccNcCNcIClcc",
     "tipo": "tipo-sintesis-target"
   },
   {
-    "casTarget": "34-768-336609",
+    "fecha": "xx-xx-xxxx",
+    "cas": "34-768-336609",
     "descripcion": "Fungicida selectivo para maní y pies.",
     "id": "146",
     "nombreProyecto": "Flumetsazim",
-    "pmTarget": "576",
+    "pm": "576",
     "responsable": "Catalina Dlugui",
-    "smilesTarget": "cccccnFFCFSBrc",
+    "smiles": "cccccnFFCFSBrc",
     "tipo": "tipo-sintesis-target"
   }
 ]

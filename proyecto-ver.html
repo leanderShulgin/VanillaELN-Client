@@ -68,24 +68,62 @@
       <header>
         <div class="row">
           <div class="col-md-12 columna">
-            <h1>ID - Nombre del proyecto</h1>
+            <h1>
+              <span id="id-proyecto"></span> -
+              <span id="nombre-proyecto"></span>
+            </h1>
             <p>
               Esta es una demostración conceptual de la interfaz web de un
               reporte de laboratorio digital
             </p>
+            <button id="btn-cargar-json">Cargar Demo</button>
           </div>
         </div>
       </header>
-      <!--Encabezado (info general) -->
-      <section id="sec-encabezado">
+      <section id="sec-general">
         <div class="row">
           <div class="col-md-12">
             <h3>Información general</h3>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>
+                <strong>Fecha de creación:</strong> <span id="fecha"></span>
+              </li>
+              <li>
+                <strong>Responsable:</strong> <span id="responsable"></span>
+              </li>
+              <li>
+                <strong>Tipo de proyecto:</strong>
+                <span id="tipo-proyecto"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li>
+                <strong>Descripción:</strong> <span id="descripcion"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
-      <section id="sec-reactivos">
-        <div class="row" id="form-reactivos">
+      <section id="target">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Información Química de la molécula target</h3>
+            <ul>
+              <li><strong>CAS:</strong> <span id="cas"></span></li>
+              <li><strong>PM:</strong> <span id="pm"></span></li>
+              <li><strong>Estructura Smiles:</strong> <span id="smiles"></span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="sec-indice-ensayos">
+        <div class="row">
           <div class="col-md-12 columna">
             <h3>Índice de Ensayos</h3>
           </div>

@@ -1,10 +1,11 @@
 {
-  "casTarget": "123-433-45565",
+  "fecha": "01-02-2020",
+  "cas": "123-433-45565",
   "descripcion": "Herbicida de acción selectiva",
   "id": "134",
   "nombreProyecto": "Sulfentramide",
-  "pmTarget": "324",
+  "pm": "324",
   "responsable": "Terry Faron",
-  "smilesTarget": "cccccccc",
-  "tipo": "tipo-sintesis-target"
+  "smiles": "cccccccc",
+  "tipo": "sintesis-target"
 }
