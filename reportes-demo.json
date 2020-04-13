@@ -1,6 +1,7 @@
 [
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "226",
@@ -16,7 +17,8 @@
     "resultados": { "rendimiento": "92.1" }
   },
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "227",
@@ -32,7 +34,8 @@
     "resultados": { "rendimiento": "57.2" }
   },
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "228",
@@ -48,7 +51,8 @@
     "resultados": { "rendimiento": "96.7" }
   },
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "229",
@@ -64,7 +68,8 @@
     "resultados": { "rendimiento": "" }
   },
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "230",
@@ -80,7 +85,8 @@
     "resultados": { "rendimiento": "88.9" }
   },
   {
-    "encablezado": {
+    "encabezado": {
+      "via": "BCTP",
       "idProyecto": "134",
       "nombreProyecto": "Sulfentramide",
       "idReporte": "231",

@@ -145,18 +145,6 @@ function nuevoReactivo() {
   };
 }
 
-function limpiarTabla() {
-  // vuelve a dejar sólo el encabezado"+"
-  bodyTablaReactivos.innerHTMl =
-    "<tr><th>Nombre</th>" +
-    "<th>Origen</th>" +
-    "<th>masa [g]</th>" +
-    "<th>Pureza [%p/p]</th>" +
-    "<th>PM</th>" +
-    "<th>Moles</th>" +
-    "<th>RM</th></tr>";
-}
-
 function generarFilasTabla(reactivos) {
   filas = "";
   for (var i = 0; i < reactivos.length; i++) {
