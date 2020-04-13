@@ -23,12 +23,13 @@ var referencias = document.getElementById("referencias");
 var autor = document.getElementById("autor");
 var responsable = document.getElementById("responsable");
 var pmProducto = document.getElementById("pm-producto");
+var via = document.getElementById("via");
 
 var btnEncabezado = document.getElementById("btn-encabezado");
 
 btnEncabezado.addEventListener("click", function (e) {
   e.preventDefault();
-  if (id.disabled == false) {
+  if (idProyecto.disabled == false) {
     bloquearEncabezado(true);
     state.encabezado = leerEncabezado();
     toggleBtn(btnEncabezado, "off");
@@ -43,6 +44,7 @@ function leerEncabezado() {
     idProyecto: idProyecto.value,
     idReporte: idReporte.value,
     etapa: etapa.value,
+    via: via.value,
     pmProducto: pmProducto.value,
     fecha: fecha.value,
     referencias: referencias.value,
@@ -293,30 +295,6 @@ function leerAmbiental() {
 // CONCLUSIONES
 var conclusiones = document.getElementById("conclusiones");
 
-// fUNCIONES GENERALES
-
-// function fechaHora() {
-//   var ahora = new Date();
-//   var hora = ahora.getHours();
-//   var minutos = ahora.getMinutes();
-//   var segundos = ahora.getSeconds();
-//   var dia = ahora.getDate();
-//   var mes = ahora.getMonth();
-//   var anio = ahora.getFullYear();
-//   return (
-//     dia +
-//     "-" +
-//     (mes + 1) +
-//     "-" +
-//     anio +
-//     " " +
-//     hora +
-//     ":" +
-//     minutos +
-//     ":" +
-//     segundos
-//   );
-//   //   return ahora.toDateString() + " "+ ahora.toTimeString();
 
 function leerTodosLosCampos() {
   return {
@@ -358,11 +336,6 @@ function guardarEstado(state) {
     console.log(response);
   });
 }
-
-//DEV TOOLS-------------------------------------------------------------
-document
-  .getElementById("btn-cargar-json")
-  .addEventListener("click", cargarData("reporte-demo.json"));
 
 function cargarArchivoJSON(archivoJSON) {
   //lee un archivo json y devuelve un objeto js
