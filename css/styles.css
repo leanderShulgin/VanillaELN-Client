@@ -100,3 +100,25 @@ footer a {
   color: rgb(58, 113, 175);
   font-weight: 400;
 }
+
+/*-----Scrollbar-----*/
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c7c7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(49, 95, 109);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(48, 143, 172);
+}
+

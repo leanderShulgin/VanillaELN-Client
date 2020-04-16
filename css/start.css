@@ -2,16 +2,28 @@ header {
   margin: 0px;
   padding: 0px;
 }
-h4 {
-  color: white;
+
+/* Estilo general de cajas */
+
+.row {
+  min-height: 30vh;
+}
+
+.col-md-4,
+.col-md-8 {
+  padding: 20px 10px;
 }
 
 .start-box {
   border-radius: 3px;
   box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.4);
+  min-height: 100%;
   margin-top: 20px;
-  min-height: 30vh;
   padding: 15px;
+}
+
+.start-box h4 {
+  color: white;
 }
 
 .start-box a,
@@ -25,6 +37,32 @@ h4 {
 }
 
 .start-box hr {
-  background-color: rgba(255, 255, 255, 0.2);
-  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.3;
+}
+
+.box-table-container {
+  max-height: 40vh;
+  overflow: auto;
+  margin-top: 10px;
+  background-color: white;
+  padding: 0px;
+  font-size: 0.8em;
+}
+
+.table-striped-orange > tbody > tr:nth-child(2n + 1) > td {
+  background-color: rgb(255, 210, 152);
+}
+
+#box-proyectos-thead {
+  background-color: rgb(97, 78, 65);
+  color: white;
+}
+
+/* ===== SOLO VERSION DE ESCRITORIO =====*/
+
+@media only screen and (min-width: 720px) {
+  .box-table-container {
+    max-height: 20vh;
+  }
 }
