@@ -15,7 +15,7 @@ var bodyTablaEnsayos = document.getElementById("body-tabla-ensayos");
 // document
 //   .getElementById("btn-cargar-json")
 //   .addEventListener("click", function (event) {
-//     cargarJsonData("proyecto-demo.json");
+//     cargarJsonData("./demos/proyecto-demo.json");
 //   });
 
 // Funciones
@@ -72,7 +72,7 @@ function mostrarData(data) {
   cas.innerHTML = data.cas;
   pm.innerHTML = data.pm + " g/mol";
   smiles.innerHTML = data.smiles;
-  cargarListaReportes("reportes-demo.json");
+  cargarListaReportes("./demos/reportes-demo.json");
 }
 
 function cargarJsonData(archivoJSON) {
@@ -89,4 +89,4 @@ function cargarJsonData(archivoJSON) {
 }
 
 // MaiN:
-cargarJsonData("proyecto-demo.json");
+cargarJsonData("./demos/proyecto-demo.json");

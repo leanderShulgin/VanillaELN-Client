@@ -6,15 +6,22 @@
   padding: 0;
   list-style: none;
 }
+a,
+a:active,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
 
 h1 {
   font-size: 3em;
   padding: 10px 0px;
 }
+
 h3 {
-  padding-top: 10px;
-  padding-bottom: 20px;
   color: rgb(54, 176, 247);
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 h4 {
@@ -23,6 +30,7 @@ h4 {
   padding: 10px 0px;
   font-weight: bold;
 }
+
 hr {
   opacity: 0.4;
 }

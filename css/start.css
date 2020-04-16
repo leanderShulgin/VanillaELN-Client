@@ -1,0 +1,30 @@
+header {
+  margin: 0px;
+  padding: 0px;
+}
+h4 {
+  color: white;
+}
+
+.start-box {
+  border-radius: 3px;
+  box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.4);
+  margin: 20px 5px 0px 5px;
+  min-height: 30vh;
+  padding: 15px;
+}
+
+.start-box a,
+.start-box a:hover {
+  color: white;
+}
+
+.start-box label {
+  color: white;
+  font-size: 1em;
+}
+
+.start-box hr {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}

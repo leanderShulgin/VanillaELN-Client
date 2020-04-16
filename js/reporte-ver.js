@@ -26,7 +26,7 @@ var visorJournal = document.getElementById("visor-journal");
 document
   .getElementById("btn-cargar-json")
   .addEventListener("click", function (event) {
-    cargarJsonData("reporte-demo.json");
+    cargarJsonData("./demos/reporte-demo.json");
   });
 
 // Funciones

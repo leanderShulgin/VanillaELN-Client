@@ -11,40 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="./chemdoodle/ChemDoodleWeb.css" />
-    <link
-      rel="stylesheet"
-      href="./chemdoodle/uis/jquery-ui-1.11.4.css"
-      type="text/css"
-    />
-    <style>
-      #composer-container {
-        width: 600px;
-        height: 400px;
-      }
-      /* #widget-container {
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 5px 1px rgba(51, 32, 20, 0.6),
-          inset 0px 0px 5px 3px rgba(173, 123, 81, 0.2);
-      } */
-      .flex-center {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      #widget-container {
-        overflow-x: auto;
-        padding: 30px 0px;
-        /* background: grey; */
-      }
-    </style>
-
-    <script src="./chemdoodle/ChemDoodleWeb.js"></script>
-    <script src="./chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
+    <link rel="stylesheet" href="css/start.css" />
   </head>
   <body>
     <nav
@@ -101,23 +68,89 @@
     <div class="container-fluid" id="main-container">
       <header>
         <div class="row">
-          <div class="col-md-12 columna">
-            <h1>Vanilla ELN Dashboard</h1>
+          <div class="col-md-8">
+            <h1>Vanilla ELN</h1>
+            <h2 style="color: rgb(255, 102, 0);">Inicio</h2>
             <p>
-              Esta es una demostración conceptual de un cuaderno de laboratorio
-              electrónico.
+              Desde aquí podés acceder a todas las funciones del cuaderno de
+              laboratorio electrónico
             </p>
+          </div>
+          <div class="col-md-4">
+            <div class="start-box" style="background-color: rgb(99, 112, 112);">
+              <h4>Usuario</h4>
+            </div>
           </div>
         </div>
       </header>
       <!--Encabezado (info general) -->
-      <section id="sec-encabezado" style="min-height: 40vh;">
+      <main style="margin-bottom: 50px;">
         <div class="row">
-          <div class="col-md-12">
-            <h3>Links</h3>
+          <div class="col-md-4">
+            <div
+              class="start-box"
+              id="box-nuevo-reporte"
+              style="background-color: rgb(48, 134, 48);"
+            >
+              <h4>Nuevo Reporte</h4>
+              <hr />
+              <a href="reporte-nuevo.html"
+                >Hacé click aquí para comenzar un nuevo reporte</a
+              >
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="start-box" style="background-color: rgb(255, 102, 0);">
+              <h4>Mis Proyectos</h4>
+              <hr />
+            </div>
           </div>
         </div>
-      </section>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="start-box" style="background-color: rgb(33, 46, 44);">
+              <h4>Reportes Activos</h4>
+              <hr />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="start-box" style="background-color: rgb(0, 68, 255);">
+              <h4>Abrir reporte x número</h4>
+              <hr />
+              <form action="#">
+                <div class="form-group">
+                  <label for="reporte-numero"
+                    >Ingresa el código identificatorio de un reporte para poder
+                    verlo</label
+                  >
+                  <input
+                    type="text"
+                    name="reporte-numero"
+                    id="reporte-numero"
+                    placeholder="Ej: 123-100"
+                    class="form-control"
+                  />
+                  <input
+                    type="submit"
+                    value="Abrir Reporte"
+                    class="btn btn-success btn-block"
+                    style="margin: 10px 0px;"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="start-box" style="background-color: rgb(91, 23, 117);">
+              <h4>Nuevo Proyecto</h4>
+              <hr />
+              <a href="proyecto-nuevo.html"
+                >Hacé click aquí para comenzar un nuevo proyecto</a
+              >
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
     <footer>
       <ul>
