@@ -3,8 +3,6 @@ header {
   padding: 0px;
 }
 
-
-
 /* Estilo general de cajas */
 
 .row {
@@ -72,6 +70,12 @@ header {
 
 #cont-data-usuario li {
   font-size: 0.8em;
+}
+
+/* Box proyectos */
+#body-tabla-proyectos a {
+  color: rgb(59, 126, 180);
+  font-weight: bold;
 }
 
 /* ===== SOLO VERSION DE ESCRITORIO =====*/
