@@ -59,6 +59,19 @@ header {
   color: white;
 }
 
+/* Box usuario */
+#cont-usuario {
+  display: flex;
+}
+#cont-data-usuario {
+  width: 60%;
+  color: rgb(230, 230, 230);
+}
+
+#cont-data-usuario li {
+  font-size: 0.8em;
+}
+
 /* ===== SOLO VERSION DE ESCRITORIO =====*/
 
 @media only screen and (min-width: 720px) {

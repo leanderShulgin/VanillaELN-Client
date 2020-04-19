@@ -18,7 +18,7 @@
       class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
       id="nav-planilla-ensayo"
     >
-      <a class="navbar-brand" href="#">LDS</a>
+      <a class="navbar-brand" href="index.html">VanillaELN</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -49,17 +49,20 @@
               Secciones
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#sec-encabezado"
-                >Información General</a
+              <a class="dropdown-item" href="#">Inicio</a>
+              <a class="dropdown-item" href="#box-nuevo-reporte"
+                >Nuevo Reporte</a
               >
-              <a class="dropdown-item" href="#sec-objetivo">Objetivo</a>
-              <a class="dropdown-item" href="#sec-reaccion">Reacción</a>
-              <a class="dropdown-item" href="#sec-reactivos">Reactivos</a>
-              <a class="dropdown-item" href="#sec-seguridad">Seguridad</a>
-              <a class="dropdown-item" href="#sec-equipo">Equipo</a>
-              <a class="dropdown-item" href="#sec-journal">Journal</a>
-              <a class="dropdown-item" href="#sec-resultados">Resultados</a>
-              <a class="dropdown-item" href="#sec-conclusiones">Conclusiones</a>
+              <a class="dropdown-item" href="#box-proyectos">Proyectos</a>
+              <a class="dropdown-item" href="#box-reportes-activos"
+                >Reportes activos</a
+              >
+              <a class="dropdown-item" href="#box-reporte-x-numero"
+                >Buscar reporte por número</a
+              >
+              <a class="dropdown-item" href="#box-nuevo-proyecto"
+                >Nuevo proyecto</a
+              >
             </div>
           </li>
         </ul>
@@ -69,7 +72,7 @@
       <header>
         <div class="row">
           <div class="col-md-8">
-            <h1>Vanilla ELN</h1>
+            <h1>Panel central</h1>
             <h2 style="color: rgb(255, 102, 0);">Inicio</h2>
             <p>
               Desde aquí podés acceder a todas las funciones del cuaderno de
@@ -79,6 +82,22 @@
           <div class="col-md-4">
             <div class="start-box" style="background-color: rgb(99, 112, 112);">
               <h4>Usuario</h4>
+              <div id="cont-usuario">
+                <div id="cont-data-usuario">
+                  <h5>Peter Cantropus</h5>
+                  <ul>
+                    <li>Dato 1</li>
+                    <li>Dato 2</li>
+                    <li>Dato 3</li>
+                  </ul>
+                </div>
+                <div
+                  id="cont-avatar"
+                  style="background-color: turquoise; display: flex;"
+                >
+                  <img src="./img/usuario.svg" alt="avatar" srcset="" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -86,12 +105,8 @@
       <!--Encabezado (info general) -->
       <main style="margin-bottom: 50px;">
         <div class="row">
-          <div class="col-md-4">
-            <div
-              class="start-box"
-              id="box-nuevo-reporte"
-              style="background-color: rgb(48, 134, 48);"
-            >
+          <div class="col-md-4" id="box-nuevo-reporte">
+            <div class="start-box" style="background-color: rgb(48, 134, 48);">
               <h4>Nuevo Reporte</h4>
               <hr />
               <a href="reporte-nuevo.html"
@@ -99,12 +114,8 @@
               >
             </div>
           </div>
-          <div class="col-md-8">
-            <div
-              class="start-box"
-              id="box-proyectos"
-              style="background-color: rgb(255, 102, 0);"
-            >
+          <div class="col-md-8" id="box-proyectos">
+            <div class="start-box" style="background-color: rgb(255, 102, 0);">
               <h4>Mis Proyectos</h4>
               <hr />
               <div class="box-table-container container-fluid">
@@ -163,7 +174,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" id="box-reportes-activos">
             <div class="start-box" style="background-color: rgb(33, 46, 44);">
               <h4>Reportes Activos</h4>
               <hr />
@@ -196,15 +207,15 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" id="box-reporte-x-numero">
             <div class="start-box" style="background-color: rgb(0, 68, 255);">
-              <h4>Abrir reporte x número</h4>
+              <h4>Buscar reporte x número</h4>
               <hr />
               <form action="#">
                 <div class="form-group">
                   <label for="reporte-numero"
-                    >Ingresa el código identificatorio de un reporte para poder
-                    verlo</label
+                    >Ingresa el código identificatorio de un reporte para
+                    abrirlo directamente</label
                   >
                   <input
                     type="text"
@@ -223,7 +234,7 @@
               </form>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" id="box-nuevo-proyecto">
             <div class="start-box" style="background-color: rgb(91, 23, 117);">
               <h4>Nuevo Proyecto</h4>
               <hr />
@@ -242,6 +253,14 @@
         <li><a href="./reporte-nuevo.html">Nuevo Ensayo</a></li>
         <li><a href="./reporte-ver.html">Ver ensayo</a></li>
       </ul>
+      <div id="thanks" style="font-size: 0.5em; color: grey;">
+        Iconos diseñados por
+        <a href="https://www.flaticon.es/autores/smashicons" title="Smashicons"
+          >Smashicons</a
+        >
+        from
+        <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
+      </div>
     </footer>
     <script src="js/scritps.js"></script>
     <!-- Bootstrap-->
