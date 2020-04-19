@@ -72,8 +72,9 @@ header {
   font-size: 0.8em;
 }
 
-/* Box proyectos */
-#body-tabla-proyectos a {
+/* Linkls */
+#body-tabla-proyectos a,
+#body-tabla-rep-ac a {
   color: rgb(59, 126, 180);
   font-weight: bold;
 }
