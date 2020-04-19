@@ -3,6 +3,8 @@ header {
   padding: 0px;
 }
 
+
+
 /* Estilo general de cajas */
 
 .row {
@@ -65,7 +67,7 @@ header {
 }
 #cont-data-usuario {
   width: 60%;
-  color: rgb(230, 230, 230);
+  color: rgb(206, 213, 233);
 }
 
 #cont-data-usuario li {

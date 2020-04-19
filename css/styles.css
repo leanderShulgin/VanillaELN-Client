@@ -6,6 +6,13 @@
   padding: 0;
   list-style: none;
 }
+
+body,
+header,
+#main-container {
+  background-color: #faf7f1;
+}
+
 a,
 a:active,
 a:visited,
@@ -121,4 +128,3 @@ footer a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(48, 143, 172);
 }
-
