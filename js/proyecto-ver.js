@@ -15,7 +15,7 @@ var bodyTablaEnsayos = document.getElementById("body-tabla-ensayos");
 // document
 //   .getElementById("btn-cargar-json")
 //   .addEventListener("click", function (event) {
-//     cargarJsonData("./demos/proyecto-demo.json");
+//     cargarJsonProyecto("./demos/proyecto-demo.json");
 //   });
 
 // Funciones
@@ -34,14 +34,22 @@ function cargarListaReportes(archivoJSON) {
 }
 
 function generarFilasTabla(data) {
-  filas = "";
+  var filas = "";
+  var urlvars = "";
   for (var i = 0; i < data.length; i++) {
+    urlvars =
+      "?pid=" +
+      data[i].encabezado.idProyecto +
+      "&repid=" +
+      data[i].encabezado.idReporte;
     //
     filas +=
       "<tr>" +
-      "<td>" +
+      "<td><a href='reporte-ver.html" +
+      urlvars +
+      "'>" +
       data[i].encabezado.idReporte +
-      "</td>" +
+      "</a></td>" +
       "<td>" +
       data[i].encabezado.via +
       "</td>" +
@@ -72,11 +80,12 @@ function mostrarData(data) {
   cas.innerHTML = data.cas;
   pm.innerHTML = data.pm + " g/mol";
   smiles.innerHTML = data.smiles;
+  /*Cambiar esto por una consulta a la base de datos con el id del proyecto */
   cargarListaReportes("./demos/reportes-demo.json");
 }
 
-function cargarJsonData(archivoJSON) {
-  console.log("cargarJsonData");
+function cargarJsonProyecto(archivoJSON) {
+  console.log("cargarJsonProyecto");
   fetch(archivoJSON)
     .then(function (res) {
       return res.json();
@@ -89,4 +98,4 @@ function cargarJsonData(archivoJSON) {
 }
 
 // MaiN:
-cargarJsonData("./demos/proyecto-demo.json");
+cargarJsonProyecto("./demos/proyecto-demo.json");
