@@ -12,7 +12,7 @@ var tipo = document.getElementById("tipo-proyecto");
 // Config
 
 var header = new Headers({
-  "Access-Control-Allow-Origin": "",
+  "Access-Control-Allow-Origin": "*",
   "Content-Type": "application/json",
 });
 
