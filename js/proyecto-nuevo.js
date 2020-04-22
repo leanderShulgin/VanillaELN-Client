@@ -9,6 +9,13 @@ var responsable = document.getElementById("responsable");
 var smiles = document.getElementById("smiles-target");
 var tipo = document.getElementById("tipo-proyecto");
 
+// Config
+
+var header = new Headers({
+  "Access-Control-Allow-Origin": "",
+  "Content-Type": "application/json",
+});
+
 //Botones
 var btnGuardarProyecto = document.getElementById("btn-guardar-proyecto");
 
@@ -37,24 +44,19 @@ function leerTodosLosCampos() {
 // ESTA ES LA FUNCION QUE HAY QUE USAR CON LA API:
 
 function guardarEstado(state) {
-    state = leerTodosLosCampos();
-    console.log("se enviará al servidor el siguiente estado: ");
-    console.log(state);
-    var data = JSON.stringify(state);
-    let header = new Headers({
-      "Access-Control-Allow-Origin": "",
-      "Content-Type": "application/json",
-    });
-    var miInit = {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: header,
-      mode: "cors",
-    };
-    fetch("http:\\localhost:5000/api/proyecto", miInit).then((response) => {
-      console.log(response);
-    });
-  }
+  state = leerTodosLosCampos();
+  console.log("se enviará al servidor el siguiente estado: ");
+  console.log(state);
+  var miInit = {
+    method: "POST",
+    body: JSON.stringify(state),
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/proyecto", miInit).then((response) => {
+    console.log(response);
+  });
+}
 
 //Eventos
 
