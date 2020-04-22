@@ -71,6 +71,9 @@ header {
 #cont-data-usuario li {
   font-size: 0.8em;
 }
+#cont-avatar img {
+  width: 100%;
+}
 
 /* Linkls */
 #body-tabla-proyectos a,

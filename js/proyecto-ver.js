@@ -10,15 +10,22 @@ var pm = document.getElementById("pm");
 var smiles = document.getElementById("smiles");
 var bodyTablaEnsayos = document.getElementById("body-tabla-ensayos");
 
-//Botones
-
-// document
-//   .getElementById("btn-cargar-json")
-//   .addEventListener("click", function (event) {
-//     cargarJsonProyecto("./demos/proyecto-demo.json");
-//   });
-
 // Funciones
+
+/* -------------------- Carga de info -------------------------------------
+
+cargarProyecto() engloba varias funciones cuyo fin es cargar la info en la página 
+a partir de un json. La info tiene dos fuentes, por un lado la colección proyectos
+que nos dice la info general del proyecto y luego la lista de los reportes que 
+corresponden a dicho proyecto.
+
+mostrarInfoProyecto() consulta a la coleccion de proyectos y carga la info general.
+
+cargarListaReportes() carga, vía fetch, un json que contiene una lista de reportes. 
+Cuando se resuelve la promesa del fetch devuelve  un array de objetos.
+Cada objeto contiene la info para generar una fila de la tabla. El html del
+body de la tabla se genera mediante la función generarFilasTabla() y luego
+se inserta en la tabla  */
 
 function cargarListaReportes(archivoJSON) {
   fetch(archivoJSON)
@@ -70,7 +77,7 @@ function generarFilasTabla(data) {
   return filas;
 }
 
-function mostrarData(data) {
+function mostrarInfoProyecto(data) {
   fecha.innerHTML = data.fecha;
   id.innerHTML = data.id;
   nombreProyecto.innerHTML = data.nombreProyecto;
@@ -80,22 +87,53 @@ function mostrarData(data) {
   cas.innerHTML = data.cas;
   pm.innerHTML = data.pm + " g/mol";
   smiles.innerHTML = data.smiles;
-  /*Cambiar esto por una consulta a la base de datos con el id del proyecto */
-  cargarListaReportes("./demos/reportes-demo.json");
 }
 
-function cargarJsonProyecto(archivoJSON) {
-  console.log("cargarJsonProyecto");
+function cargarProyecto(archivoJSON) {
+  // console.log("cargarProyecto");
   fetch(archivoJSON)
     .then(function (res) {
       return res.json();
     })
     .then(function (data) {
-      console.log("Data:");
-      console.log(data);
-      mostrarData(data);
+      // console.log("Data:");
+      // console.log(data);
+      mostrarInfoProyecto(data);
+      /*Cambiar esto por una consulta a la base de datos con el id del proyecto */
+      cargarListaReportes("./demos/reportes-demo.json");
     });
 }
 
-// MaiN:
-cargarJsonProyecto("./demos/proyecto-demo.json");
+/* -------------------- Consulta a API ------------------------------------ 
+Las siguientes funciones tienen por objeto comunicarse con la api 
+para obtener de la base de datos la info que debe mostrarse en página
+
+leerParamDeUrl() devuelve el id del proyecto que se pasa en la url.
+Con este se hace la consulta a la api
+*/
+
+function leerParamDeUrl(nombreParam) {
+  var queryString = window.location.search;
+  var params = new URLSearchParams(queryString);
+  var param = params.get(nombreParam);
+  console.log("el valor del parametro " + nombreParam + " es: " + param);
+  return param;
+}
+// Las siguientes funciones traen la info necesaria para mostrar la página
+function getProyecto(id) {
+  //consulta a la base de datos de proyectos con un id,
+  //devuelve un objeto con la info del proyecto
+  return id;
+}
+
+function getReportesProyecto(id) {
+  //Consulta a la base de datos de reportes con el id de proyecto,
+  //devuelve un array de objetos con info resumida de cada reporte
+  //que matchea en el id del proyecto con el que le estoy pasando
+  return [id];
+}
+
+// MaiN -----------------------------------------
+
+cargarProyecto("./demos/proyecto-demo.json");
+leerParamDeUrl("pid");
