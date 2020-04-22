@@ -54,7 +54,7 @@ function guardarEstado(state) {
     mode: "cors",
   };
   fetch("http:\\localhost:5000/api/proyecto", miInit).then((response) => {
-    console.log(response);
+    console.log("respuesta del servidor: ", response);
   });
 }
 
