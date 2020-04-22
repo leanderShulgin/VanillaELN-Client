@@ -16,7 +16,7 @@ var btnGuardarProyecto = document.getElementById("btn-guardar-proyecto");
 
 function leerTodosLosCampos() {
   return {
-    fecha: "xx-xx-xxxx", //agregar funcion que escriba fecha actual
+    // fecha: se agrega en el server
     cas: cas.value,
     descripcion: descripcion.value,
     id: id.value,
@@ -28,33 +28,33 @@ function leerTodosLosCampos() {
   };
 }
 
-function guardarEstado(state) {
-  state = leerTodosLosCampos();
-  console.log("se enviará al servidor el siguiente estado: ");
-  console.log(state);
-}
+// function guardarEstado(state) {
+//   state = leerTodosLosCampos();
+//   console.log("se enviará al servidor el siguiente estado: ");
+//   console.log(state);
+// }
 
 // ESTA ES LA FUNCION QUE HAY QUE USAR CON LA API:
 
-// function guardarEstado(state) {
-//     state = leerTodosLosCampos();
-//     console.log("se enviará al servidor el siguiente estado: ");
-//     console.log(state);
-//     var data = JSON.stringify(state);
-//     let header = new Headers({
-//       "Access-Control-Allow-Origin": "",
-//       "Content-Type": "application/json",
-//     });
-//     var miInit = {
-//       method: "POST",
-//       body: JSON.stringify(data),
-//       headers: header,
-//       mode: "cors",
-//     };
-//     fetch("http:\\localhost:5000/api/reporte", miInit).then((response) => {
-//       console.log(response);
-//     });
-//   }
+function guardarEstado(state) {
+    state = leerTodosLosCampos();
+    console.log("se enviará al servidor el siguiente estado: ");
+    console.log(state);
+    var data = JSON.stringify(state);
+    let header = new Headers({
+      "Access-Control-Allow-Origin": "",
+      "Content-Type": "application/json",
+    });
+    var miInit = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: header,
+      mode: "cors",
+    };
+    fetch("http:\\localhost:5000/api/proyecto", miInit).then((response) => {
+      console.log(response);
+    });
+  }
 
 //Eventos
 
