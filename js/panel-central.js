@@ -1,5 +1,12 @@
 var bodyTablaProyectos = document.getElementById("body-tabla-proyectos");
 var bdyRepAc = document.getElementById("body-tabla-rep-ac");
+
+// config
+var header = new Headers({
+  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json",
+});
+
 // Funciones
 
 function cargarListaProyectos(archivoJSON) {
@@ -15,6 +22,23 @@ function cargarListaProyectos(archivoJSON) {
     });
 }
 
+function cargarProyectos() {
+  var miInit = {
+    method: "GET",
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/proyectos", miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log("La base de datos devolvió estos proyectos:", data);
+      var filas = generarFilasProyectos(data);
+      bodyTablaProyectos.innerHTML = filas;
+    });
+}
+
 function generarFilasProyectos(proyectos) {
   filas = "";
   for (var i = 0; i < proyectos.length; i++) {
@@ -22,9 +46,9 @@ function generarFilasProyectos(proyectos) {
     filas +=
       "<tr>" +
       "<td><a href='proyecto-ver.html?pid=" +
-      proyectos[i].id +
+      proyectos[i].num +
       "'>" +
-      proyectos[i].id +
+      proyectos[i].num +
       "</a></td>" +
       "<td>" +
       proyectos[i].nombreProyecto +
@@ -79,5 +103,6 @@ function generarFilasReportesActivos(reportes) {
 
 /* MAIN */
 
-cargarListaProyectos("./demos/proyectos-demo.json");
-cargarListaReportesActivos("./demos/reportes-demo.json");
+// cargarListaProyectos("./demos/proyectos-demo.json");
+// cargarListaReportesActivos("./demos/reportes-demo.json");
+cargarProyectos();
