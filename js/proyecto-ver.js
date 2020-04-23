@@ -1,5 +1,5 @@
 // Campos
-var id = document.getElementById("id-proyecto");
+var num = document.getElementById("num-proyecto");
 var nombreProyecto = document.getElementById("nombre-proyecto");
 var fecha = document.getElementById("fecha");
 var responsable = document.getElementById("responsable");
@@ -9,6 +9,12 @@ var cas = document.getElementById("cas");
 var pm = document.getElementById("pm");
 var smiles = document.getElementById("smiles");
 var bodyTablaEnsayos = document.getElementById("body-tabla-ensayos");
+
+// config
+var header = new Headers({
+  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json",
+});
 
 // Funciones
 
@@ -79,7 +85,7 @@ function generarFilasTabla(data) {
 
 function mostrarInfoProyecto(data) {
   fecha.innerHTML = data.fecha;
-  id.innerHTML = data.id;
+  num.innerHTML = data.num;
   nombreProyecto.innerHTML = data.nombreProyecto;
   responsable.innerHTML = data.responsable;
   descripcion.innerHTML = data.descripcion;
@@ -89,18 +95,20 @@ function mostrarInfoProyecto(data) {
   smiles.innerHTML = data.smiles;
 }
 
-function cargarProyecto(archivoJSON) {
-  // console.log("cargarProyecto");
-  fetch(archivoJSON)
+function cargarProyecto() {
+  var num = leerParamDeUrl("num");
+  var miInit = {
+    method: "GET",
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/proyecto/" + num, miInit)
     .then(function (res) {
       return res.json();
     })
     .then(function (data) {
-      // console.log("Data:");
-      // console.log(data);
       mostrarInfoProyecto(data);
-      /*Cambiar esto por una consulta a la base de datos con el id del proyecto */
-      cargarListaReportes("./demos/reportes-demo.json");
+      // cargarListaReportes("./demos/reportes-demo.json");
     });
 }
 
@@ -135,5 +143,5 @@ function getReportesProyecto(id) {
 
 // MaiN -----------------------------------------
 
-cargarProyecto("./demos/proyecto-demo.json");
-leerParamDeUrl("pid");
+cargarProyecto();
+// leerParamDeUrl("num");

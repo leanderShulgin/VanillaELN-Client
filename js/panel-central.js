@@ -9,19 +9,7 @@ var header = new Headers({
 
 // Funciones
 
-function cargarListaProyectos(archivoJSON) {
-  fetch(archivoJSON)
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      console.log("Cargar reportes pegó la siguiente data:");
-      console.log(data);
-      var filas = generarFilasProyectos(data);
-      bodyTablaProyectos.innerHTML = filas;
-    });
-}
-
+/* Cargar la lista de proyectos desde la base de datos */
 function cargarProyectos() {
   var miInit = {
     method: "GET",
@@ -45,7 +33,7 @@ function generarFilasProyectos(proyectos) {
     //
     filas +=
       "<tr>" +
-      "<td><a href='proyecto-ver.html?pid=" +
+      "<td><a href='proyecto-ver.html?num=" +
       proyectos[i].num +
       "'>" +
       proyectos[i].num +
