@@ -9,6 +9,7 @@ var cas = document.getElementById("cas");
 var pm = document.getElementById("pm");
 var smiles = document.getElementById("smiles");
 var bodyTablaEnsayos = document.getElementById("body-tabla-ensayos");
+var linkEditar = document.getElementById("editar");
 
 // config
 var header = new Headers({
@@ -95,14 +96,19 @@ function mostrarInfoProyecto(data) {
   smiles.innerHTML = data.smiles;
 }
 
+function setearEditar(numParam) {
+  linkEditar.setAttribute("href", "./proyecto-nuevo.html?num=" + numParam);
+}
+
 function cargarProyecto() {
-  var num = leerParamDeUrl("num");
+  var numParam = leerParamDeUrl("num");
+  setearEditar(numParam);
   var miInit = {
     method: "GET",
     headers: header,
     mode: "cors",
   };
-  fetch("http:\\localhost:5000/api/proyecto/" + num, miInit)
+  fetch("http:\\localhost:5000/api/proyecto/" + numParam, miInit)
     .then(function (res) {
       return res.json();
     })
@@ -112,13 +118,9 @@ function cargarProyecto() {
     });
 }
 
-/* -------------------- Consulta a API ------------------------------------ 
-Las siguientes funciones tienen por objeto comunicarse con la api 
-para obtener de la base de datos la info que debe mostrarse en página
+/* Auxiliares */
 
-leerParamDeUrl() devuelve el id del proyecto que se pasa en la url.
-Con este se hace la consulta a la api
-*/
+// Eventos
 
 function leerParamDeUrl(nombreParam) {
   var queryString = window.location.search;
@@ -127,21 +129,7 @@ function leerParamDeUrl(nombreParam) {
   console.log("el valor del parametro " + nombreParam + " es: " + param);
   return param;
 }
-// Las siguientes funciones traen la info necesaria para mostrar la página
-function getProyecto(id) {
-  //consulta a la base de datos de proyectos con un id,
-  //devuelve un objeto con la info del proyecto
-  return id;
-}
-
-function getReportesProyecto(id) {
-  //Consulta a la base de datos de reportes con el id de proyecto,
-  //devuelve un array de objetos con info resumida de cada reporte
-  //que matchea en el id del proyecto con el que le estoy pasando
-  return [id];
-}
 
 // MaiN -----------------------------------------
 
 cargarProyecto();
-// leerParamDeUrl("num");
