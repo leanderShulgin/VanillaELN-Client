@@ -2,7 +2,7 @@ var state = {};
 // Campos
 var cas = document.getElementById("cas-target");
 var descripcion = document.getElementById("descripcion");
-var id = document.getElementById("id-proyecto");
+var num = document.getElementById("id-proyecto");
 var nombre = document.getElementById("nombre-proyecto");
 var pm = document.getElementById("pm-target");
 var responsable = document.getElementById("responsable");
@@ -18,6 +18,7 @@ var header = new Headers({
 
 //Botones
 var btnGuardarProyecto = document.getElementById("btn-guardar-proyecto");
+var btnActProyecto = document.getElementById("btn-actualizar-proyecto");
 
 //Funciones
 
@@ -26,7 +27,7 @@ function leerTodosLosCampos() {
     // fecha: se agrega en el server
     cas: cas.value,
     descripcion: descripcion.value,
-    id: id.value,
+    num: num.value,
     nombreProyecto: nombre.value,
     pm: pm.value,
     responsable: responsable.value,
@@ -58,9 +59,31 @@ function guardarEstado(state) {
   });
 }
 
+function actProyecto(state) {
+  state = leerTodosLosCampos();
+  console.log("se enviará al servidor el siguiente estado: ");
+  console.log(state);
+  var miInit = {
+    method: "PUT",
+    body: JSON.stringify(state),
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/proyecto/" + state.num, miInit).then(
+    (response) => {
+      console.log("respuesta del servidor: ", response);
+    }
+  );
+}
+
 //Eventos
 
 btnGuardarProyecto.addEventListener("click", function (e) {
   e.preventDefault();
   guardarEstado(state);
+});
+
+btnActProyecto.addEventListener("click", function (e) {
+  e.preventDefault();
+  actProyecto(state);
 });
