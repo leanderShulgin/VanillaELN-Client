@@ -19,7 +19,7 @@ var header = new Headers({
 
 // Funciones
 
-/* -------------------- Carga de info -------------------------------------
+/* ----- Carga de info ----------------------
 
 cargarProyecto() engloba varias funciones cuyo fin es cargar la info en la página 
 a partir de un json. La info tiene dos fuentes, por un lado la colección proyectos
