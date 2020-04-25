@@ -8,6 +8,7 @@ var pm = document.getElementById("pm-target");
 var responsable = document.getElementById("responsable");
 var smiles = document.getElementById("smiles-target");
 var tipo = document.getElementById("tipo-proyecto");
+var titulo = document.getElementById("titulo");
 
 // Parametros URL
 var queryString = window.location.search;
@@ -22,8 +23,8 @@ var header = new Headers({
 });
 
 //Botones
-var btnGuardarProyecto = document.getElementById("btn-guardar-proyecto");
-var btnActProyecto = document.getElementById("btn-actualizar-proyecto");
+var btnCrearProyecto = document.getElementById("btn-guardar-proyecto");
+var btnUpdateProyecto = document.getElementById("btn-actualizar-proyecto");
 
 //Funciones
 
@@ -77,6 +78,7 @@ function updateProyecto(state) {
 
 function cargarCamposDeState() {
   //Completa los inputs con la info en el state
+  titulo.innerHTML = state.nombreProyecto;
   cas.value = state.cas;
   descripcion.value = state.descripcion;
   num.value = state.num;
@@ -113,6 +115,15 @@ function cargarDesdeDB(numProyecto) {
     });
 }
 
+function cambiarModo() {
+  console.log("modoEdit: ", modoEdit);
+  if (modoEdit) {
+    btnCrearProyecto.setAttribute("style", "display: none;");
+  } else {
+    btnUpdateProyecto.setAttribute("style", "display: none;");
+  }
+}
+
 function cargarProyecto() {
   // decide si debe cargar un proyecto
   if (modoEdit) {
@@ -123,14 +134,15 @@ function cargarProyecto() {
 
 //Eventos
 
-btnGuardarProyecto.addEventListener("click", function (e) {
+btnCrearProyecto.addEventListener("click", function (e) {
   e.preventDefault();
   createProyecto(state);
 });
 
-btnActProyecto.addEventListener("click", function (e) {
+btnUpdateProyecto.addEventListener("click", function (e) {
   e.preventDefault();
   updateProyecto(state);
 });
 
+cambiarModo();
 cargarProyecto();

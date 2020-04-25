@@ -21,18 +21,17 @@ a:hover {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   padding: 10px 0px;
 }
 
 h3 {
-  color: rgb(54, 176, 247);
-  padding-bottom: 20px;
-  padding-top: 10px;
+  font-size: 1.2em;
+  color: rgb(48, 143, 172);
 }
 
 h4 {
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: rgb(33, 37, 41);
   padding: 10px 0px;
   font-weight: bold;
@@ -44,11 +43,15 @@ hr {
 
 label {
   color: rgb(64, 72, 94);
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
-header {
+header h1 {
   color: rgb(58, 113, 175);
+}
+
+header p {
+  color: rgb(93, 95, 97);
 }
 
 section,
@@ -136,4 +139,23 @@ footer ul li {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(48, 143, 172);
+}
+
+/* Version de escritorio */
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
+  label {
+    font-size: 1.2em;
+  }
 }
