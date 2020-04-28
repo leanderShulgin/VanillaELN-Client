@@ -76,7 +76,7 @@ function updateProyecto(state) {
   );
 }
 
-function cargarCamposDeState() {
+function mostrarProyecto() {
   //Completa los inputs con la info en el state
   titulo.innerHTML = state.nombreProyecto;
   cas.value = state.cas;
@@ -95,7 +95,7 @@ function deshabilitarCamposClave() {
   nombre.disabled = true;
 }
 
-function cargarDesdeDB(numProyecto) {
+function cargarProyectoDeDB(numProyecto) {
   // Busca un proyecto en la base de datos, lo carga en el state
   // y lo muestra en la página.
   var miInit = {
@@ -110,7 +110,7 @@ function cargarDesdeDB(numProyecto) {
     .then(function (data) {
       state = data;
       console.log("nuevo state: ", data);
-      cargarCamposDeState();
+      mostrarProyecto();
       deshabilitarCamposClave();
     });
 }
@@ -128,7 +128,7 @@ function cargarProyecto() {
   // decide si debe cargar un proyecto
   if (modoEdit) {
     var numProyecto = params.get("num");
-    cargarDesdeDB(numProyecto);
+    cargarProyectoDeDB(numProyecto);
   }
 }
 

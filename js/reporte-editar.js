@@ -22,6 +22,11 @@ var header = new Headers({
   "Content-Type": "application/json",
 });
 
+// Parametros URL
+var queryString = window.location.search;
+var params = new URLSearchParams(queryString);
+var modoEdit = params.has("_id"); //Si no hay parámetro es que es un nuevo proyecto
+
 /* VARIABLES */
 
 var autor = document.getElementById("autor");
@@ -80,6 +85,8 @@ var btnSeguridad = document.getElementById("btn-seguridad");
 
 /* FUNCIONES */
 
+// Encabezado
+
 function toggleBtn(btn, value) {
   // Cambia el aspecto de un botón
   if (value == "on") {
@@ -91,20 +98,6 @@ function toggleBtn(btn, value) {
     btn.style.backgroundColor = "rgb(238,236,236)";
     btn.style.color = "rgb(49,55,71)";
   }
-}
-
-function leerEncabezado() {
-  return {
-    numProyecto: numProyecto.value,
-    numReporte: numReporte.value,
-    etapa: etapa.value,
-    via: via.value,
-    pmProducto: pmProducto.value,
-    fecha: fecha.value,
-    referencias: referencias.value,
-    autor: autor.value,
-    responsable: responsable.value,
-  };
 }
 
 function bloquearEncabezado(trueOrfalse) {
@@ -137,6 +130,8 @@ function toggleReaccion() {
     toggleBtn(btnReaccion, "off");
   }
 }
+
+// Tabla de reactivos
 
 function nuevoReactivo() {
   return {
@@ -205,16 +200,22 @@ function toggleEquipo() {
   }
 }
 
+//Journal
+
 function nuevoRegistro() {
   /* Maneja el agregado de una nueva entrada al registro de experimentos
       y agrega una etiqueta de fecha y hora al registro.
   */
   var ahora = new Date();
   state.registros.push({ hora: ahora, texto: registro.value });
-  visor.innerHTML = ""; //limpio el visor
   registro.value = ""; //limpio el campo
+  mostrarRegistros();
+}
+
+function mostrarRegistros() {
+  //Muestra los posteos desde el state
+  visor.innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.registros.length; i++) {
-    // regenero los posteos desde registros:
     visor.innerHTML +=
       "<p>" +
       '<span class="timeStamp">' +
@@ -223,6 +224,22 @@ function nuevoRegistro() {
       state.registros[i].texto +
       "</p>";
   }
+}
+
+// Leer campos:
+
+function leerEncabezado() {
+  return {
+    numProyecto: numProyecto.value,
+    numReporte: numReporte.value,
+    etapa: etapa.value,
+    via: via.value,
+    pmProducto: pmProducto.value,
+    fecha: fecha.value,
+    referencias: referencias.value,
+    autor: autor.value,
+    responsable: responsable.value,
+  };
 }
 
 function leerResultados() {
@@ -257,6 +274,8 @@ function leerTodosLosCampos() {
   };
 }
 
+// Actualizacion y guardado:
+
 function actualizarState() {
   state = leerTodosLosCampos();
   console.log("Nuevo State: ", state);
@@ -279,6 +298,7 @@ function crearReporte() {
 function guardarCambios() {
   actualizarState();
   console.log("se va a guardar lo siguiente: ", state);
+  var repId = params.get("_id");
   var miInit = {
     method: "PUT",
     body: JSON.stringify(state),
@@ -286,11 +306,79 @@ function guardarCambios() {
     mode: "cors",
   };
   //Cambiar la URL por reporte/proyecto&reporte
-  fetch("http:\\localhost:5000/api/reporte", miInit).then((response) => {
-    console.log(response);
-  });  
+  fetch("http:\\localhost:5000/api/reporte/" + repId, miInit).then(
+    (response) => {
+      console.log(response);
+    }
+  );
 }
 
+// Carga de info en la planilla
+
+function mostrarEncabezado() {
+  //Carga campos del encabezado desde el state
+  var enc = state.encabezado;
+  numProyecto.value = enc.numProyecto;
+  numReporte.value = enc.numReporte;
+  etapa.value = enc.etapa;
+  via.value = enc.via;
+  pmProducto.value = enc.pmProducto;
+  fecha.value = enc.fecha;
+  referencias.value = enc.referencias;
+  autor.value = enc.autor;
+  responsable.value = enc.responsable;
+}
+
+function mostrarCamposUnicos() {
+  //Carga campos de un solo input/textarea
+  objetivo.value = state.objetivo;
+  reaccion.value = state.reaccion;
+  seguridad.value = state.seguridad;
+  equipo.value = state.equipo;
+  conclusiones.value = state.conclusiones;
+}
+
+function mostrarReactivos() {
+  generarFilasTabla(state.reactivos);
+}
+
+function mostrarReporte() {
+  // Muestra el reporte a partir del state
+  mostrarEncabezado();
+  mostrarCamposUnicos();
+  mostrarReactivos();
+  mostrarRegistros();
+}
+
+function deshabilitarEncabezado() {
+  var campos = document
+    .getElementById("sec-encabezado")
+    .getElementsByTagName("input");
+
+  for (var i = 0; i < campos.length; i++) {
+    campos[i].disabled = true;
+  }
+}
+
+function cargarReporteDeDB(repId) {
+  // Busca un reporte en la base de datos, lo carga en el state
+  // y lo muestra en la página.
+  var miInit = {
+    method: "GET",
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/reporte/" + repId, miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      state = data;
+      console.log("nuevo state: ", data);
+      mostrarReporte();
+      deshabilitarEncabezado();
+    });
+}
 
 /* EVENTOS */
 
