@@ -10,7 +10,7 @@
 body,
 header,
 #main-container {
-  background-color: #faf7f1;
+  background-color: #faf8eb;
 }
 
 a,
@@ -58,7 +58,6 @@ section,
 header {
   padding: 0px 10px;
   padding-top: 56px;
-  background: white;
 }
 
 footer {
@@ -82,7 +81,6 @@ footer ul li {
 
 #main-container {
   padding-top: 56px;
-  background-color: white;
 }
 
 .columna {
@@ -159,3 +157,5 @@ footer ul li {
     font-size: 1.2em;
   }
 }
+
+
