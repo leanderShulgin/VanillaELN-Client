@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LabReportJson</title>
+    <title>VanillaElN</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -22,14 +22,6 @@
         width: 600px;
         height: 400px;
       }
-      /* #widget-container {
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 5px 1px rgba(51, 32, 20, 0.6),
-          inset 0px 0px 5px 3px rgba(173, 123, 81, 0.2);
-      } */
       .flex-center {
         display: flex;
         flex-direction: column;
@@ -85,7 +77,6 @@
               <a class="dropdown-item" href="#sec-encabezado"
                 >Información General</a
               >
-              <a class="dropdown-item" href="#sec-objetivo">Objetivo</a>
               <a class="dropdown-item" href="#sec-reaccion">Reacción</a>
               <a class="dropdown-item" href="#sec-reactivos">Reactivos</a>
               <a class="dropdown-item" href="#sec-seguridad">Seguridad</a>
@@ -102,8 +93,12 @@
       <header>
         <div class="row">
           <div class="col-md-12 columna">
-            <h1>Reporte de laboratorio de síntesis</h1>
+            <h1 id="titulo-reporte-edit"></h1>
+            <h3 id="subtitulo-reporte-edit"></h3>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="area-mensajes"></div>
         </div>
       </header>
       <!--Encabezado (info general) -->
@@ -119,35 +114,40 @@
               <label for="num-proyecto">Proyecto:</label>
               <input type="number" class="form-control" id="num-proyecto" />
             </div> -->
-            <div class="form-group">
+            <div class="form-group" id="proyecto-group">
               <label for="num-proyecto">Proyecto:</label>
-              <select name="num-proyecto" id="num-proyecto" class="form-control">
+              <select
+                name="num-proyecto"
+                id="num-proyecto"
+                class="form-control"
+              >
                 <option value="134">134 - Sulfentramide</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="reporte-group">
               <label for="num-reporte">Número de ensayo:</label>
               <input type="text" class="form-control" id="num-reporte" />
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha:</label>
+              <input type="date" class="form-control" id="fecha" />
+            </div>
+          </div>
+          <div class="col-md-4 columna">
+            <div class="form-group">
+              <label for="via">Vía:</label>
+              <input type="text" class="form-control" id="via" />
             </div>
             <div class="form-group">
               <label for="etapa">Etapa:</label>
               <input type="text" class="form-control" id="etapa" />
             </div>
             <div class="form-group">
-              <label for="via">Vía:</label>
-              <input type="text" class="form-control" id="via" />
+              <label for="fecha">PM del producto [g/mol]:</label>
+              <input type="number" class="form-control" id="pm-producto" />
             </div>
           </div>
           <div class="col-md-4 columna">
-            <div class="form-group">
-              <label for="fecha">Peso Molecular del producto [g/mol]:</label>
-              <input type="number" class="form-control" id="pm-producto" />
-            </div>
-            <div class="form-group">
-              <label for="fecha">Fecha:</label>
-              <input type="date" class="form-control" id="fecha" />
-            </div>
-
             <div class="form-group">
               <label for="responsable">Referencias:</label>
               <input type="text" class="form-control" id="referencias" />
@@ -156,20 +156,12 @@
               <label for="autor">Autor:</label>
               <input type="text" class="form-control" id="autor" />
             </div>
-          </div>
-          <div class="col-md-4 columna">
             <div class="form-group">
               <label for="responsable">Responsable:</label>
               <input type="text" class="form-control" id="responsable" />
             </div>
-            <button class="custom-btn-dark-blue" id="btn-encabezado">
-              Registrar ensayo
-            </button>
           </div>
         </div>
-      </section>
-      <!--Objetivo-->
-      <section id="sec-objetivo">
         <div class="row" id="form-objetivo">
           <div class="col-md-12 columna">
             <h3>Objetivo</h3>
@@ -183,12 +175,13 @@
                 style="overflow-y: auto;"
               ></textarea>
             </div>
-            <button class="custom-btn-dark-blue" id="btn-objetivo">
-              Guardar
-            </button>
           </div>
         </div>
       </section>
+      <!--Objetivo-->
+      <!-- <section id="sec-objetivo"> -->
+
+      <!-- </section> -->
       <!--Reacción-->
       <section id="sec-reaccion">
         <div class="row" id="form-reaccion">
@@ -204,9 +197,6 @@
                 class="form-control"
               ></textarea>
             </div>
-            <button class="custom-btn-dark-blue" id="btn-reaccion">
-              Guardar
-            </button>
           </div>
         </div>
         <div class="row">
@@ -372,9 +362,6 @@
                 class="form-control"
               ></textarea>
             </div>
-            <button class="custom-btn-dark-blue" id="btn-seguridad">
-              Guardar
-            </button>
           </div>
         </div>
       </section>
@@ -393,9 +380,6 @@
                 class="form-control"
               ></textarea>
             </div>
-            <button class="custom-btn-dark-blue" id="btn-equipo">
-              Guardar
-            </button>
           </div>
         </div>
       </section>
@@ -528,14 +512,20 @@
             </div>
           </div>
         </div>
-        <button
-          style="width: 100%;"
-          class="custom-btn-dark-blue"
-          id="btn-guardar-estado"
-        >
-          Guardar Cambios
-        </button>
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
       </section>
+      <div class="row" style="padding-bottom: 30px;">
+        <div class="col-md-12">
+          <button
+            class="custom-btn-dark-blue btn btn-block"
+            id="btn-guardar-estado"
+          >
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
     </div>
     <footer>
       <ul>

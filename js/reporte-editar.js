@@ -77,11 +77,7 @@ var conclusiones = document.getElementById("conclusiones");
 var btnAgregarReactivo = document.getElementById("btn-agregar-reactivo");
 var btnAgregarRegistro = document.getElementById("btn-agregar-entrada");
 var btnEncabezado = document.getElementById("btn-encabezado");
-var btnEquipo = document.getElementById("btn-equipo");
 var btnGuardarEstado = document.getElementById("btn-guardar-estado");
-var btnObjetivo = document.getElementById("btn-objetivo");
-var btnReaccion = document.getElementById("btn-reaccion");
-var btnSeguridad = document.getElementById("btn-seguridad");
 
 /* FUNCIONES */
 
@@ -200,7 +196,7 @@ function toggleEquipo() {
   }
 }
 
-//Journal
+// Journal
 
 function nuevoRegistro() {
   /* Maneja el agregado de una nueva entrada al registro de experimentos
@@ -313,7 +309,43 @@ function guardarCambios() {
   );
 }
 
-// Carga de info en la planilla
+// Display
+
+function encabezadoModoEdit() {
+  //Deshabilito los campos del encabezado
+  var campos = document
+    .getElementById("sec-encabezado")
+    .getElementsByTagName("input");
+
+  for (var i = 0; i < campos.length; i++) {
+    campos[i].disabled = true;
+  }
+  //Oculto los campos de proyecto
+  document
+    .getElementById("proyecto-group")
+    .setAttribute("style", "display: none;");
+  document
+    .getElementById("reporte-group")
+    .setAttribute("style", "display: none;");
+  //Muestro info en el título:
+  document.getElementById("titulo-reporte-edit").innerText =
+    "Reporte nro: " + state.encabezado.numReporte;
+  document.getElementById("subtitulo-reporte-edit").innerText =
+    "Proyecto nro: " + state.encabezado.numProyecto;
+}
+
+function soloEncabezado() {
+  var secciones = document.getElementsByTagName("section");
+  var secId = "";
+  for (var i = 0; i < secciones.length; i++) {
+    if (secciones[i].getAttribute("id") != "sec-encabezado") {
+      console.log(secciones[i].getAttribute("id"));
+      secciones[i].setAttribute("style", "display: none;");
+    }
+  }
+}
+
+// Mostrar info en la planilla
 
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
@@ -350,16 +382,6 @@ function mostrarReporte() {
   mostrarRegistros();
 }
 
-function deshabilitarEncabezado() {
-  var campos = document
-    .getElementById("sec-encabezado")
-    .getElementsByTagName("input");
-
-  for (var i = 0; i < campos.length; i++) {
-    campos[i].disabled = true;
-  }
-}
-
 function cargarReporteDeDB(repId) {
   // Busca un reporte en la base de datos, lo carga en el state
   // y lo muestra en la página.
@@ -376,27 +398,11 @@ function cargarReporteDeDB(repId) {
       state = data;
       console.log("nuevo state: ", data);
       mostrarReporte();
-      deshabilitarEncabezado();
+      encabezadoModoEdit();
     });
 }
 
 /* EVENTOS */
-
-btnReaccion.addEventListener("click", function (e) {
-  e.preventDefault();
-  // Salvar estado:
-  state.reaccion = reaccion.value;
-  // Cambiar boton:
-  toggleReaccion();
-});
-
-btnObjetivo.addEventListener("click", function (e) {
-  e.preventDefault();
-  // Salvar estado:
-  state.objetivo = objetivo.value;
-  // Cambiar boton:
-  toggleObjetivo();
-});
 
 btnAgregarReactivo.addEventListener("click", function (e) {
   e.preventDefault();
@@ -404,42 +410,33 @@ btnAgregarReactivo.addEventListener("click", function (e) {
   bodyTablaReactivos.innerHTML = generarFilasTabla(reactivos);
 });
 
-btnEncabezado.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (numProyecto.disabled == false) {
-    //nuevo reporte
-    crearReporte();
-    bloquearEncabezado(true);
-    toggleBtn(btnEncabezado, "off");
-  } else {
-    //Edicion
-    bloquearEncabezado(false);
-    toggleBtn(btnEncabezado, "on");
-  }
-});
-
-btnSeguridad.addEventListener("click", function (e) {
-  e.preventDefault();
-  // Salvar estado:
-  state.seguridad = reaccion.value;
-  // Cambiar boton:
-  toggleSeguridad();
-});
-
-btnEquipo.addEventListener("click", function (e) {
-  e.preventDefault();
-  // Salvar estado:
-  state.equipo = reaccion.value;
-  // Cambiar boton:
-  toggleEquipo();
-});
-
 btnAgregarRegistro.addEventListener("click", function (e) {
   e.preventDefault();
   nuevoRegistro();
 });
 
-btnGuardarEstado.addEventListener("click", function (e) {
-  e.preventDefault();
-  crearReporte(state);
-});
+// Main
+
+function main() {
+  if (modoEdit) {
+    var id = params.get("_id");
+    console.log("Se va a cargar el reporte con _id:" + id);
+    cargarReporteDeDB(id);
+    btnGuardarEstado.addEventListener("click", function (e) {
+      e.preventDefault();
+      guardarCambios();
+    });
+  } else {
+    // Nuevo reporte
+    soloEncabezado();
+    btnGuardarEstado.addEventListener("click", function (e) {
+      e.preventDefault();
+      crearReporte();
+    });
+    btnGuardarEstado.innerText = "Crear Reporte";
+  }
+  //Muestro info en el título:
+  document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";
+}
+
+main();
