@@ -143,6 +143,7 @@ function nuevoReactivo() {
 }
 
 function generarFilasTabla(reactivos) {
+  console.log("voy a mostrar estos reactivos: ", reactivos);
   filas = "";
   for (var i = 0; i < reactivos.length; i++) {
     //
@@ -256,14 +257,18 @@ function leerAmbiental() {
 }
 
 function leerTodosLosCampos() {
+  /* Actualiza el state con los valores
+  de los campos. Notar que reactivos y journal,
+  como ellos mismos actualizan el state, quedan como 
+  están. */
   return {
     encabezado: leerEncabezado(),
     objetivo: objetivo.value,
     reaccion: reaccion.value,
-    reactivos: reactivos,
+    reactivos: state.reactivos,
     seguridad: seguridad.value,
     equipo: equipo.value,
-    registros: registros,
+    registros: state.registros,
     resultados: leerResultados(),
     ambiental: leerAmbiental(),
     conclusiones: conclusiones.value,
@@ -371,7 +376,7 @@ function mostrarCamposUnicos() {
 }
 
 function mostrarReactivos() {
-  generarFilasTabla(state.reactivos);
+  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
 }
 
 function mostrarReporte() {
@@ -406,8 +411,8 @@ function cargarReporteDeDB(repId) {
 
 btnAgregarReactivo.addEventListener("click", function (e) {
   e.preventDefault();
-  reactivos.push(nuevoReactivo());
-  bodyTablaReactivos.innerHTML = generarFilasTabla(reactivos);
+  state.reactivos.push(nuevoReactivo());
+  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
 });
 
 btnAgregarRegistro.addEventListener("click", function (e) {
