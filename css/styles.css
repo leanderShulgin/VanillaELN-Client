@@ -90,7 +90,24 @@ footer ul li {
 /* NavBar */
 
 .nav-round-icon {
-  height: 40px;
+  height: 35px;
+}
+
+#nav-sec-rep-editar {
+  background: rgb(233, 236, 230);
+  margin-top: 50px;
+}
+
+#nav-sec-rep-editar .list-group-item {
+  background: none;
+  border: none;
+  height: 45px;
+  padding: 4px 8px;
+  overflow-x: auto;
+}
+
+.nav-round-btn-container {
+  margin: auto;
 }
 
 /* Botones*/
