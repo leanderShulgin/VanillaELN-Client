@@ -87,6 +87,12 @@ footer ul li {
   padding: 0px 20px;
 }
 
+/* NavBar */
+
+.nav-round-icon {
+  height: 40px;
+}
+
 /* Botones*/
 .custom-btn-dark-blue {
   padding: 10px;
@@ -157,5 +163,3 @@ footer ul li {
     font-size: 1.2em;
   }
 }
-
-

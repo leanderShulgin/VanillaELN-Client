@@ -15,6 +15,9 @@ var state = {
   conclusiones: "",
 };
 
+/* Aquí guardo la info del proyecto al que corresponde el reporte */
+var proyecto = {};
+
 /* Config */
 
 var header = new Headers({
@@ -78,6 +81,7 @@ var btnAgregarReactivo = document.getElementById("btn-agregar-reactivo");
 var btnAgregarRegistro = document.getElementById("btn-agregar-entrada");
 var btnEncabezado = document.getElementById("btn-encabezado");
 var btnGuardarEstado = document.getElementById("btn-guardar-estado");
+var btnNavGuardar = document.getElementById("btn-nav-guardar");
 
 /* FUNCIONES */
 
@@ -306,12 +310,18 @@ function guardarCambios() {
     headers: header,
     mode: "cors",
   };
-  //Cambiar la URL por reporte/proyecto&reporte
-  fetch("http:\\localhost:5000/api/reporte/" + repId, miInit).then(
-    (response) => {
-      console.log(response);
-    }
-  );
+  fetch("http:\\localhost:5000/api/reporte/" + repId, miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      state = data.reporte;
+      console.log("reloading! nuevo reporte: ", data.reporte);
+      console.log("info del proyecto: ", data.proyecto);
+      proyecto = data.proyecto;
+      mostrarReporte();
+      encabezadoModoEdit();
+    });
 }
 
 // Display
@@ -325,18 +335,21 @@ function encabezadoModoEdit() {
   for (var i = 0; i < campos.length; i++) {
     campos[i].disabled = true;
   }
-  //Oculto los campos de proyecto
-  document
-    .getElementById("proyecto-group")
-    .setAttribute("style", "display: none;");
-  document
-    .getElementById("reporte-group")
-    .setAttribute("style", "display: none;");
+  //Muestro la info del proyecto
+  document.getElementById("proyecto-group").innerHTML =
+    "<label>Proyecto: </label><input type='text' class='form-control' disabled='true' value='" +
+    +proyecto.num +
+    " - " +
+    proyecto.nombreProyecto +
+    "'></input>";
   //Muestro info en el título:
   document.getElementById("titulo-reporte-edit").innerText =
     "Reporte nro: " + state.encabezado.numReporte;
   document.getElementById("subtitulo-reporte-edit").innerText =
-    "Proyecto nro: " + state.encabezado.numProyecto;
+    "Proyecto: " +
+    state.encabezado.numProyecto +
+    " - " +
+    proyecto.nombreProyecto;
 }
 
 function soloEncabezado() {
@@ -400,8 +413,10 @@ function cargarReporteDeDB(repId) {
       return res.json();
     })
     .then(function (data) {
-      state = data;
-      console.log("nuevo state: ", data);
+      state = data.reporte;
+      console.log("nuevo reporte de la db: ", data.reporte);
+      console.log("info del proyecto: ", data.proyecto);
+      proyecto = data.proyecto;
       mostrarReporte();
       encabezadoModoEdit();
     });
@@ -431,6 +446,10 @@ function main() {
       e.preventDefault();
       guardarCambios();
     });
+    btnNavGuardar.addEventListener("click", function (e) {
+      e.preventDefault();
+      guardarCambios();
+    });
   } else {
     // Nuevo reporte
     soloEncabezado();
@@ -439,6 +458,7 @@ function main() {
       crearReporte();
     });
     btnGuardarEstado.innerText = "Crear Reporte";
+    btnNavGuardar.setAttribute("style", "display: none;");
   }
   //Muestro info en el título:
   document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";
