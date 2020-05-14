@@ -87,6 +87,37 @@ var btnNavGuardar = document.getElementById("btn-nav-guardar");
 
 // Encabezado
 
+function listarProyectos() {
+  var miInit = {
+    method: "GET",
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/proyectos", miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log("La base de datos devolvió estos proyectos:", data);
+      numProyecto.innerHTML = generarOpcionesProyectos(data);
+    });
+}
+function generarOpcionesProyectos(proyectos) {
+  options = "";
+  for (var i = 0; i < proyectos.length; i++) {
+    //
+    options +=
+      "<option value='" +
+      proyectos[i].num +
+      "'>" +
+      proyectos[i].num +
+      " - " +
+      proyectos[i].nombreProyecto +
+      "</option>";
+  }
+  return options;
+}
+
 function toggleBtn(btn, value) {
   // Cambia el aspecto de un botón
   if (value == "on") {
@@ -490,6 +521,7 @@ function main() {
     });
     btnGuardarEstado.innerText = "Crear Reporte";
     btnNavGuardar.setAttribute("style", "display: none;");
+    listarProyectos();
   }
   //Muestro info en el título:
   document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";
