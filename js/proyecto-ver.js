@@ -34,35 +34,33 @@ Cada objeto contiene la info para generar una fila de la tabla. El html del
 body de la tabla se genera mediante la función generarFilasTabla() y luego
 se inserta en la tabla  */
 
-function cargarListaReportes(archivoJSON) {
-  fetch(archivoJSON)
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      console.log("Cargar reportes pegó la siguiente data:");
-      console.log(data);
-      var filas = generarFilasTabla(data);
-      bodyTablaEnsayos.innerHTML = filas;
-    });
+function cleanData(rawData) {
+  // si el valor es undefined o null lo cambia a string vacia
+  // aprovecha el parametro "replace" de JSON.stringify
+  var cleanData = JSON.stringify(rawData, function (key, value) {
+    if (value == null || String(value) == "undefined") {
+      return "";
+    }
+    return value;
+  });
+  return JSON.parse(cleanData);
+}
+
+function cargarListaReportes(data) {
+  var filas = generarFilasTabla(data);
+  bodyTablaEnsayos.innerHTML = filas;
 }
 
 function generarFilasTabla(data) {
   var filas = "";
-  var urlvars = "";
   for (var i = 0; i < data.length; i++) {
-    urlvars =
-      "?pid=" +
-      data[i].encabezado.idProyecto +
-      "&repid=" +
-      data[i].encabezado.idReporte;
-    //
     filas +=
       "<tr>" +
-      "<td><a href='reporte-ver.html" +
-      urlvars +
+      "<td>" +
+      "<a href='reporte-editar.html?_id=" +
+      data[i]._id +
       "'>" +
-      data[i].encabezado.idReporte +
+      data[i].encabezado.numReporte +
       "</a></td>" +
       "<td>" +
       data[i].encabezado.via +
@@ -112,9 +110,10 @@ function cargarProyecto() {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
-      mostrarInfoProyecto(data);
-      // cargarListaReportes("./demos/reportes-demo.json");
+    .then(function (rawData) {
+      let data = cleanData(rawData);
+      mostrarInfoProyecto(data.proyecto);
+      cargarListaReportes(data.reportes);
     });
 }
 

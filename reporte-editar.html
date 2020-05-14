@@ -42,6 +42,7 @@
     <nav
       class="navbar fixed-top navbar-expand-md navbar-dark bg-dark"
       id="nav-planilla-ensayo"
+      style="z-index: 100;"
     >
       <a class="navbar-brand" href="index.html">VanillaELN</a>
       <button
@@ -55,26 +56,8 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse d-flex-md flex-row-reverse"
-        id="navbarNavDropdown"
-      >
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <!-- <a class="nav-link" href="#"
-              ><img src="./img/icons/save.png" alt="Guardar"class="nav-round-icon"> <span class="sr-only">(current)</span></a
-            > -->
-            <button
-              style="background: none; border: none;"
-              id="btn-nav-guardar"
-            >
-              <img
-                class="nav-round-icon"
-                src="./img/icons/save.png"
-                alt="Guardar"
-              />
-            </button>
-          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -102,7 +85,11 @@
         </ul>
       </div>
     </nav>
-    <nav class="navbar fixed-top navbar-expand-md" id="nav-sec-rep-editar">
+    <nav
+      class="navbar fixed-top navbar-expand-md"
+      id="nav-sec-rep-editar"
+      style="z-index: 10;"
+    >
       <ul class="list-group list-group-horizontal nav-round-btn-container">
         <li class="list-group-item">
           <button style="background: none; border: none;" id="btn-nav-guardar">
@@ -240,10 +227,6 @@
           </div>
         </div>
       </section>
-      <!--Objetivo-->
-      <!-- <section id="sec-objetivo"> -->
-
-      <!-- </section> -->
       <!--Reacción-->
       <section id="sec-reaccion">
         <div class="row" id="form-reaccion">
@@ -310,10 +293,21 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="scale-factor">Factor de escala: </label>
+              <input type="number" id="scale-factor" placeholder="1.0" />
+              <button id="btn-scale-experiment">Escalar</button>
+            </div>
+          </div>
+          <div class="col-md-8"></div>
+        </div>
+        <div class="row">
           <div class="col-md-12">
-            <h4 style="padding-left: 30px;">Agregar un reactivo</h4>
+            <h4>Agregar un reactivo</h4>
           </div>
         </div>
+
         <form action="#">
           <div class="row">
             <div class="col-md-4 columna">
@@ -397,7 +391,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group" style="margin: 0px; padding-left: 25px;">
+              <div class="form-group">
                 <input
                   type="submit"
                   class="custom-btn-dark-blue"

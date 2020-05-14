@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  box-shadow: border-box;
 }
 
 body,
@@ -90,24 +91,29 @@ footer ul li {
 /* NavBar */
 
 .nav-round-icon {
-  height: 35px;
+  height: 40px;
 }
 
 #nav-sec-rep-editar {
-  background: rgb(233, 236, 230);
-  margin-top: 50px;
+  background-color: rgba(190, 186, 179, 0.7);
+  margin-top: 55px;
+  overflow-x: auto;
+  padding: 5px;
 }
 
 #nav-sec-rep-editar .list-group-item {
+  padding: 0px;
   background: none;
   border: none;
-  height: 45px;
-  padding: 4px 8px;
-  overflow-x: auto;
+  border-radius: 50%;
+  height: 40px;
+  margin: 2px 8px;
+  box-shadow: 1px 2px 4px 1px rgba(3, 3, 3, 0.3);
 }
 
 .nav-round-btn-container {
   margin: auto;
+  padding: 2px;
 }
 
 /* Botones*/

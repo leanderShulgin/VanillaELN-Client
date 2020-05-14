@@ -3,13 +3,11 @@ header {
   padding: 0px;
 }
 
-
 /* Estilo general de cajas */
 
 .row {
   min-height: 30vh;
 }
-
 .col-md-4,
 .col-md-8 {
   padding: 20px 10px;
@@ -18,20 +16,18 @@ header {
 .start-box {
   border-radius: 3px;
   box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.4);
-  min-height: 100%;
-  margin-top: 20px;
+  /* min-height: 40%; */
+  /* margin-top: 20px; */
   padding: 15px;
+  /* margin: 5px; */
 }
-
 .start-box h4 {
   color: white;
 }
-
 .start-box a,
 .start-box a:hover {
   color: white;
 }
-
 .start-box label {
   color: white;
   font-size: 1em;
@@ -55,20 +51,26 @@ header {
   background-color: rgb(255, 210, 152);
 }
 
+#box-proyectos {
+  height: 100%;
+}
+
 #box-proyectos-thead {
   background-color: rgb(97, 78, 65);
   color: white;
 }
 
 /* Box usuario */
+#box-usuario {
+  background-color: #faf8eb;
+}
 #cont-usuario {
   display: flex;
 }
 #cont-data-usuario {
   width: 60%;
-  color: rgb(206, 213, 233);
+  color: rgb(35, 36, 37);
 }
-
 #cont-data-usuario li {
   font-size: 0.8em;
 }
@@ -76,7 +78,7 @@ header {
   width: 100%;
 }
 
-/* Linkls */
+/* Links */
 #body-tabla-proyectos a,
 #body-tabla-rep-ac a {
   color: rgb(59, 126, 180);

@@ -201,6 +201,21 @@ function toggleEquipo() {
   }
 }
 
+function escalarExperimento(factor) {
+  console.log(
+    "vamos a escalar el experimento por el siguiente factor: ",
+    factor
+  );
+  for (var i = 0; i < state.reactivos.length; i++) {
+    if (typeof state.reactivos[i].masa === "number") {
+      state.reactivos[i].masa = state.reactivos[i].masa * factor;
+    }
+    if (typeof state.reactivos[i].moles === "number") {
+      state.reactivos[i].moles = state.reactivos[i].moles * factor;
+    }
+  }
+  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
+}
 // Journal
 
 function nuevoRegistro() {
@@ -295,9 +310,14 @@ function crearReporte() {
     headers: header,
     mode: "cors",
   };
-  fetch("http:\\localhost:5000/api/reporte", miInit).then((response) => {
-    console.log(response);
-  });
+  fetch("http:\\localhost:5000/api/reporte", miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log("se ha creado el siguiente documento: ", data);
+      window.location.href = "./reporte-editar.html?_id=" + data._id;
+    });
 }
 
 function guardarCambios() {
@@ -424,12 +444,23 @@ function cargarReporteDeDB(repId) {
 
 /* EVENTOS */
 
+// Tabla de reactivos:
+
 btnAgregarReactivo.addEventListener("click", function (e) {
   e.preventDefault();
   state.reactivos.push(nuevoReactivo());
   bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
 });
 
+document
+  .getElementById("btn-scale-experiment")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    var factor = document.getElementById("scale-factor").value;
+    escalarExperimento(factor);
+  });
+
+// Journal:
 btnAgregarRegistro.addEventListener("click", function (e) {
   e.preventDefault();
   nuevoRegistro();

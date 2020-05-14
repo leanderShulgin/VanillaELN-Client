@@ -79,21 +79,17 @@
             </p>
           </div>
           <div class="col-md-4">
-            <div class="start-box" style="background-color: rgb(33, 46, 44);">
-              <h4 style="color: rgb(206, 213, 233);">Usuario</h4>
+            <div class="start-box" id="box-usuario">
+              <h5 style="color: rgb(253, 123, 37);">Peter Cantropus</h5>
               <div id="cont-usuario">
                 <div id="cont-data-usuario">
-                  <h5 style="color: rgb(253, 123, 37);">Peter Cantropus</h5>
                   <ul>
                     <li>Dato 1</li>
                     <li>Dato 2</li>
                     <li>Dato 3</li>
                   </ul>
                 </div>
-                <div
-                  id="cont-avatar"
-                  style="display: flex;"
-                >
+                <div id="cont-avatar" style="display: flex;">
                   <img src="./img/usuario.svg" alt="avatar" srcset="" />
                 </div>
               </div>
@@ -104,17 +100,12 @@
       <!--Encabezado (info general) -->
       <main style="margin-bottom: 50px;">
         <div class="row">
-          <div class="col-md-4" id="box-nuevo-reporte">
-            <div class="start-box" style="background-color: rgb(48, 134, 48);">
-              <h4>Nuevo Reporte</h4>
-              <hr />
-              <a href="reporte-editar.html"
-                >Hacé click aquí para comenzar un nuevo reporte</a
-              >
-            </div>
-          </div>
-          <div class="col-md-8" id="box-proyectos">
-            <div class="start-box" style="background-color: rgb(255, 102, 0);">
+          <div class="col-md-8">
+            <div
+              class="start-box"
+              id="box-proyectos"
+              style="background-color: rgb(255, 102, 0);"
+            >
               <h4>Mis Proyectos</h4>
               <hr />
               <div class="box-table-container container-fluid">
@@ -137,64 +128,18 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4" id="box-reportes-activos">
-            <div class="start-box" style="background-color: rgb(33, 46, 44);">
-              <h4>Reportes Activos</h4>
+          <div class="col-md-4" id="box-nuevo-reporte">
+            <div
+              class="start-box"
+              style="background-color: rgb(45, 90, 84); margin-bottom: 10px;"
+            >
+              <h4>Nuevo Reporte</h4>
               <hr />
-              <div
-                class="box-table-container container-fluid"
-                style="background-color: rgb(33, 46, 44);"
+              <a href="reporte-editar.html"
+                >Hacé click aquí para comenzar un nuevo reporte</a
               >
-                <table
-                  class="table table-sm table-striped table-dark table-borderless table-hover"
-                >
-                  <thead class="thead-dark">
-                    <th>Proyecto</th>
-                    <th>Reporte</th>
-                    <th>etapa</th>
-                  </thead>
-                  <tbody id="body-tabla-rep-ac">
-                    <tr>
-                      <td>Sin datos</td>
-                      <td>Sin datos</td>
-                      <td>Sin datos</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
-          </div>
-          <div class="col-md-4" id="box-reporte-x-numero">
-            <div class="start-box" style="background-color: rgb(0, 68, 255);">
-              <h4>Buscar reporte x número</h4>
-              <hr />
-              <form action="#">
-                <div class="form-group">
-                  <label for="reporte-numero"
-                    >Ingresa el código identificatorio de un reporte para
-                    abrirlo directamente</label
-                  >
-                  <input
-                    type="text"
-                    name="reporte-numero"
-                    id="reporte-numero"
-                    placeholder="Ej: 123-100"
-                    class="form-control"
-                  />
-                  <input
-                    type="submit"
-                    value="Abrir Reporte"
-                    class="btn btn-success btn-block"
-                    style="margin: 10px 0px;"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col-md-4" id="box-nuevo-proyecto">
-            <div class="start-box" style="background-color: rgb(91, 23, 117);">
+            <div class="start-box" style="background-color: rgb(51, 47, 68);">
               <h4>Nuevo Proyecto</h4>
               <hr />
               <a href="proyecto-nuevo.html"
