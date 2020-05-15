@@ -120,50 +120,6 @@ function generarOpcionesProyectos(proyectos) {
   }
   return options;
 }
-function toggleBtn(btn, value) {
-  // Cambia el aspecto de un botón
-  if (value == "on") {
-    btn.innerHTML = "Aceptar";
-    btn.style.backgroundColor = "rgb(49,55,71)";
-    btn.style.color = "rgb(238,236,236)";
-  } else {
-    btn.innerHTML = "Editar";
-    btn.style.backgroundColor = "rgb(238,236,236)";
-    btn.style.color = "rgb(49,55,71)";
-  }
-}
-
-function bloquearEncabezado(trueOrfalse) {
-  var inputs = document
-    .getElementById("form-encabezado")
-    .getElementsByTagName("input");
-  for (var i = 0; i < inputs.length; i++) {
-    inputs[i].disabled = trueOrfalse;
-  }
-}
-
-function toggleObjetivo() {
-  // Habilita/deshabilita el textarea y cambia e boton
-  if (objetivo.disabled === true) {
-    objetivo.disabled = false;
-    toggleBtn(btnObjetivo, "on");
-  } else {
-    objetivo.disabled = true;
-    toggleBtn(btnObjetivo, "off");
-  }
-}
-
-function toggleReaccion() {
-  // Habilita/deshabilita el textarea y cambia e boton
-  if (reaccion.disabled === true) {
-    reaccion.disabled = false;
-    toggleBtn(btnReaccion, "on");
-  } else {
-    reaccion.disabled = true;
-    toggleBtn(btnReaccion, "off");
-  }
-}
-
 // Tabla de reactivos
 
 function nuevoReactivo() {
@@ -210,28 +166,6 @@ function generarFilasTabla(reactivos) {
       "</tr>";
   }
   return filas;
-}
-
-function toggleSeguridad() {
-  // Habilita/deshabilita el textarea y cambia e boton
-  if (seguridad.disabled === true) {
-    seguridad.disabled = false;
-    toggleBtn(btnSeguridad, "on");
-  } else {
-    seguridad.disabled = true;
-    toggleBtn(btnSeguridad, "off");
-  }
-}
-
-function toggleEquipo() {
-  // Habilita/deshabilita el textarea y cambia e boton
-  if (equipo.disabled === true) {
-    equipo.disabled = false;
-    toggleBtn(btnEquipo, "on");
-  } else {
-    equipo.disabled = true;
-    toggleBtn(btnEquipo, "off");
-  }
 }
 
 function escalarExperimento(factor) {
@@ -284,7 +218,7 @@ function leerEncabezado() {
     etapa: etapa.value,
     via: via.value,
     pmProducto: pmProducto.value,
-    fecha: fecha.value,
+    fecha: state.encabezado.fecha,
     referencias: referencias.value,
     autor: autor.value,
     responsable: responsable.value,
@@ -461,6 +395,8 @@ function mostrarReporte() {
   mostrarRegistros();
 }
 
+// Recuperar info de la base de datos:
+
 function cargarReporteDeDB(repId) {
   // Busca un reporte en la base de datos, lo carga en el state
   // y lo muestra en la página.
@@ -545,7 +481,7 @@ btnAgregarRegistro.addEventListener("click", function (e) {
 
 // Main
 
-function main() {
+function setup() {
   if (modoEdit) {
     var id = params.get("_id");
     cargarReporteDeDB(id);
@@ -564,7 +500,7 @@ function main() {
     cargarRefDeDB(params.get("ref"));
     btnGuardarEstado.addEventListener("click", function (e) {
       e.preventDefault();
-      console.log("llamando a crear reporte")
+      console.log("llamando a crear reporte");
       crearReporte();
     });
     btnGuardarEstado.innerText = "Crear Reporte";
@@ -584,4 +520,4 @@ function main() {
   document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";
 }
 
-main();
+setup();
