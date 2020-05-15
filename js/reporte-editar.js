@@ -85,7 +85,7 @@ var btnEncabezado = document.getElementById("btn-encabezado");
 var btnGuardarEstado = document.getElementById("btn-guardar-estado");
 var btnNavGuardar = document.getElementById("btn-nav-guardar");
 
-/* FUNCIONES */
+/* FUNCIONES----------------------------------------------- */
 
 // Encabezado
 
@@ -416,9 +416,13 @@ function soloEncabezado() {
   }
 }
 
-// function soloCamposRef() {
-//   // ocultar campos que no vienen en ref.
-// }
+function soloCamposRef() {
+  console.log("solo campos ref");
+  qs("#sec-journal").setAttribute("style", "display: none;");
+  qs("#sec-resultados").setAttribute("style", "display: none;");
+  qs("#sec-conclusiones").setAttribute("style", "display: none;");
+  qs("#chem-editor").setAttribute("style", "display: none;");
+}
 
 // Mostrar info en la planilla
 
@@ -558,6 +562,11 @@ function main() {
     qs("#btn-repeat").setAttribute("style", "display: none;");
     soloCamposRef();
     cargarRefDeDB(params.get("ref"));
+    btnGuardarEstado.addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("llamando a crear reporte")
+      crearReporte();
+    });
     btnGuardarEstado.innerText = "Crear Reporte";
     btnNavGuardar.setAttribute("style", "display: none;");
   } else {
