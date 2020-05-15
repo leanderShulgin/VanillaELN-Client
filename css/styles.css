@@ -118,6 +118,13 @@ footer ul li {
   font-size: 1.55em;
 }
 
+#nav-sec-rep-editar .list-group-item:hover {
+  background: rgb(255, 255, 255);
+}
+#nav-sec-rep-editar .list-group-item:active {
+  background: rgb(248, 109, 16);
+}
+
 .nav-round-btn-container {
   margin: auto;
   padding: 2px;
