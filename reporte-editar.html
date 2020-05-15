@@ -109,7 +109,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12" id="area-mensajes"></div>
+          <div class="col-md-12" id="area-mensajes">
+            <button class="btn btn-sm btn-default" id="btn-repeat">Repetir experimento</button>
+          </div>
         </div>
       </header>
       <!--Encabezado (info general) -->
@@ -121,10 +123,6 @@
         </div>
         <div class="row" id="form-encabezado">
           <div class="col-md-4 columna">
-            <!-- <div class="form-group">
-              <label for="num-proyecto">Proyecto:</label>
-              <input type="number" class="form-control" id="num-proyecto" />
-            </div> -->
             <div class="form-group" id="proyecto-group">
               <label for="num-proyecto">Proyecto:</label>
               <select
@@ -132,7 +130,7 @@
                 id="num-proyecto"
                 class="form-control"
               >
-                <option value="134">134 - Sulfentramide</option>
+                <option value="">No hay proyectos</option>
               </select>
             </div>
             <div class="form-group" id="reporte-group">

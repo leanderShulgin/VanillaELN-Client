@@ -37,3 +37,12 @@ function toggleBtn(btn, value) {
   }
 }
 
+function qs(query) {
+  //shorthand para querySelector
+  return document.querySelector(query);
+}
+
+function qsa(query) {
+  //shorthand para querySelectorAll
+  return document.querySelectorAll(query);
+}

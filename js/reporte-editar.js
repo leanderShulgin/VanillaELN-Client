@@ -29,7 +29,8 @@ var header = new Headers({
 // Parametros URL
 var queryString = window.location.search;
 var params = new URLSearchParams(queryString);
-var modoEdit = params.has("_id"); //Si no hay parámetro es que es un nuevo proyecto
+var modoEdit = params.has("_id");
+var modoRepeat = params.has("ref");
 
 /* VARIABLES */
 
@@ -415,6 +416,10 @@ function soloEncabezado() {
   }
 }
 
+// function soloCamposRef() {
+//   // ocultar campos que no vienen en ref.
+// }
+
 // Mostrar info en la planilla
 
 function mostrarEncabezado() {
@@ -474,7 +479,43 @@ function cargarReporteDeDB(repId) {
     });
 }
 
+function cargarRefDeDB(repId) {
+  // Busca un reporte en la base de datos, lo carga en el state
+  // y lo muestra en la página.
+  var miInit = {
+    method: "GET",
+    headers: header,
+    mode: "cors",
+  };
+  fetch("http:\\localhost:5000/api/reporte/" + repId, miInit)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      proyecto = data.proyecto;
+      state.encabezado = data.reporte.encabezado;
+      state.encabezado.numReporte = proyecto.reportes + 1;
+      state.objetivo = data.reporte.objetivo;
+      state.reactivos = data.reporte.reactivos;
+      state.seguridad = data.reporte.seguridad;
+      state.equipo = data.reporte.equipo;
+      mostrarReporte();
+      encabezadoModoEdit();
+
+      // cargar campos
+    });
+}
+
 /* EVENTOS */
+
+// Display
+qs("#btn-repeat").addEventListener("click", function (e) {
+  e.preventDefault();
+  window.location.href = "./reporte-editar.html?ref=" + params.get("_id");
+  // ir a la base de datos, traer del rep de referencia encabezado, objetivo, reaccion, equipo, seg y reactivos
+  // Mostrar solo estos campos, con la info cargada de la referencia
+  // Al guardar, guardar estos campos también
+});
 
 // Tabla de reactivos:
 
@@ -503,7 +544,6 @@ btnAgregarRegistro.addEventListener("click", function (e) {
 function main() {
   if (modoEdit) {
     var id = params.get("_id");
-    console.log("Se va a cargar el reporte con _id:" + id);
     cargarReporteDeDB(id);
     btnGuardarEstado.addEventListener("click", function (e) {
       e.preventDefault();
@@ -513,6 +553,13 @@ function main() {
       e.preventDefault();
       guardarCambios();
     });
+  } else if (modoRepeat) {
+    // Nuevo reporte desde ref
+    qs("#btn-repeat").setAttribute("style", "display: none;");
+    soloCamposRef();
+    cargarRefDeDB(params.get("ref"));
+    btnGuardarEstado.innerText = "Crear Reporte";
+    btnNavGuardar.setAttribute("style", "display: none;");
   } else {
     // Nuevo reporte
     soloEncabezado();

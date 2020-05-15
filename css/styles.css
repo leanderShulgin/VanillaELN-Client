@@ -140,6 +140,12 @@ footer ul li {
   margin: 10px 0;
   font-size: 1.2em;
 }
+.btn-default {
+  border: solid;
+  border-width: 1px;
+  background: white;
+  border-color: rgba(49, 55, 71, 0.3);
+}
 /*- - - -  S E C C I O N E S - - - - */
 
 #nav-planilla-ensayo .navbar-brand {
