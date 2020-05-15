@@ -17,6 +17,7 @@ var state = {
 
 /* Aquí guardo la info del proyecto al que corresponde el reporte */
 var proyecto = {};
+var listadoProyectos = [];
 
 /* Config */
 
@@ -100,6 +101,7 @@ function listarProyectos() {
     .then(function (data) {
       console.log("La base de datos devolvió estos proyectos:", data);
       numProyecto.innerHTML = generarOpcionesProyectos(data);
+      listadoProyectos = data; //guardo info de proyectos para funcion de select
     });
 }
 function generarOpcionesProyectos(proyectos) {
@@ -117,7 +119,6 @@ function generarOpcionesProyectos(proyectos) {
   }
   return options;
 }
-
 function toggleBtn(btn, value) {
   // Cambia el aspecto de un botón
   if (value == "on") {
