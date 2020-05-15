@@ -510,7 +510,7 @@ function cargarRefDeDB(repId) {
     });
 }
 
-/* EVENTOS */
+/* EVENTOS----------------------------------------------  */
 
 // Display
 qs("#btn-repeat").addEventListener("click", function (e) {
