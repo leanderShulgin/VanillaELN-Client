@@ -32,48 +32,6 @@ var params = new URLSearchParams(queryString);
 var modoEdit = params.has("_id");
 var modoRepeat = params.has("ref");
 
-/* VARIABLES */
-
-var encabezado = {}; // Aqui almaceno los datos ingresados
-
-// Campos generales
-
-// Tabla de reactivos
-var bodyTablaReactivos = document.getElementById("body-tabla-reactivos");
-
-var limitante = document.getElementById("limitante");
-var masaReactivo = document.getElementById("masa-reactivo");
-var molesReactivo = document.getElementById("moles-reactivo");
-var nombreReactivo = document.getElementById("nombre-reactivo");
-var origenReactivo = document.getElementById("origen-reactivo");
-var pmReactivo = document.getElementById("pm-reactivo");
-var purezaReactivo = document.getElementById("pureza-reactivo");
-var reactivos = []; // Aqui almaceno la tabla de reactivos
-var rmReactivo = document.getElementById("rm-reactivo");
-var tablaReactivos = document.getElementById("tabla-reactivos");
-// Journal
-var registro = document.getElementById("registro");
-var registros = []; // Aqui se almacenan las entradas!
-var visor = document.getElementById("visor-de-registros");
-// Resultados
-var masaTeo = document.getElementById("masa-teorica");
-var mProd = document.getElementById("masa-producto");
-var pProd = document.getElementById("pureza-producto");
-var rend = document.getElementById("rendimiento");
-// Ambiental
-var efAc = document.getElementById("efluentes-acuosos");
-var efOrg = document.getElementById("efluentes-organicos");
-var factorE = document.getElementById("factorE");
-// Conclusiones
-
-
-/* BOTONES */
-
-var btnAgregarReactivo = document.getElementById("btn-agregar-reactivo");
-var btnAgregarRegistro = document.getElementById("btn-agregar-entrada");
-var btnEncabezado = document.getElementById("btn-encabezado");
-var btnGuardarEstado = document.getElementById("btn-guardar-estado");
-var btnNavGuardar = document.getElementById("btn-nav-guardar");
 
 /* FUNCIONES----------------------------------------------- */
 
@@ -114,13 +72,13 @@ function generarOpcionesProyectos(proyectos) {
 
 function nuevoReactivo() {
   return {
-    nombre: nombreReactivo.value,
-    origen: origenReactivo.value,
-    masa: masaReactivo.value,
-    pureza: purezaReactivo.value,
-    pm: pmReactivo.value,
-    moles: molesReactivo.value,
-    rm: rmReactivo.value,
+    nombre: qs("#nombre-reactivo").value,
+    origen: qs("#origen-reactivo").value,
+    masa: qs("#masa-reactivo").value,
+    pureza: qs("#pureza-reactivo").value,
+    pm: qs("#pm-reactivo").value,
+    moles: qs("#moles-reactivo").value,
+    rm: qs("#rm-reactivo").value,
     limitante: false,
   };
 }
@@ -171,7 +129,7 @@ function escalarExperimento(factor) {
       state.reactivos[i].moles = state.reactivos[i].moles * factor;
     }
   }
-  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 }
 // Journal
 
@@ -180,16 +138,16 @@ function nuevoRegistro() {
       y agrega una etiqueta de fecha y hora al registro.
   */
   var ahora = new Date();
-  state.registros.push({ hora: ahora, texto: registro.value });
-  registro.value = ""; //limpio el campo
+  state.registros.push({ hora: ahora, texto: qs("#registro").value });
+  qs("#registro").value = ""; //limpio el campo
   mostrarRegistros();
 }
 
 function mostrarRegistros() {
   //Muestra los posteos desde el state
-  visor.innerHTML = ""; //limpio el visor
+  qs("#visor-de-registros").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.registros.length; i++) {
-    visor.innerHTML +=
+    qs("#visor-de-registros").innerHTML +=
       "<p>" +
       '<span class="timeStamp">' +
       state.registros[i].hora +
@@ -208,7 +166,7 @@ function leerEncabezado() {
     etapa: qs("#etapa").value,
     via: qs("#via").value,
     pmProducto: qs("#pm-producto").value,
-    fecha: qs("#fecha").encabezado.fecha,
+    fecha:qs("#fecha").fecha,
     referencias: qs("#referencias").value,
     autor: qs("#autor").value,
     responsable: qs("#responsable").value,
@@ -217,18 +175,18 @@ function leerEncabezado() {
 
 function leerResultados() {
   return {
-    masaProducto: mProd.value,
-    purezaProducto: pProd.value,
-    masaTeorica: masaTeo.value,
-    rendimiento: rend.value,
+    masaProducto: qs("#masa-producto").value,
+    purezaProducto: qs("#pureza-producto").value,
+    masaTeorica: qs("#masa-teorica").value,
+    rendimiento: qs("#rendimiento").value,
   };
 }
 
 function leerAmbiental() {
   return {
-    efsOrganicos: efOrg.value,
-    efsAcuosos: efAc.value,
-    factorE: factorE.value,
+    efsOrganicos: qs("#efluentes-organicos").value,
+    efsAcuosos: qs("#efluentes-acuosos").value,
+    factorE: qs("#rendimiento").value,
   };
 }
 
@@ -374,7 +332,7 @@ function mostrarCamposUnicos() {
 }
 
 function mostrarReactivos() {
-  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 }
 
 function mostrarReporte() {
@@ -449,10 +407,10 @@ qs("#btn-repeat").addEventListener("click", function (e) {
 
 // Tabla de reactivos:
 
-btnAgregarReactivo.addEventListener("click", function (e) {
+qs("#btn-agregar-reactivo").addEventListener("click", function (e) {
   e.preventDefault();
   state.reactivos.push(nuevoReactivo());
-  bodyTablaReactivos.innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 });
 
 document
@@ -464,7 +422,7 @@ document
   });
 
 // Journal:
-btnAgregarRegistro.addEventListener("click", function (e) {
+qs("#btn-agregar-entrada").addEventListener("click", function (e) {
   e.preventDefault();
   nuevoRegistro();
 });
@@ -475,11 +433,11 @@ function setup() {
   if (modoEdit) {
     var id = params.get("_id");
     cargarReporteDeDB(id);
-    btnGuardarEstado.addEventListener("click", function (e) {
+    qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       guardarCambios();
     });
-    btnNavGuardar.addEventListener("click", function (e) {
+    qs("#btn-nav-guardar").addEventListener("click", function (e) {
       e.preventDefault();
       guardarCambios();
     });
@@ -488,22 +446,22 @@ function setup() {
     qs("#btn-repeat").setAttribute("style", "display: none;");
     soloCamposRef();
     cargarRefDeDB(params.get("ref"));
-    btnGuardarEstado.addEventListener("click", function (e) {
+    qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       console.log("llamando a crear reporte");
       crearReporte();
     });
-    btnGuardarEstado.innerText = "Crear Reporte";
-    btnNavGuardar.setAttribute("style", "display: none;");
+    qs("#btn-guardar-estado").innerText = "Crear Reporte";
+    qs("#btn-nav-guardar").setAttribute("style", "display: none;");
   } else {
     // Nuevo reporte
     soloEncabezado();
-    btnGuardarEstado.addEventListener("click", function (e) {
+    qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       crearReporte();
     });
-    btnGuardarEstado.innerText = "Crear Reporte";
-    btnNavGuardar.setAttribute("style", "display: none;");
+    qs("#btn-guardar-estado").innerText = "Crear Reporte";
+    qs("#btn-nav-guardar").setAttribute("style", "display: none;");
     listarProyectos();
   }
   //Muestro info en el título:
