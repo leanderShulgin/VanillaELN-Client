@@ -32,7 +32,6 @@ var params = new URLSearchParams(queryString);
 var modoEdit = params.has("_id");
 var modoRepeat = params.has("ref");
 
-
 /* FUNCIONES----------------------------------------------- */
 
 // Encabezado
@@ -166,7 +165,7 @@ function leerEncabezado() {
     etapa: qs("#etapa").value,
     via: qs("#via").value,
     pmProducto: qs("#pm-producto").value,
-    fecha:qs("#fecha").fecha,
+    fecha: qs("#fecha").value,
     referencias: qs("#referencias").value,
     autor: qs("#autor").value,
     responsable: qs("#responsable").value,
