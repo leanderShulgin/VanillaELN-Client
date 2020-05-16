@@ -34,23 +34,13 @@ var modoRepeat = params.has("ref");
 
 /* VARIABLES */
 
-var autor = document.getElementById("autor");
 var encabezado = {}; // Aqui almaceno los datos ingresados
-var etapa = document.getElementById("etapa");
-var fecha = document.getElementById("fecha");
-var numProyecto = document.getElementById("num-proyecto");
-var numReporte = document.getElementById("num-reporte");
-var pmProducto = document.getElementById("pm-producto");
-var referencias = document.getElementById("referencias");
-var responsable = document.getElementById("responsable");
-var via = document.getElementById("via");
+
 // Campos generales
-var objetivo = document.getElementById("objetivo");
-var reaccion = document.getElementById("reaccion");
-var seguridad = document.getElementById("seguridad");
+
 // Tabla de reactivos
 var bodyTablaReactivos = document.getElementById("body-tabla-reactivos");
-var equipo = document.getElementById("equipo");
+
 var limitante = document.getElementById("limitante");
 var masaReactivo = document.getElementById("masa-reactivo");
 var molesReactivo = document.getElementById("moles-reactivo");
@@ -75,7 +65,7 @@ var efAc = document.getElementById("efluentes-acuosos");
 var efOrg = document.getElementById("efluentes-organicos");
 var factorE = document.getElementById("factorE");
 // Conclusiones
-var conclusiones = document.getElementById("conclusiones");
+
 
 /* BOTONES */
 
@@ -101,7 +91,7 @@ function listarProyectos() {
     })
     .then(function (data) {
       console.log("La base de datos devolvió estos proyectos:", data);
-      numProyecto.innerHTML = generarOpcionesProyectos(data);
+      qs("#num-proyecto").innerHTML = generarOpcionesProyectos(data);
       listadoProyectos = data; //guardo info de proyectos para funcion de select
     });
 }
@@ -213,15 +203,15 @@ function mostrarRegistros() {
 
 function leerEncabezado() {
   return {
-    numProyecto: numProyecto.value,
-    numReporte: numReporte.value,
-    etapa: etapa.value,
-    via: via.value,
-    pmProducto: pmProducto.value,
-    fecha: state.encabezado.fecha,
-    referencias: referencias.value,
-    autor: autor.value,
-    responsable: responsable.value,
+    numProyecto: qs("#num-proyecto").value,
+    numReporte: qs("#num-reporte").value,
+    etapa: qs("#etapa").value,
+    via: qs("#via").value,
+    pmProducto: qs("#pm-producto").value,
+    fecha: qs("#fecha").encabezado.fecha,
+    referencias: qs("#referencias").value,
+    autor: qs("#autor").value,
+    responsable: qs("#responsable").value,
   };
 }
 
@@ -249,15 +239,15 @@ function leerTodosLosCampos() {
   están. */
   return {
     encabezado: leerEncabezado(),
-    objetivo: objetivo.value,
-    reaccion: reaccion.value,
+    objetivo: qs("#objetivo").value,
+    reaccion: qs("#reaccion").value,
     reactivos: state.reactivos,
-    seguridad: seguridad.value,
-    equipo: equipo.value,
+    seguridad: qs("#seguridad").value,
+    equipo: qs("#equipo").value,
     registros: state.registros,
     resultados: leerResultados(),
     ambiental: leerAmbiental(),
-    conclusiones: conclusiones.value,
+    conclusiones: qs("#conclusiones").value,
   };
 }
 
@@ -363,24 +353,24 @@ function soloCamposRef() {
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
   var enc = state.encabezado;
-  numProyecto.value = enc.numProyecto;
-  numReporte.value = enc.numReporte;
-  etapa.value = enc.etapa;
-  via.value = enc.via;
-  pmProducto.value = enc.pmProducto;
-  fecha.value = enc.fecha;
-  referencias.value = enc.referencias;
-  autor.value = enc.autor;
-  responsable.value = enc.responsable;
+  qs("#num-proyecto").value = enc.numProyecto;
+  qs("#num-reporte").value = enc.numReporte;
+  qs("#etapa").value = enc.etapa;
+  qs("#via").value = enc.via;
+  qs("#pm-producto").value = enc.pmProducto;
+  qs("#fecha").value = enc.fecha;
+  qs("#referencias").value = enc.referencias;
+  qs("#autor").value = enc.autor;
+  qs("#responsable").value = enc.responsable;
 }
 
 function mostrarCamposUnicos() {
   //Carga campos de un solo input/textarea
-  objetivo.value = state.objetivo;
-  reaccion.value = state.reaccion;
-  seguridad.value = state.seguridad;
-  equipo.value = state.equipo;
-  conclusiones.value = state.conclusiones;
+  qs("#objetivo").value = state.objetivo;
+  qs("#reaccion").value = state.reaccion;
+  qs("#seguridad").value = state.seguridad;
+  qs("#equipo").value = state.equipo;
+  qs("#conclusiones").value = state.conclusiones;
 }
 
 function mostrarReactivos() {
