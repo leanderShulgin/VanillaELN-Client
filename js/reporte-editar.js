@@ -189,13 +189,19 @@ function leerAmbiental() {
   };
 }
 
-function leerTodosLosCampos() {
+function leerTodosLosCampos(noheader = false) {
   /* Actualiza el state con los valores
   de los campos. Notar que reactivos y journal,
   como ellos mismos actualizan el state, quedan como 
   están. */
+  var enc;
+  if (noheader) {
+    enc = state.encabezado;
+  } else {
+    enc = leerEncabezado();
+  }
   return {
-    encabezado: leerEncabezado(),
+    encabezado: enc,
     objetivo: qs("#objetivo").value,
     reaccion: qs("#reaccion").value,
     reactivos: state.reactivos,
@@ -210,9 +216,14 @@ function leerTodosLosCampos() {
 
 // Actualizacion y guardado:
 
-function actualizarState() {
-  state = leerTodosLosCampos();
-  console.log("Nuevo State: ", state);
+function actualizarState(newReport = true) {
+  if (newReport) {
+    state = leerTodosLosCampos();
+  } else {
+    state = leerTodosLosCampos((noheader = true));
+
+    console.log("actualizarState dice: Este es el nuevo state", state);
+  }
 }
 
 function crearReporte() {
@@ -235,7 +246,7 @@ function crearReporte() {
 }
 
 function guardarCambios() {
-  actualizarState();
+  actualizarState((newReport = false));
   console.log("se va a guardar lo siguiente: ", state);
   var repId = params.get("_id");
   var miInit = {
@@ -382,12 +393,16 @@ function cargarRefDeDB(repId) {
       proyecto = data.proyecto;
       state.encabezado = data.reporte.encabezado;
       state.encabezado.numReporte = proyecto.reportes + 1;
+      //Asignar fecha de hoy
       state.objetivo = data.reporte.objetivo;
       state.reactivos = data.reporte.reactivos;
       state.seguridad = data.reporte.seguridad;
       state.equipo = data.reporte.equipo;
       mostrarReporte();
       encabezadoModoEdit();
+      var ahora = new Date();
+      state.encabezado = ahora;
+      qs("#fecha").value = yyyymmdd(ahora);
 
       // cargar campos
     });
@@ -426,16 +441,19 @@ qs("#btn-agregar-entrada").addEventListener("click", function (e) {
   nuevoRegistro();
 });
 
-// Main
+// Main--------------------------------------------
 
 function setup() {
+  var ahora = new Date();
   if (modoEdit) {
     var id = params.get("_id");
     cargarReporteDeDB(id);
+
     qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       guardarCambios();
     });
+
     qs("#btn-nav-guardar").addEventListener("click", function (e) {
       e.preventDefault();
       guardarCambios();
@@ -455,13 +473,16 @@ function setup() {
   } else {
     // Nuevo reporte
     soloEncabezado();
+    listarProyectos();
+    state.encabezado = ahora;
+    qs("#fecha").value = yyyymmdd(ahora);
+
     qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       crearReporte();
     });
     qs("#btn-guardar-estado").innerText = "Crear Reporte";
     qs("#btn-nav-guardar").setAttribute("style", "display: none;");
-    listarProyectos();
   }
   //Muestro info en el título:
   document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";

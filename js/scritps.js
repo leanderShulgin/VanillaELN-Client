@@ -24,6 +24,15 @@ function fechaHora() {
   //   return ahora.toDateString() + " "+ ahora.toTimeString();
 }
 
+function yyyymmdd(ahora) {
+  ("0" + (ahora.getMonth() + 1)).slice(-2);
+  var dia = ahora.getDate();
+  var mes = ("0" + (ahora.getMonth() + 1)).slice(-2);
+  var anio = ahora.getFullYear();
+  return anio + "-" + mes + "-" + dia;
+  //   return ahora.toDateString() + " "+ ahora.toTimeString();
+}
+
 function toggleBtn(btn, value) {
   // Cambia el aspecto de un botón
   if (value == "on") {
