@@ -10,8 +10,12 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./js/kekule/themes/default/kekule.css"
+    />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="./chemdoodle/ChemDoodleWeb.css" />
     <link
       rel="stylesheet"
       href="./chemdoodle/uis/jquery-ui-1.11.4.css"
@@ -34,9 +38,6 @@
         /* background: grey; */
       }
     </style>
-
-    <script src="./chemdoodle/ChemDoodleWeb.js"></script>
-    <script src="./chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
     <script
       src="https://kit.fontawesome.com/2d74804549.js"
       crossorigin="anonymous"
@@ -194,6 +195,7 @@
         <div class="row" id="form-reaccion">
           <div class="col-md-12 columna">
             <h3>Reacción</h3>
+            <div id="viewer" class="viewer"></div>
             <div class="form-group">
               <label for="reaccion">Reacción en estudio (Smiles):</label>
               <textarea
@@ -207,19 +209,26 @@
           </div>
         </div>
         <div class="row" id="chem-editor">
-          <div class="col-md-12">
-            <div id="widget-container" class="flex-center">
-              <!-- SCRIPT PARA CARGAR EL WIDGET:  -->
-
-              <script>
-                //requier que se le pase el id para el canvas, el ancho y alto del canvas en pixeles y un objeto con opciones
-                var sketcher = new ChemDoodle.SketcherCanvas(
-                  "composer-container",
-                  600,
-                  350,
-                  { useServices: true, oneMolecule: false }
-                );
-              </script>
+          <div
+            class="col-md-12 d-flex flex-column justify-content-between align-items-center"
+          >
+            <div style="margin: auto;">
+              <button class="btn btn-default" id="btn-toggle-kekule-editor">
+                Mostrar/Ocultar Editor
+              </button>
+            </div>
+            <div
+              id="kekule-editor-container"
+              class="kekule-editor d-flex flex-column justify-content-between align-items-center"
+            >
+              <div id="composer-container"></div>
+              <button
+                id="btn-post-rxn"
+                class="btn custom-btn-dark-blue"
+                onclick="renderEditorContent()"
+              >
+                Postear moléculas
+              </button>
             </div>
           </div>
         </div>
@@ -553,8 +562,12 @@
         <li><a href="./index.html">Inicio</a></li>
       </ul>
     </footer> -->
+    <script src="js/kekule/kekule.min.js"></script>
+    <script src="js/composer.js"></script>
     <script src="js/scritps.js"></script>
     <script src="js/reporte-editar.js"></script>
+    <!-- Kekule -->
+
     <!-- Bootstrap-->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

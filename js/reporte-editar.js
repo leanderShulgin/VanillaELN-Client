@@ -414,9 +414,18 @@ function cargarRefDeDB(repId) {
 qs("#btn-repeat").addEventListener("click", function (e) {
   e.preventDefault();
   window.location.href = "./reporte-editar.html?ref=" + params.get("_id");
-  // ir a la base de datos, traer del rep de referencia encabezado, objetivo, reaccion, equipo, seg y reactivos
-  // Mostrar solo estos campos, con la info cargada de la referencia
-  // Al guardar, guardar estos campos también
+});
+
+qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
+  console.log("click");
+  e.preventDefault();
+  if (qs("#composer-container").style.display == "none") {
+    qs("#composer-container").setAttribute("style", "display: block;");
+    qs("#btn-post-rxn").setAttribute("style", "display: inline;");
+  } else {
+    qs("#composer-container").setAttribute("style", "display: none;");
+    qs("#btn-post-rxn").setAttribute("style", "display: none;");
+  }
 });
 
 // Tabla de reactivos:
