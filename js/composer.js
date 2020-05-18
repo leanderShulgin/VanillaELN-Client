@@ -63,17 +63,9 @@ function painterMolecule2D(mol) {
   var renderType = Kekule.Render.RendererType.R2D; //R3D  // do 2D or 3D drawing
   // parent element, we will draw inside it
   var mainContainer = document.getElementById("viewer");
-  //Creo un nuevo bloque contenedor, y le asigno un id
-  var contBlock = createChemBlock();
-  var idNumber = appState.docBlocks;
-  var idString = "render-cont-" + idNumber.toString();
-  appState.docBlocks = idNumber + 1;
-  contBlock.setAttribute("id", idString);
-  mainContainer.appendChild(contBlock);
-  var parentElem = document.getElementById(idString);
-  // Esta linea limpia el contenido previo.
-  //Dejar comentada si se quiere renderizar mas de una molecula
-  //Kekule.DomUtils.clearChildContent(parentElem);
+  var parentElem = document.getElementById("imagen-reaccion");
+  // Esta linea limpia el contenido previo del div.
+  Kekule.DomUtils.clearChildContent(parentElem);
 
   // create painter, bind with molecule
   var painter = new Kekule.Render.ChemObjPainter(renderType, mol);
@@ -85,17 +77,6 @@ function painterMolecule2D(mol) {
 
   // at last, draw the molecule at the center of context
   painter.draw(context, { x: dim.width / 2, y: dim.height / 2 });
-  //guardo la info de la entrada
-  var entryInfo = {
-    type: "chem",
-    idNumber: idNumber,
-    idString: idString,
-    content: mol,
-  };
-  console.log(entryInfo);
-  //guardo la entrada en appState
-  appState.entries.push(entryInfo);
-  console.log(appState.entries);
 }
 
 function renderMolecule2D(mol) {
@@ -146,46 +127,3 @@ function renderMolecule2D(mol) {
   renderer.draw(context, { x: dim.width / 2, y: dim.height / 2 }, options);
 }
 
-function createChemBlock() {
-  //var container = document.getElementById("viewer");
-  var renderDiv = document.createElement("div");
-  renderDiv.setAttribute("class", "molecule-container");
-  return renderDiv;
-  //container.appendChild(renderDiv);
-}
-
-function createTextBlock() {
-  //var container = document.getElementById("viewer");
-  var renderDiv = document.createElement("div");
-  renderDiv.setAttribute("class", "text-container");
-  return renderDiv;
-  //container.appendChild(renderDiv);
-}
-
-// Funciones de botones:
-
-function createTextEntry() {
-  //Creo un nuevo bloque contenedor, y le asigno un id
-  var mainContainer = document.getElementById("viewer");
-  var contBlock = createTextBlock();
-  var idNumber = appState.docBlocks;
-  var idString = "render-cont-" + idNumber.toString();
-  appState.docBlocks = idNumber + 1;
-  contBlock.setAttribute("id", idString);
-  mainContainer.appendChild(contBlock);
-
-  var text = document.getElementById("textInput").value;
-  var container = document.getElementById(idString);
-  container.innerHTML = "<p>" + text + "</p>";
-  //guardo la info de la entrada
-  var entryInfo = {
-    type: "text",
-    idNumber: idNumber,
-    idString: idString,
-    content: text,
-  };
-  console.log(entryInfo);
-  //guardo la entrada en appState
-  appState.entries.push(entryInfo);
-  console.log(appState.entries);
-}
