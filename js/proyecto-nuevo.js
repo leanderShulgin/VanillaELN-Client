@@ -107,9 +107,10 @@ function cargarProyectoDeDB(numProyecto) {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
-      state = data;
-      console.log("nuevo state: ", data);
+    .then(function (rawData) {
+      var data = cleanData(rawData);
+      state = data.proyecto;
+      console.log("se cargo el proyecto: ", data);
       mostrarProyecto();
       deshabilitarCamposClave();
     });
@@ -124,10 +125,12 @@ function cambiarModo() {
   }
 }
 
-function cargarProyecto() {
+function setup() {
   // decide si debe cargar un proyecto
+  cambiarModo();
   if (modoEdit) {
     var numProyecto = params.get("num");
+    console.log("setup dice: numProyecto=", numProyecto);
     cargarProyectoDeDB(numProyecto);
   }
 }
@@ -144,5 +147,4 @@ btnUpdateProyecto.addEventListener("click", function (e) {
   updateProyecto(state);
 });
 
-cambiarModo();
-cargarProyecto();
+setup();
