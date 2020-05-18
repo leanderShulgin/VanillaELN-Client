@@ -26,11 +26,24 @@ function fechaHora() {
 
 function yyyymmdd(ahora) {
   ("0" + (ahora.getMonth() + 1)).slice(-2);
-  var dia = ahora.getDate();
+  var dia = ("0" + (ahora.getDate() + 1)).slice(-2);
+  // var dia = ahora.getDate();
   var mes = ("0" + (ahora.getMonth() + 1)).slice(-2);
   var anio = ahora.getFullYear();
   return anio + "-" + mes + "-" + dia;
   //   return ahora.toDateString() + " "+ ahora.toTimeString();
+}
+
+function cleanData(rawData) {
+  // si el valor es undefined o null lo cambia a string vacia
+  // aprovecha el parametro "replace" de JSON.stringify
+  var cleanData = JSON.stringify(rawData, function (key, value) {
+    if (value == null || String(value) == "undefined") {
+      return "";
+    }
+    return value;
+  });
+  return JSON.parse(cleanData);
 }
 
 function toggleBtn(btn, value) {

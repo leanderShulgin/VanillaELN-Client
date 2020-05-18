@@ -34,17 +34,7 @@ Cada objeto contiene la info para generar una fila de la tabla. El html del
 body de la tabla se genera mediante la función generarFilasTabla() y luego
 se inserta en la tabla  */
 
-function cleanData(rawData) {
-  // si el valor es undefined o null lo cambia a string vacia
-  // aprovecha el parametro "replace" de JSON.stringify
-  var cleanData = JSON.stringify(rawData, function (key, value) {
-    if (value == null || String(value) == "undefined") {
-      return "";
-    }
-    return value;
-  });
-  return JSON.parse(cleanData);
-}
+
 
 function cargarListaReportes(data) {
   var filas = generarFilasTabla(data);

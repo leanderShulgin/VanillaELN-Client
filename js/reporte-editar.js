@@ -323,14 +323,11 @@ function soloCamposRef() {
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
   var enc = state.encabezado;
-  // var option = "<option value='" + enc.numProyecto + "'></option>";
-
-  // qs("#num-proyecto").innerHTML = option;
   qs("#num-reporte").value = enc.numReporte;
   qs("#etapa").value = enc.etapa;
   qs("#via").value = enc.via;
   qs("#pm-producto").value = enc.pmProducto;
-  qs("#fecha").value = enc.fecha;
+  qs("#fecha").value = yyyymmdd(new Date(enc.fecha));
   qs("#referencias").value = enc.referencias;
   qs("#autor").value = enc.autor;
   qs("#responsable").value = enc.responsable;
@@ -371,7 +368,8 @@ function cargarReporteDeDB(repId) {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
+    .then(function (rawData) {
+      var data = cleanData(rawData);
       state = data.reporte;
       console.log("nuevo reporte de la db: ", data.reporte);
       console.log("info del proyecto: ", data.proyecto);
