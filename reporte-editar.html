@@ -16,11 +16,6 @@
       href="./js/kekule/themes/default/kekule.css"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="./chemdoodle/uis/jquery-ui-1.11.4.css"
-      type="text/css"
-    />
     <style>
       #composer-container {
         width: 600px;
@@ -197,14 +192,10 @@
             <h3>Reacción</h3>
             <div id="viewer" class="viewer"></div>
             <div class="form-group">
-              <label for="reaccion">Reacción en estudio (Smiles):</label>
-              <textarea
-                name="reaccion"
-                id="reaccion"
-                cols="30"
-                rows="3"
-                class="form-control"
-              ></textarea>
+              <h4>Moléculas en la reacción (SMILES):</h4>
+              <p
+                id="reaccion-smiles"
+              ></p>
             </div>
           </div>
         </div>
@@ -225,7 +216,6 @@
               <button
                 id="btn-post-rxn"
                 class="btn custom-btn-dark-blue"
-                onclick="renderEditorContent()"
               >
                 Postear moléculas
               </button>
@@ -562,9 +552,9 @@
         <li><a href="./index.html">Inicio</a></li>
       </ul>
     </footer> -->
+    <script src="js/scritps.js"></script>
     <script src="js/kekule/kekule.min.js"></script>
     <script src="js/composer.js"></script>
-    <script src="js/scritps.js"></script>
     <script src="js/reporte-editar.js"></script>
     <!-- Kekule -->
 

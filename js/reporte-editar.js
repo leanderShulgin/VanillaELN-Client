@@ -5,7 +5,7 @@ via la api. */
 var state = {
   encabezado: {},
   objetivo: "",
-  reaccion: "",
+  reaccion: { kekule: "", smiles: "" },
   reactivos: [],
   seguridad: "",
   equipo: "",
@@ -203,7 +203,7 @@ function leerTodosLosCampos(noheader = false) {
   return {
     encabezado: enc,
     objetivo: qs("#objetivo").value,
-    reaccion: qs("#reaccion").value,
+    reaccion: state.reaccion,
     reactivos: state.reactivos,
     seguridad: qs("#seguridad").value,
     equipo: qs("#equipo").value,
@@ -212,6 +212,21 @@ function leerTodosLosCampos(noheader = false) {
     ambiental: leerAmbiental(),
     conclusiones: qs("#conclusiones").value,
   };
+}
+
+// Reacción:
+function saveReaction() {
+  // requiere composer.js y kekule!
+  var obj = getFullDocument();
+  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
+  //   console.log("Kekule JSON: ", typeof molJson);
+  var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  var smiles = Kekule.IO.saveFormatData(rxn, "smi");
+  console.log(smiles);
+  painterMolecule2D(rxn);
+  qs("#reaccion-smiles").innerText = smiles;
+  state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
+  console.log("Reaccion actualizó el state:", state);
 }
 
 // Actualizacion y guardado:
@@ -336,7 +351,7 @@ function mostrarEncabezado() {
 function mostrarCamposUnicos() {
   //Carga campos de un solo input/textarea
   qs("#objetivo").value = state.objetivo;
-  qs("#reaccion").value = state.reaccion;
+  qs("#reaccion-smiles").value = state.reaccion;
   qs("#seguridad").value = state.seguridad;
   qs("#equipo").value = state.equipo;
   qs("#conclusiones").value = state.conclusiones;
@@ -445,6 +460,11 @@ document
     var factor = document.getElementById("scale-factor").value;
     escalarExperimento(factor);
   });
+
+//Reaccion
+qs("#btn-post-rxn").addEventListener("click", function (e) {
+  saveReaction();
+});
 
 // Journal:
 qs("#btn-agregar-entrada").addEventListener("click", function (e) {
