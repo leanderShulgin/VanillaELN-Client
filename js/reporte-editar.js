@@ -282,11 +282,13 @@ function encabezadoModoEdit() {
   }
   //Muestro la info del proyecto
   document.getElementById("proyecto-group").innerHTML =
-    "<label>Proyecto: </label><input type='text' class='form-control' disabled='true' value='" +
+    "<div class='form-group'><label>Proyecto: </label><select class='form-control' disabled='true'><option value='" +
     +proyecto.num +
+    "'>" +
+    proyecto.num +
     " - " +
     proyecto.nombreProyecto +
-    "'></input>";
+    "</option></select></div>";
   //Muestro info en el título:
   document.getElementById("titulo-reporte-edit").innerText =
     "Reporte nro: " + state.encabezado.numReporte;
@@ -321,7 +323,9 @@ function soloCamposRef() {
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
   var enc = state.encabezado;
-  qs("#num-proyecto").value = enc.numProyecto;
+  // var option = "<option value='" + enc.numProyecto + "'></option>";
+
+  // qs("#num-proyecto").innerHTML = option;
   qs("#num-reporte").value = enc.numReporte;
   qs("#etapa").value = enc.etapa;
   qs("#via").value = enc.via;
