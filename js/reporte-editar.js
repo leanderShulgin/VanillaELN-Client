@@ -5,7 +5,7 @@ via la api. */
 var state = {
   encabezado: {},
   objetivo: "",
-  reaccion: { kekule: "", smiles: "" },
+  reaccion: { kekule: "", smiles: [] },
   reactivos: [],
   seguridad: "",
   equipo: "",
@@ -361,6 +361,15 @@ function mostrarReactivos() {
   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 }
 
+function mostrarReaccion() {
+  var molJson = state.reaccion.kekule;
+  var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  var smiles = state.reaccion.smiles.join(".");
+  painterMolecule2D(rxn);
+  qs("#reaccion-smiles").innerText = smiles;
+
+}
+
 function mostrarReporte() {
   // Muestra el reporte a partir del state
   mostrarEncabezado();
@@ -391,6 +400,9 @@ function cargarReporteDeDB(repId) {
       proyecto = data.proyecto;
       mostrarReporte();
       encabezadoModoEdit();
+      if (state.reaccion.smiles.length > 0) {
+        mostrarReaccion();
+      }
     });
 }
 
