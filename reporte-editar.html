@@ -101,7 +101,7 @@
         <div class="row">
           <div class="col-md-12 columna">
             <h1 id="titulo-reporte-edit"></h1>
-            <h3 id="subtitulo-reporte-edit"></h3>
+            <h3 style="color: rgb(248, 109, 16);" id="subtitulo-reporte-edit"></h3>
           </div>
         </div>
         <div class="row">
@@ -195,9 +195,7 @@
             </div>
             <div class="form-group">
               <h4>Moléculas en la reacción (SMILES):</h4>
-              <p
-                id="reaccion-smiles"
-              ></p>
+              <p id="reaccion-smiles"></p>
             </div>
           </div>
         </div>
@@ -215,10 +213,7 @@
               class="kekule-editor d-flex flex-column justify-content-between align-items-center"
             >
               <div id="composer-container"></div>
-              <button
-                id="btn-post-rxn"
-                class="btn custom-btn-dark-blue"
-              >
+              <button id="btn-post-rxn" class="btn custom-btn-dark-blue">
                 Postear moléculas
               </button>
             </div>
@@ -241,13 +236,14 @@
             >
               <thead class="thead-dark">
                 <tr>
-                  <th>Nombre</th>
-                  <th>Origen</th>
-                  <th>masa [g]</th>
-                  <th>Pureza [%p/p]</th>
-                  <th>PM [g/mol]</th>
-                  <th>Moles</th>
-                  <th>RM</th>
+                  <th></th>
+                  <th style="color: rgb(248, 131, 53);">Nombre</th>
+                  <th style="color: rgb(89, 198, 231);">Origen</th>
+                  <th style="color: rgb(89, 198, 231);">masa [g]</th>
+                  <th style="color: rgb(89, 198, 231);">Pureza [%p/p]</th>
+                  <th style="color: rgb(89, 198, 231);">PM [g/mol]</th>
+                  <th style="color: rgb(89, 198, 231);">Moles</th>
+                  <th style="color: rgb(89, 198, 231);">RM</th>
                 </tr>
               </thead>
               <tbody id="body-tabla-reactivos"></tbody>

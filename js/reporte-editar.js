@@ -90,6 +90,12 @@ function generarFilasTabla(reactivos) {
     //
     filas +=
       "<tr>" +
+      "<td><button class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      i +
+      "'><i class='far fa-edit'></i></button>" +
+      "<button class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      i +
+      "'><i class='far fa-trash-alt'></i></button></td>" +
       "<td>" +
       reactivos[i].nombre +
       "</td>" +
