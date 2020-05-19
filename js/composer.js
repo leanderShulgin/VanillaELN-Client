@@ -26,7 +26,8 @@ var appConfig = {
     "formula",
     "ring",
     "charge",
-    "textAndImage",
+    "textImage"
+
   ],
 };
 
@@ -40,6 +41,11 @@ var appState = {
 
 composer.setCommonToolButtons(appConfig.commonButtons);
 composer.setChemToolButtons(appConfig.chemToolButtons);
+
+
+composer.setStyleToolComponentNames(["color", "textDirection", "textAlign"]); 
+// hide style toolbar totally 
+composer.setEnableStyleToolbar(false);
 
 /*---Funciones del Editor--------------------------------*/
 

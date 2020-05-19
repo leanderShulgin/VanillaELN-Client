@@ -235,6 +235,9 @@ footer ul li {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(48, 143, 172);
 }
+.thead-dark > tr > th {
+  color: rgb(248, 109, 16);
+}
 
 /* Version de escritorio */
 

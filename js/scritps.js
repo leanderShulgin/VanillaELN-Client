@@ -59,6 +59,19 @@ function toggleBtn(btn, value) {
   }
 }
 
+function tableNumber(number) {
+// Convierte nro en string formateada
+  if (typeof number == "number") {
+    if (number > 0.1) {
+      return number.toFixed(2);
+    } else {
+      return number.toExponential(2);
+    }
+  } else {
+    return "";
+  }
+}
+
 function qs(query) {
   //shorthand para querySelector
   return document.querySelector(query);

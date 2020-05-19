@@ -46,7 +46,8 @@ function listarProyectos() {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
+    .then(function (rawData) {
+      var data = cleanData(rawData);
       console.log("La base de datos devolvió estos proyectos:", data);
       qs("#num-proyecto").innerHTML = generarOpcionesProyectos(data);
       listadoProyectos = data; //guardo info de proyectos para funcion de select
@@ -96,19 +97,19 @@ function generarFilasTabla(reactivos) {
       reactivos[i].origen +
       "</td>" +
       "<td>" +
-      reactivos[i].masa +
+      tableNumber(reactivos[i].masa) +
       "</td>" +
       "<td>" +
-      reactivos[i].pureza +
+      tableNumber(reactivos[i].pureza) +
       "</td>" +
       "<td>" +
-      reactivos[i].pm +
+      tableNumber(reactivos[i].pm) +
       "</td>" +
       "<td>" +
-      reactivos[i].moles +
+      tableNumber(reactivos[i].moles) +
       "</td>" +
       "<td>" +
-      reactivos[i].rm +
+      tableNumber(reactivos[i].rm) +
       "</td>" +
       "</tr>";
   }
@@ -254,7 +255,8 @@ function crearReporte() {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
+    .then(function (rawData) {
+      var data = cleanData(rawData);
       console.log("se ha creado el siguiente documento: ", data);
       window.location.href = "./reporte-editar.html?_id=" + data._id;
     });
@@ -274,7 +276,8 @@ function guardarCambios() {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
+    .then(function (rawData) {
+      var data = cleanData(rawData);
       state = data.reporte;
       console.log("reloading! nuevo reporte: ", data.reporte);
       console.log("info del proyecto: ", data.proyecto);
@@ -367,7 +370,6 @@ function mostrarReaccion() {
   var smiles = state.reaccion.smiles.join(".");
   painterMolecule2D(rxn);
   qs("#reaccion-smiles").innerText = smiles;
-
 }
 
 function mostrarReporte() {
@@ -418,7 +420,8 @@ function cargarRefDeDB(repId) {
     .then(function (res) {
       return res.json();
     })
-    .then(function (data) {
+    .then(function (rawData) {
+      var data = cleanData(rawData);
       proyecto = data.proyecto;
       state.encabezado = data.reporte.encabezado;
       state.encabezado.numReporte = proyecto.reportes + 1;
