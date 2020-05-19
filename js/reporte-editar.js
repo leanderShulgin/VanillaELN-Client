@@ -300,7 +300,7 @@ function encabezadoModoEdit() {
   }
   //Muestro la info del proyecto
   document.getElementById("proyecto-group").innerHTML =
-    "<div class='form-group'><label>Proyecto: </label><select class='form-control' disabled='true'><option value='" +
+    "<div class='form-group'><label>Proyecto: </label><select class='form-control' disabled='true' id='num-proyecto'><option value='" +
     +proyecto.num +
     "'>" +
     proyecto.num +
