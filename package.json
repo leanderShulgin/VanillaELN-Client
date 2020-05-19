@@ -1,0 +1,7 @@
+{
+    "name": "vanillaeln-client",
+    "version": "0.1.0",
+    "description": "Gui para un cuaderno de laboratorio electrónico",
+    "author": "Leandro Hornos",
+    "license": "MIT"
+  }
