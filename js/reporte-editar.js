@@ -90,10 +90,14 @@ function generarFilasTabla(reactivos) {
     //
     filas +=
       "<tr>" +
-      "<td><button class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      "<td><button onclick='editReagent(" +
+      i +
+      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
       i +
       "'><i class='far fa-edit'></i></button>" +
-      "<button class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      "<button onclick='deleteReagent(" +
+      i +
+      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
       i +
       "'><i class='far fa-trash-alt'></i></button></td>" +
       "<td>" +
@@ -136,6 +140,29 @@ function escalarExperimento(factor) {
     }
   }
   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+}
+
+function deleteReagent(index) {
+  console.log("borrando reactivo", state.reactivos[index]);
+}
+
+function editReagent(index) {
+  console.log("editando reactivo", state.reactivos[index]);
+}
+
+function setupReagentTableButtons() {
+  var delBtns = qsa(".btn-del-rgnt");
+  console.log("botones del", delBtns);
+  var edBtns = qsa(".btn-edit-rgnt");
+  console.log("botones edit", edBtns);
+  console.log(state.reactivos);
+  if (delBtns.length > 0) {
+    for (var i = 0; i < delBtns.length; i++) {
+      delBtns[i].addEventListener("click", function (e) {
+        console.log(e.srcElement.id);
+      });
+    }
+  }
 }
 // Journal
 
