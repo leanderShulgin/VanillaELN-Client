@@ -190,8 +190,11 @@ footer ul li {
   margin: auto;
 }
 .molecule-container {
-  min-height: 20vh;
   width: 100%;
+  min-height: 30vh;
+  background: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -202,13 +205,17 @@ footer ul li {
   width: 100%;
 }
 .viewer {
-  background: white;
+  /* background: white; */
   width: 100%;
-  min-height: 20vh;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#image-reaction {
+  height: 100vh;
+  min-height: 200px;
 }
 
 #btn-post-rxn {

@@ -11,6 +11,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./js/kekule/themes/default/kekule.css"
+    />
     <script
       src="https://kit.fontawesome.com/2d74804549.js"
       crossorigin="anonymous"
@@ -61,13 +66,18 @@
     <div class="container-fluid" id="main-container">
       <header>
         <div class="row">
-          <div class="col-md-12 columna">
+          <div class="col-md-6 columna">
             <h1>
               <span id="nombre-proyecto"></span>
             </h1>
             <h3>Proyecto <span id="num-proyecto"></span></h3>
             <a href="#" id="editar">Editar</a>
             <!-- <button id="btn-cargar-json">Cargar Demo</button> -->
+          </div>
+          <div class="col-md-6">
+            <div id="viewer" class="viewer">
+              <div id="imagen-reaccion" class="molecule-container"></div>
+            </div>
           </div>
         </div>
       </header>
@@ -158,6 +168,8 @@
         </li>
       </ul>
     </footer>
+    <script src="js/kekule/kekule.min.js"></script>
+    <script src="js/composer.js"></script>
     <script src="js/scritps.js"></script>
     <script src="js/proyecto-ver.js"></script>
     <!-- Bootstrap-->

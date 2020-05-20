@@ -1,4 +1,14 @@
-var state = {};
+var state = {
+  cas: "",
+  descripcion: "",
+  num: null,
+  nombreProyecto: "",
+  pm: null,
+  responsable: "",
+  smiles: "",
+  kekule: "",
+  tipo: "",
+};
 // Campos
 var cas = document.getElementById("cas-target");
 var descripcion = document.getElementById("descripcion");
@@ -29,6 +39,7 @@ var btnUpdateProyecto = document.getElementById("btn-actualizar-proyecto");
 //Funciones
 
 function leerTodosLosCampos() {
+  //Algunos valores del state se dejan inalterados
   return {
     // fecha: se agrega en el server
     cas: cas.value,
@@ -38,6 +49,7 @@ function leerTodosLosCampos() {
     pm: pm.value,
     responsable: responsable.value,
     smiles: smiles.value,
+    kekule: state.kekule,
     tipo: tipo.value,
   };
 }
@@ -87,6 +99,10 @@ function mostrarProyecto() {
   responsable.value = state.responsable;
   smiles.value = state.smiles;
   tipo.value = state.tipo;
+  //
+  var molJson = state.kekule;
+  var mol = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  painterMolecule2D(mol);
 }
 
 // Molecula Target:
@@ -100,6 +116,7 @@ function salvarMolecula() {
   console.log(smiles);
   console.log(molJson);
   painterMolecule2D(mol);
+  state.kekule = molJson;
   qs("#smiles-target").value = smiles;
   composer.newDoc();
   // state.reaccion = { kekule: molJson, smiles: smiles.split(".") };

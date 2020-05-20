@@ -1,3 +1,5 @@
+/* Requiere Kekule.js, composer.js y scripts.js */
+
 // Campos
 var num = document.getElementById("num-proyecto");
 var nombreProyecto = document.getElementById("nombre-proyecto");
@@ -18,23 +20,6 @@ var header = new Headers({
 });
 
 // Funciones
-
-/* ----- Carga de info ----------------------
-
-cargarProyecto() engloba varias funciones cuyo fin es cargar la info en la página 
-a partir de un json. La info tiene dos fuentes, por un lado la colección proyectos
-que nos dice la info general del proyecto y luego la lista de los reportes que 
-corresponden a dicho proyecto.
-
-mostrarInfoProyecto() consulta a la coleccion de proyectos y carga la info general.
-
-cargarListaReportes() carga, vía fetch, un json que contiene una lista de reportes. 
-Cuando se resuelve la promesa del fetch devuelve  un array de objetos.
-Cada objeto contiene la info para generar una fila de la tabla. El html del
-body de la tabla se genera mediante la función generarFilasTabla() y luego
-se inserta en la tabla  */
-
-
 
 function cargarListaReportes(data) {
   var filas = generarFilasTabla(data);
@@ -82,6 +67,9 @@ function mostrarInfoProyecto(data) {
   cas.innerHTML = data.cas;
   pm.innerHTML = data.pm + " g/mol";
   smiles.innerHTML = data.smiles;
+  var molJson = data.kekule;
+  var mol = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  painterMolecule2D(mol);
 }
 
 function setearEditar(numParam) {
