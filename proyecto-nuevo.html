@@ -11,6 +11,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./js/kekule/themes/default/kekule.css"
+    />
     <script
       src="https://kit.fontawesome.com/2d74804549.js"
       crossorigin="anonymous"
@@ -122,12 +127,49 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Estructura</h3>
+        <section id="sec-estructura">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Estructura</h3>
+            </div>
           </div>
-        </div>
-        <div class="row" style="padding-top: 40px;">
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                id="kekule-editor-container"
+                class="kekule-editor d-flex flex-column justify-content-between align-items-center"
+              >
+                <div id="composer-container"></div>
+                <button id="btn-post-rxn" class="btn custom-btn-dark-blue">
+                  Postear moléculas
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div id="viewer" class="viewer">
+                <div id="imagen-reaccion" class="molecule-container"></div>
+              </div>
+              <div class="form-group">
+                <label for="smiles-target">Molécula Target (Smiles):</label>
+                <input
+                  name="smiles-target"
+                  id="smiles-target"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+              <div class="form-group">
+                <label for="pm-target">PM Target [g/mol]:</label>
+                <input type="number" class="form-control" id="pm-target" />
+              </div>
+              <div class="form-group">
+                <label for="cas-target">CAS Target:</label>
+                <input type="text" class="form-control" id="cas-target" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- <div class="row" style="padding-top: 40px;">
           <div class="col-md-6">
             <div class="form-group">
               <label for="smiles-target">Molécula Target (Smiles):</label>
@@ -140,22 +182,8 @@
               ></textarea>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="pm-target">PM Target [g/mol]:</label>
-              <input type="number" class="form-control" id="pm-target" />
-            </div>
-            <div class="form-group">
-              <label for="cas-target">CAS Target:</label>
-              <input type="text" class="form-control" id="cas-target" />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="composer-container"></div>
-          </div>
-        </div>
+          <div class="col-md-6"></div>
+        </div> -->
         <div class="row">
           <div class="col-md-12">
             <button class="custom-btn-dark-blue" id="btn-guardar-proyecto">
@@ -176,6 +204,9 @@
         <li><a href="./index.html">Inicio</a></li>
       </ul>
     </footer>
+
+    <script src="js/kekule/kekule.min.js"></script>
+    <script src="js/composer.js"></script>
     <script src="js/scritps.js"></script>
     <script src="js/proyecto-nuevo.js"></script>
     <!-- Bootstrap-->

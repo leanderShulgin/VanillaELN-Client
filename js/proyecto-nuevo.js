@@ -89,6 +89,22 @@ function mostrarProyecto() {
   tipo.value = state.tipo;
 }
 
+// Molecula Target:
+function salvarMolecula() {
+  // requiere composer.js y kekule!
+  var obj = getFullDocument();
+  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
+  //   console.log("Kekule JSON: ", typeof molJson);
+  var mol = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  var smiles = Kekule.IO.saveFormatData(mol, "smi");
+  console.log(smiles);
+  console.log(molJson);
+  painterMolecule2D(mol);
+  qs("#smiles-target").value = smiles;
+  composer.newDoc();
+  // state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
+}
+
 function deshabilitarCamposClave() {
   //Evita que se puedan editar campos sensibles
   num.disabled = true;
@@ -148,3 +164,8 @@ btnUpdateProyecto.addEventListener("click", function (e) {
 });
 
 setup();
+
+//Reaccion
+qs("#btn-post-rxn").addEventListener("click", function (e) {
+  salvarMolecula();
+});

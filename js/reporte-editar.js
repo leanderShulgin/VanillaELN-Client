@@ -285,6 +285,7 @@ function saveReaction() {
   qs("#reaccion-smiles").innerText = smiles;
   state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
   console.log("Reaccion actualizó el state:", state);
+  composer.newDoc();
 }
 
 // Actualizacion y guardado:
@@ -518,12 +519,6 @@ qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
 });
 
 // Tabla de reactivos:
-
-// qs("#btn-agregar-reactivo").addEventListener("click", function (e) {
-//   e.preventDefault();
-//   state.reactivos.push(nuevoReactivo());
-//   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
-// });
 
 document
   .getElementById("btn-scale-experiment")
