@@ -71,16 +71,18 @@ function generarOpcionesProyectos(proyectos) {
 // Tabla de reactivos
 
 function nuevoReactivo() {
-  return {
+  var data = {
     nombre: qs("#nombre-reactivo").value,
     origen: qs("#origen-reactivo").value,
-    masa: qs("#masa-reactivo").value,
-    pureza: qs("#pureza-reactivo").value,
-    pm: qs("#pm-reactivo").value,
-    moles: qs("#moles-reactivo").value,
-    rm: qs("#rm-reactivo").value,
+    masa: Number(qs("#masa-reactivo").value),
+    pureza: Number(qs("#pureza-reactivo").value),
+    pm: Number(qs("#pm-reactivo").value),
+    moles: Number(qs("#moles-reactivo").value),
+    rm: Number(qs("#rm-reactivo").value),
     limitante: false,
   };
+  console.log("nuevo reactivo:", data);
+  return data;
 }
 
 function generarFilasTabla(reactivos) {
@@ -90,12 +92,12 @@ function generarFilasTabla(reactivos) {
     //
     filas +=
       "<tr>" +
-      "<td><button onclick='editReagent(" +
+      "<td><button onclick='editarReactivo(" +
       i +
       ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
       i +
       "'><i class='far fa-edit'></i></button>" +
-      "<button onclick='deleteReagent(" +
+      "<button onclick='borrarReactivo(" +
       i +
       ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
       i +
@@ -142,28 +144,50 @@ function escalarExperimento(factor) {
   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 }
 
-function deleteReagent(index) {
+function cargarCamposReactivo(r) {
+  (qs("#nombre-reactivo").value = r.nombre),
+    (qs("#origen-reactivo").value = r.origen),
+    (qs("#masa-reactivo").value = r.masa);
+  qs("#pureza-reactivo").value = r.pureza;
+  (qs("#pm-reactivo").value = r.pm),
+    (qs("#moles-reactivo").value = r.moles),
+    (qs("#rm-reactivo").value = r.rm);
+}
+
+function crearReactivo() {
+  state.reactivos.push(nuevoReactivo());
+  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+}
+
+function actualizarReactivo(index) {
+  state.reactivos[index] = nuevoReactivo();
+  mostrarReactivos();
+  // Vuelvo la funcion del boton a crear nuevo
+  qs("#btn-agregar-reactivo").innerText = "Agregar reactivo";
+  qs("#btn-agregar-reactivo").setAttribute("onclick", "crearReactivo()");
+}
+
+function borrarReactivo(index) {
   console.log("borrando reactivo", state.reactivos[index]);
+  // Eliminar reactivo del array
+  state.reactivos.splice(index, 1);
+  // Regenerar tabla reactivos
+  mostrarReactivos();
 }
 
-function editReagent(index) {
+function editarReactivo(index) {
   console.log("editando reactivo", state.reactivos[index]);
+  cargarCamposReactivo(state.reactivos[index]);
+  qs("#btn-agregar-reactivo").innerText = "Aplicar cambios";
+  qs("#btn-agregar-reactivo").setAttribute(
+    "onclick",
+    "actualizarReactivo(" + index + ")"
+  );
+  // Cargar este reactivo en los campos de edicion
+  // modificar la funcion del boton de guardado para que al clickear
+  // actualice la entrada en lugar de crear una nueva
 }
 
-function setupReagentTableButtons() {
-  var delBtns = qsa(".btn-del-rgnt");
-  console.log("botones del", delBtns);
-  var edBtns = qsa(".btn-edit-rgnt");
-  console.log("botones edit", edBtns);
-  console.log(state.reactivos);
-  if (delBtns.length > 0) {
-    for (var i = 0; i < delBtns.length; i++) {
-      delBtns[i].addEventListener("click", function (e) {
-        console.log(e.srcElement.id);
-      });
-    }
-  }
-}
 // Journal
 
 function nuevoRegistro() {
@@ -495,11 +519,11 @@ qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
 
 // Tabla de reactivos:
 
-qs("#btn-agregar-reactivo").addEventListener("click", function (e) {
-  e.preventDefault();
-  state.reactivos.push(nuevoReactivo());
-  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
-});
+// qs("#btn-agregar-reactivo").addEventListener("click", function (e) {
+//   e.preventDefault();
+//   state.reactivos.push(nuevoReactivo());
+//   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+// });
 
 document
   .getElementById("btn-scale-experiment")

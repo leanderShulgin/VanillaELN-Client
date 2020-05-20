@@ -64,6 +64,9 @@ function tableNumber(number) {
   if (typeof number == "number") {
     if (number > 0.1) {
       return number.toFixed(2);
+      
+    } else if(number === 0) {
+      return ""
     } else {
       return number.toExponential(2);
     }
