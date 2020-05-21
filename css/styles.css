@@ -50,7 +50,7 @@ input,
 textarea,
 p,
 .form-control {
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 header h1 {
@@ -144,7 +144,7 @@ footer ul li {
   color: rgb(238, 236, 236);
   border: none;
   margin: 10px 0;
-  font-size: 1.2em;
+  font-size: 0.8em;
   box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
 .btn-default {
@@ -164,6 +164,9 @@ footer ul li {
 }
 
 /* Tabla de reactivos*/
+.table {
+  font-size: 0.7em;
+}
 #col-tabla-reactivos {
   padding: 0px 20px;
 }
@@ -187,6 +190,12 @@ footer ul li {
 }
 
 #visor-de-registros {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Comentarios */
+#visor-de-comentarios {
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -291,6 +300,13 @@ footer ul li {
   textarea,
   p,
   .form-control {
+    font-size: 1em;
+  }
+  .table {
+    font-size: 0.9em;
+  }
+
+  .custom-btn-dark-blue {
     font-size: 1em;
   }
 }

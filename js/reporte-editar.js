@@ -13,6 +13,7 @@ var state = {
   resultados: {},
   ambiental: {},
   conclusiones: "",
+  comentarios: [],
 };
 
 // En este objeto se guarda la info del usuario. Tiene una estructura
@@ -236,6 +237,45 @@ function mostrarRegistros() {
       state.registros[i].user.apodo +
       " : </span><br />" +
       state.registros[i].texto +
+      "</p>";
+  }
+}
+
+// Comentarios y discusion
+
+function nuevoComentario() {
+  /* Maneja el agregado de una nueva entrada al registro de experimentos
+      y agrega una etiqueta de fecha y hora al registro.
+  */
+  var ahora = new Date();
+  state.comentarios.push({
+    hora: ahora,
+    texto: qs("#comentario").value,
+    user: {
+      id: user._id,
+      nombre: user.nombre,
+      apellido: user.apellido,
+      titulo: user.titulo,
+      apodo: user.apodo,
+    },
+  });
+  qs("#comentario").value = ""; //limpio el campo
+  mostrarComentarios();
+}
+
+function mostrarComentarios() {
+  console.log("comentarios:", state.comentarios);
+  //Muestra los posteos desde el state
+  qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
+  for (var i = 0; i < state.comentarios.length; i++) {
+    qs("#visor-de-comentarios").innerHTML +=
+      "<p class='journal-entry'>" +
+      '<span class="timeStamp">' +
+      fechaHora(state.comentarios[i].hora) +
+      " - " +
+      state.comentarios[i].user.apodo +
+      " : </span><br />" +
+      state.comentarios[i].texto +
       "</p>";
   }
 }
@@ -562,6 +602,12 @@ qs("#btn-post-rxn").addEventListener("click", function (e) {
 qs("#btn-agregar-entrada").addEventListener("click", function (e) {
   e.preventDefault();
   nuevoRegistro();
+});
+
+// Comentarios:
+qs("#btn-agregar-comentario").addEventListener("click", function (e) {
+  e.preventDefault();
+  nuevoComentario();
 });
 
 // Main--------------------------------------------

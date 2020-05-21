@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VanillaElN</title>
     <link
-    rel="shortcut icon"
-    href="./img/icons/favicon.ico"
-    type="image/x-icon"
-  />
+      rel="shortcut icon"
+      href="./img/icons/favicon.ico"
+      type="image/x-icon"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -542,6 +542,44 @@
         </div>
         <div class="row">
           <div class="col-md-12"></div>
+        </div>
+      </section>
+      <!--Comentarios y discusión-->
+      <section id="sec-journal">
+        <div class="row" id="form-journal">
+          <div class="col-md-12 columna">
+            <h3>Comentarios y discusión</h3>
+            <p>
+              En esta sección puedes agregar comentarios. Se podrá comentar el
+              reporte incluso cuando el mismo se encuentre finalizado. Utiliza
+              esta sección para interactuar con tu equipo, hacer aclaraciones o
+              para discutir los resultados del experimento
+            </p>
+            <div id="visor-de-comentarios"></div>
+            <hr />
+            <form action="#">
+              <div class="form-group">
+                <label for="comentario">Escribe un comentario:</label>
+                <textarea
+                  name="comentario"
+                  id="comentario"
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                  id="txtarea-registro"
+                ></textarea>
+                <button
+                  class="custom-btn-dark-blue"
+                  id="btn-agregar-comentario"
+                >
+                  Agregar comentario
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 columna"></div>
         </div>
       </section>
       <div class="row" style="padding-bottom: 60px;">
