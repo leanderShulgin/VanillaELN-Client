@@ -335,6 +335,7 @@ function leerTodosLosCampos(noheader = false) {
     resultados: leerResultados(),
     ambiental: leerAmbiental(),
     conclusiones: qs("#conclusiones").value,
+    comentarios: state.comentarios,
   };
 }
 
