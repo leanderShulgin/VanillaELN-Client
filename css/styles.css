@@ -43,7 +43,14 @@ hr {
 
 label {
   color: rgb(64, 72, 94);
-  font-size: 1em;
+  font-size: 0.8em;
+}
+
+input,
+textarea,
+p,
+.form-control {
+  font-size: 0.9em;
 }
 
 header h1 {
@@ -169,6 +176,19 @@ footer ul li {
 .timeStamp {
   color: rgb(58, 113, 175);
   font-weight: 400;
+  font-size: 0.7em;
+  padding: 10px 0px;
+}
+
+.journal-entry {
+  background: white;
+  margin: 0;
+  padding: 10px;
+}
+
+#visor-de-registros {
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 /* Kekule */
@@ -265,6 +285,12 @@ footer ul li {
     font-size: 1.3em;
   }
   label {
-    font-size: 1.2em;
+    font-size: 1.1em;
+  }
+  input,
+  textarea,
+  p,
+  .form-control {
+    font-size: 1em;
   }
 }

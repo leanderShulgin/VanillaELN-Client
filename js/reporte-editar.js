@@ -208,20 +208,33 @@ function nuevoRegistro() {
       y agrega una etiqueta de fecha y hora al registro.
   */
   var ahora = new Date();
-  state.registros.push({ hora: ahora, texto: qs("#registro").value });
+  state.registros.push({
+    hora: ahora,
+    texto: qs("#registro").value,
+    user: {
+      id: user._id,
+      nombre: user.nombre,
+      apellido: user.apellido,
+      titulo: user.titulo,
+      apodo: user.apodo,
+    },
+  });
   qs("#registro").value = ""; //limpio el campo
   mostrarRegistros();
 }
 
 function mostrarRegistros() {
+  console.log("registros:", state.registros);
   //Muestra los posteos desde el state
   qs("#visor-de-registros").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.registros.length; i++) {
     qs("#visor-de-registros").innerHTML +=
-      "<p>" +
+      "<p class='journal-entry'>" +
       '<span class="timeStamp">' +
       fechaHora(state.registros[i].hora) +
-      " | </span>" +
+      " - " +
+      state.registros[i].user.apodo +
+      " : </span><br />" +
       state.registros[i].texto +
       "</p>";
   }
