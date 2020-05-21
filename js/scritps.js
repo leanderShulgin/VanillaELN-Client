@@ -1,37 +1,32 @@
-// fUNCIONES GENERALES
+// FUNCIONALIDADES GENERALES PARA USAR EN TODAS LAS VISTAS
 
-function fechaHora() {
-  var ahora = new Date();
-  var hora = ahora.getHours();
-  var minutos = ahora.getMinutes();
-  var segundos = ahora.getSeconds();
-  var dia = ahora.getDate();
-  var mes = ahora.getMonth();
-  var anio = ahora.getFullYear();
+function fechaHora(date) {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+  var hora = ("0" + date.getHours()).slice(-2);
+  var minutos = ("0" + date.getMinutes()).slice(-2);
+  var segundos = ("0" + date.getSeconds()).slice(-2);
+  var dia = ("0" + (date.getDate() + 1)).slice(-2);
+  var mes = ("0" + (date.getMonth() + 1)).slice(-2);
+  var anio = date.getFullYear();
   return (
-    dia +
-    "-" +
-    (mes + 1) +
-    "-" +
-    anio +
-    " " +
-    hora +
-    ":" +
-    minutos +
-    ":" +
-    segundos
+    dia + "-" + mes + "-" + anio + " " + hora + ":" + minutos + ":" + segundos
   );
   //   return ahora.toDateString() + " "+ ahora.toTimeString();
 }
 
-function yyyymmdd(ahora) {
-  ("0" + (ahora.getMonth() + 1)).slice(-2);
-  var dia = ("0" + (ahora.getDate() + 1)).slice(-2);
-  // var dia = ahora.getDate();
-  var mes = ("0" + (ahora.getMonth() + 1)).slice(-2);
-  var anio = ahora.getFullYear();
+function yyyymmdd(date) {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+  ("0" + (date.getMonth() + 1)).slice(-2);
+  var dia = ("0" + (date.getDate() + 1)).slice(-2);
+  // var dia = date.getDate();
+  var mes = ("0" + (date.getMonth() + 1)).slice(-2);
+  var anio = date.getFullYear();
   return anio + "-" + mes + "-" + dia;
-  //   return ahora.toDateString() + " "+ ahora.toTimeString();
+  //   return date.toDateString() + " "+ date.toTimeString();
 }
 
 function cleanData(rawData) {
@@ -60,13 +55,12 @@ function toggleBtn(btn, value) {
 }
 
 function tableNumber(number) {
-// Convierte nro en string formateada
+  // Convierte nro en string formateada
   if (typeof number == "number") {
     if (number > 0.1) {
       return number.toFixed(2);
-      
-    } else if(number === 0) {
-      return ""
+    } else if (number === 0) {
+      return "";
     } else {
       return number.toExponential(2);
     }

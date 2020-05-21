@@ -15,6 +15,19 @@ var state = {
   conclusiones: "",
 };
 
+// En este objeto se guarda la info del usuario. Tiene una estructura
+// de claves equivalente al modelo User en la base de datos
+var user = {
+  nombre: "Peter",
+  apellido: "Cantropus",
+  titulo: "Supervisor",
+  apodo: "Peter C.",
+  teams: [""], //ids de los teams a los que pertenece
+  _id: "", //_id del usuario en la base de datos
+  fechaRegistro: "23/01/2020",
+  foto: "",
+};
+
 /* Aquí guardo la info del proyecto al que corresponde el reporte */
 var proyecto = {};
 var listadoProyectos = [];
@@ -207,7 +220,7 @@ function mostrarRegistros() {
     qs("#visor-de-registros").innerHTML +=
       "<p>" +
       '<span class="timeStamp">' +
-      state.registros[i].hora +
+      fechaHora(state.registros[i].hora) +
       " | </span>" +
       state.registros[i].texto +
       "</p>";
@@ -467,8 +480,7 @@ function cargarReporteDeDB(repId) {
 }
 
 function cargarRefDeDB(repId) {
-  // Busca un reporte en la base de datos, lo carga en el state
-  // y lo muestra en la página.
+  // Busca un reporte de referencia en la base de datos y lo carga para crear uno nuevo
   var miInit = {
     method: "GET",
     headers: header,
