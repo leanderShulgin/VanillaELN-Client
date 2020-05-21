@@ -70,7 +70,7 @@ function createProyecto(state) {
   });
 }
 
-function updateProyecto(state) {
+function updateProyecto() {
   // Levanta la info de los campos y actualiza el doc en la base de datos
   state = leerTodosLosCampos();
   console.log("se enviará al servidor el siguiente estado: ");
@@ -84,6 +84,7 @@ function updateProyecto(state) {
   fetch("http:\\localhost:5000/api/proyecto/" + state.num, miInit).then(
     (response) => {
       console.log("respuesta del servidor: ", response);
+      window.location.href = "./proyecto-ver.html?num=" + params.get("num");
     }
   );
 }
@@ -103,6 +104,7 @@ function mostrarProyecto() {
   var molJson = state.kekule;
   var mol = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
   painterMolecule2D(mol);
+  composer.setChemObj(mol);
 }
 
 // Molecula Target:
@@ -177,7 +179,7 @@ btnCrearProyecto.addEventListener("click", function (e) {
 
 btnUpdateProyecto.addEventListener("click", function (e) {
   e.preventDefault();
-  updateProyecto(state);
+  updateProyecto();
 });
 
 setup();
