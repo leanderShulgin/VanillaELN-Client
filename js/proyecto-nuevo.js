@@ -113,11 +113,11 @@ function salvarMolecula() {
   var obj = getFullDocument();
   var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
   //   console.log("Kekule JSON: ", typeof molJson);
-  var mol = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
-  var smiles = Kekule.IO.saveFormatData(mol, "smi");
+  var smiles = Kekule.IO.saveFormatData(obj, "smi");
   console.log(smiles);
   console.log(molJson);
-  painterMolecule2D(mol);
+  painterMolecule2D(obj);
+  console.log(calcularPM(obj));
   state.kekule = molJson;
   qs("#smiles-target").value = smiles;
   composer.newDoc();
