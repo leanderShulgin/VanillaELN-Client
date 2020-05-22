@@ -8,18 +8,13 @@ header {
 .row {
   min-height: 30vh;
 }
-.col-md-4,
-.col-md-8 {
-  padding: 20px 10px;
-}
-
 .start-box {
   border-radius: 3px;
   box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.4);
   /* min-height: 40%; */
   /* margin-top: 20px; */
   padding: 15px;
-  /* margin: 5px; */
+  margin-bottom: 20px
 }
 .start-box h4 {
   color: white;
@@ -51,9 +46,8 @@ header {
   background-color: rgb(255, 210, 152);
 }
 
-#box-proyectos {
-  height: 100%;
-}
+/* #box-proyectos {
+} */
 
 #box-proyectos-thead {
   background-color: rgb(97, 78, 65);
@@ -89,6 +83,6 @@ header {
 
 @media only screen and (min-width: 720px) {
   .box-table-container {
-    max-height: 20vh;
+    max-height: 50vh;
   }
 }

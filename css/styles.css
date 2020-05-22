@@ -43,14 +43,14 @@ hr {
 
 label {
   color: rgb(64, 72, 94);
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 input,
 textarea,
 p,
 .form-control {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 header h1 {
@@ -144,7 +144,7 @@ footer ul li {
   color: rgb(238, 236, 236);
   border: none;
   margin: 10px 0;
-  font-size: 0.8em;
+  font-size: 0.9em;
   box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
 .btn-default {
@@ -179,7 +179,7 @@ footer ul li {
 .timeStamp {
   color: rgb(58, 113, 175);
   font-weight: 400;
-  font-size: 0.7em;
+  font-size: 0.8em;
   padding: 10px 0px;
 }
 
