@@ -26,8 +26,7 @@ var appConfig = {
     "formula",
     "ring",
     "charge",
-    "textImage"
-
+    "textImage",
   ],
 };
 
@@ -42,9 +41,8 @@ var appState = {
 composer.setCommonToolButtons(appConfig.commonButtons);
 composer.setChemToolButtons(appConfig.chemToolButtons);
 
-
-composer.setStyleToolComponentNames(["color", "textDirection", "textAlign"]); 
-// hide style toolbar totally 
+composer.setStyleToolComponentNames(["color", "textDirection", "textAlign"]);
+// hide style toolbar totally
 composer.setEnableStyleToolbar(false);
 
 /*---Funciones del Editor--------------------------------*/
@@ -85,4 +83,20 @@ function painterMolecule2D(mol) {
 
   // at last, draw the molecule at the center of context
   painter.draw(context, { x: dim.width / 2, y: dim.height / 2 });
+}
+
+function calcularPM(mol) {
+  var flattenMol = mol.getFlattenedShadowFragment(true); // expand all possible subgroups in molecule first
+  var totalMass = 0;
+  for (var i = 0, l = flattenMol.getNodeCount(); i < l; ++i) {
+    var node = flattenMol.getNodeAt(i);
+    if (node.getAtomicMass) {
+      totalMass += node.getAtomicMass();
+    }
+    if (node.getImplicitHydrogenCount) {
+      var hcount = node.getImplicitHydrogenCount() || 0;
+      totalMass += hcount * 1.01;
+    }
+  }
+  return totalMass;
 }
