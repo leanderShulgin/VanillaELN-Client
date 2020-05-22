@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LabReportJson</title>
     <link
-    rel="shortcut icon"
-    href="./img/icons/favicon.ico"
-    type="image/x-icon"
-  />
+      rel="shortcut icon"
+      href="./img/icons/favicon.ico"
+      type="image/x-icon"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -81,19 +81,22 @@
     <div class="container-fluid" id="main-container">
       <header>
         <div class="row">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <h1 id="titulo">Nuevo proyecto</h1>
             <p>
               Completa en los siguientes campos toda la información del
               proyecto.
             </p>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </header>
       <!--Encabezado (info general) -->
       <section id="sec-nuevo-proyecto">
         <div class="row">
-          <div class="col-md-6 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-5 columna">
             <div class="form-group">
               <label for="tipo-proyecto">Tipo de proyecto:</label>
               <select
@@ -115,7 +118,7 @@
               <input type="text" class="form-control" id="nombre-proyecto" />
             </div>
           </div>
-          <div class="col-md-6 columna">
+          <div class="col-md-5 columna">
             <div class="form-group">
               <label for="responsable">Responsable del proyecto:</label>
               <input type="text" class="form-control" id="responsable" />
@@ -134,12 +137,15 @@
         </div>
         <section id="sec-estructura">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
               <h3>Estructura</h3>
             </div>
+            <div class="col-md-1"></div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
               <div
                 id="kekule-editor-container"
                 class="kekule-editor d-flex flex-column justify-content-between align-items-center"
@@ -150,7 +156,7 @@
                 </button>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div id="viewer" class="viewer">
                 <div id="imagen-reaccion" class="molecule-container"></div>
               </div>
@@ -172,6 +178,7 @@
                 <input type="text" class="form-control" id="cas-target" />
               </div>
             </div>
+            <div class="col-md-1"></div>
           </div>
         </section>
         <!-- <div class="row" style="padding-top: 40px;">
@@ -190,7 +197,8 @@
           <div class="col-md-6"></div>
         </div> -->
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <button class="custom-btn-dark-blue" id="btn-guardar-proyecto">
               Registrar proyecto
             </button>
@@ -198,6 +206,7 @@
               Actualizar proyecto
             </button>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
     </div>
