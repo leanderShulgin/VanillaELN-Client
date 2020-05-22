@@ -96,7 +96,7 @@ function mostrarProyecto() {
   descripcion.value = state.descripcion;
   num.value = state.num;
   nombre.value = state.nombreProyecto;
-  pm.value = state.pm;
+  pm.value = Number(state.pm.toFixed(2));
   responsable.value = state.responsable;
   smiles.value = state.smiles;
   tipo.value = state.tipo;
@@ -111,13 +111,15 @@ function mostrarProyecto() {
 function salvarMolecula() {
   // requiere composer.js y kekule!
   var obj = getFullDocument();
+  var molecule = composer.exportObjs(Kekule.Molecule)[0];
   var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
   //   console.log("Kekule JSON: ", typeof molJson);
   var smiles = Kekule.IO.saveFormatData(obj, "smi");
   console.log(smiles);
   console.log(molJson);
   painterMolecule2D(obj);
-  console.log(calcularPM(obj));
+  state.pm = calcularPM(molecule);
+  pm.value = Number(state.pm.toFixed(2));
   state.kekule = molJson;
   qs("#smiles-target").value = smiles;
   composer.newDoc();
