@@ -104,31 +104,38 @@
     <div class="container-fluid" id="main-container">
       <header>
         <div class="row">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h1 id="titulo-reporte-edit"></h1>
             <h3
               style="color: rgb(248, 109, 16);"
               id="subtitulo-reporte-edit"
             ></h3>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
-          <div class="col-md-12" id="area-mensajes">
+          <div class="col-md-1"></div>
+          <div class="col-md-10" id="area-mensajes">
             <button class="btn btn-sm btn-default" id="btn-repeat">
               <i class="far fa-copy"></i> Repetir
             </button>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </header>
       <!--Encabezado (info general) -->
       <section id="sec-encabezado">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <h3>Información general</h3>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row" id="form-encabezado">
-          <div class="col-md-4 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-3 columna">
             <div class="form-group" id="proyecto-group">
               <label for="num-proyecto">Proyecto:</label>
               <select
@@ -162,7 +169,7 @@
               <input type="number" class="form-control" id="pm-producto" />
             </div>
           </div>
-          <div class="col-md-4 columna">
+          <div class="col-md-3 columna">
             <div class="form-group">
               <label for="responsable">Referencias:</label>
               <input type="text" class="form-control" id="referencias" />
@@ -176,9 +183,11 @@
               <input type="text" class="form-control" id="responsable" />
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row" id="form-objetivo">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Objetivo</h3>
             <div class="form-group">
               <textarea
@@ -191,12 +200,14 @@
               ></textarea>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Reacción-->
       <section id="sec-reaccion">
         <div class="row" id="form-reaccion">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Reacción</h3>
             <div id="viewer" class="viewer">
               <div id="imagen-reaccion" class="molecule-container"></div>
@@ -206,10 +217,12 @@
               <p id="reaccion-smiles"></p>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row" id="chem-editor">
+          <div class="col-md-1"></div>
           <div
-            class="col-md-12 d-flex flex-column justify-content-between align-items-center"
+            class="col-md-10 d-flex flex-column justify-content-between align-items-center"
           >
             <div style="margin: auto;">
               <button class="btn btn-default" id="btn-toggle-kekule-editor">
@@ -226,17 +239,21 @@
               </button>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Reactivos-->
       <section id="sec-reactivos">
         <div class="row" id="form-reactivos">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Reactivos</h3>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
-          <div class="col-md-12" id="col-tabla-reactivos">
+          <div class="col-md-1"></div>
+          <div class="col-md-10" id="col-tabla-reactivos">
             <h4>Tabla de reactivos</h4>
             <table
               class="table table-responsive-md table-striped"
@@ -258,8 +275,10 @@
             </table>
             <hr />
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
+          <div class="col-md-1"></div>
           <div class="col-md-4">
             <div class="form-group">
               <label for="scale-factor">Factor de escala: </label>
@@ -267,17 +286,21 @@
               <button id="btn-scale-experiment">Escalar</button>
             </div>
           </div>
-          <div class="col-md-8"></div>
+          <div class="col-md-6"></div>
         </div>
+        <div class="col-md-1"></div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <h4>Agregar un reactivo</h4>
           </div>
+          <div class="col-md-1"></div>
         </div>
 
         <div>
           <div class="row">
-            <div class="col-md-4 columna">
+            <div class="col-md-1"></div>
+            <div class="col-md-3 columna">
               <div class="form-group">
                 <label for="nombre-reactivo">Nombre:</label>
                 <input
@@ -339,7 +362,7 @@
                 />
               </div>
             </div>
-            <div class="col-md-4 columna">
+            <div class="col-md-3 columna">
               <div class="form-group">
                 <label for="rm-reactivo">Relación molar:</label>
                 <input
@@ -359,9 +382,11 @@
                 >
               </div>
             </div>
+            <div class="col-md-1"></div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
               <!-- <div class="form-group" id=""> -->
               <button
                 class="custom-btn-dark-blue"
@@ -372,13 +397,15 @@
               </button>
               <!-- </div> -->
             </div>
+            <div class="col-md-1"></div>
           </div>
         </div>
       </section>
       <!--Seguridad-->
       <section id="sec-seguridad">
         <div class="row" id="form-seguridad">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Seguridad</h3>
             <div class="form-group">
               <label for="form-seguridad">Consideraciones de seguridad:</label>
@@ -391,12 +418,14 @@
               ></textarea>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Equipo-->
       <section id="sec-equipo">
         <div class="row" id="form-equipo">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <h3>Equipo</h3>
             <div class="form-group">
               <label for="equipo">Descripción del quipo de laboratorio:</label>
@@ -409,12 +438,14 @@
               ></textarea>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Journal-->
       <section id="sec-journal">
         <div class="row" id="form-journal">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <h3>Journal</h3>
 
             <div id="visor-de-registros"></div>
@@ -439,6 +470,7 @@
               </div>
             </form>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
           <div class="col-md-12 columna"></div>
@@ -447,7 +479,8 @@
       <!-- Resultados y ambiental -->
       <section id="sec-resultados">
         <div class="row" id="form-resultados">
-          <div class="col-md-6 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-5 columna">
             <!--Resultados-->
             <h3>Resultados</h3>
             <div class="form-group">
@@ -487,7 +520,7 @@
               />
             </div>
           </div>
-          <div class="col-md-6 columna">
+          <div class="col-md-5 columna">
             <!--Ambiental-->
             <h3>Ambiental</h3>
             <div class="form-group">
@@ -522,12 +555,14 @@
               />
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Conclusiones-->
       <section id="sec-conclusiones">
         <div class="row" id="form-conclusiones">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Conclusiones</h3>
             <div class="form-group">
               <textarea
@@ -539,15 +574,19 @@
               ></textarea>
             </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
-          <div class="col-md-12"></div>
+          <div class="col-md-1"></div>
+          <div class="col-md-10"></div>
         </div>
+        <div class="col-md-1"></div>
       </section>
       <!--Comentarios y discusión-->
-      <section id="sec-journal">
+      <section id="sec-comentarios">
         <div class="row" id="form-journal">
-          <div class="col-md-12 columna">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 columna">
             <h3>Comentarios y discusión</h3>
             <p>
               En esta sección puedes agregar comentarios. Se podrá comentar el
@@ -577,13 +616,17 @@
               </div>
             </form>
           </div>
+          <div class="col-md-1"></div>
         </div>
         <div class="row">
+          <div class="col-md-1"></div>
           <div class="col-md-12 columna"></div>
         </div>
+        <div class="col-md-1"></div>
       </section>
       <div class="row" style="padding-bottom: 60px;">
-        <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
           <button
             class="custom-btn-dark-blue btn btn-block"
             id="btn-guardar-estado"
@@ -591,6 +634,7 @@
             Guardar Cambios
           </button>
         </div>
+        <div class="col-md-1"></div>
       </div>
     </div>
 
