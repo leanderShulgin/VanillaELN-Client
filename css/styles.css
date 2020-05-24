@@ -199,6 +199,7 @@ footer ul li {
 }
 .entrada-journal-card {
   margin-bottom: 10px;
+  box-shadow: 0px 2px 4px rgba(119, 113, 99, 0.1);
 }
 .entrada-journal-card p {
   margin: 0px;
@@ -206,10 +207,20 @@ footer ul li {
 
 .entrada-journal-card .card-body {
   padding: 10px;
+  
 }
 .entrada-journal-card .card-header {
   background-color: white;
   border: none;
+}
+
+.entrada-journal-card .card-footer {
+  padding: 10px;
+  border: none;
+  background: rgb(250, 249, 248);
+  font-size: 0.8em;
+  color: rgb(79, 139, 139);
+  box-shadow: inset 0px 2px 4px rgba(119, 113, 99, 0.1);
 }
 
 .j-entry-username {
