@@ -180,7 +180,11 @@ footer ul li {
   color: rgb(58, 113, 175);
   font-weight: 400;
   font-size: 0.8em;
-  padding: 10px 0px;
+}
+
+.icono-entrada-journal {
+  padding: 0px 4px;
+  color: rgb(93, 95, 97);
 }
 
 .journal-entry {
@@ -192,6 +196,26 @@ footer ul li {
 #visor-de-registros {
   max-height: 80vh;
   overflow-y: auto;
+}
+.entrada-journal-card {
+  margin-bottom: 10px;
+}
+.entrada-journal-card p {
+  margin: 0px;
+}
+
+.entrada-journal-card .card-body {
+  padding: 10px;
+}
+.entrada-journal-card .card-header {
+  background-color: white;
+  border: none;
+}
+
+.j-entry-username {
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 0px 10px;
 }
 
 /* Comentarios */

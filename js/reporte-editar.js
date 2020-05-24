@@ -224,23 +224,6 @@ function nuevoRegistro() {
   mostrarRegistros();
 }
 
-function mostrarRegistros() {
-  console.log("registros:", state.registros);
-  //Muestra los posteos desde el state
-  qs("#visor-de-registros").innerHTML = ""; //limpio el visor
-  for (var i = 0; i < state.registros.length; i++) {
-    qs("#visor-de-registros").innerHTML +=
-      "<p class='journal-entry'>" +
-      '<span class="timeStamp">' +
-      fechaHora(state.registros[i].hora) +
-      " - " +
-      state.registros[i].user.apodo +
-      " : </span><br />" +
-      state.registros[i].texto +
-      "</p>";
-  }
-}
-
 // Comentarios y discusion
 
 function nuevoComentario() {
@@ -261,23 +244,6 @@ function nuevoComentario() {
   });
   qs("#comentario").value = ""; //limpio el campo
   mostrarComentarios();
-}
-
-function mostrarComentarios() {
-  console.log("comentarios:", state.comentarios);
-  //Muestra los posteos desde el state
-  qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
-  for (var i = 0; i < state.comentarios.length; i++) {
-    qs("#visor-de-comentarios").innerHTML +=
-      "<p class='journal-entry'>" +
-      '<span class="timeStamp">' +
-      fechaHora(state.comentarios[i].hora) +
-      " - " +
-      state.comentarios[i].user.apodo +
-      " : </span><br />" +
-      state.comentarios[i].texto +
-      "</p>";
-  }
 }
 
 // Leer campos:
@@ -497,12 +463,59 @@ function mostrarReaccion() {
   qs("#reaccion-smiles").innerText = smiles;
 }
 
+function mostrarRegistros() {
+  console.log("registros:", state.registros);
+  //Muestra los posteos desde el state
+  qs("#visor-de-registros").innerHTML = ""; //limpio el visor
+  for (var i = 0; i < state.registros.length; i++) {
+    qs("#visor-de-registros").innerHTML +=
+      "<div class='card entrada-journal-card'>" +
+      "<div class='card-header'>" +
+      "<p class='d-flex justify-content-between'>" +
+      "<span class='timeStamp'>" +
+      fechaHora(state.registros[i].hora) +
+      "</span>" +
+      "<span class='cont-btn-entrada-journal'>" +
+      "<i class='far fa-edit icono-entrada-journal'></i><i class='far fa-trash-alt icono-entrada-journal'>" +
+      "</i></span>" +
+      "</p>" +
+    "</div>" +
+      "<div class='card-body'>" +
+      "<p class='d-flex justify-content-between'>" +
+      "<span class='j-entry-username'>" +
+      state.registros[i].user.apodo +
+      " : </span>" +
+      "</p>" +
+      "<p class='journal-entry'>" +
+      state.registros[i].texto +
+      "</p></div>" +
+      "</div>";
+  }
+}
+
 function mostrarReporte() {
   // Muestra el reporte a partir del state
   mostrarEncabezado();
   mostrarCamposUnicos();
   mostrarReactivos();
   mostrarRegistros();
+}
+
+function mostrarComentarios() {
+  console.log("comentarios:", state.comentarios);
+  //Muestra los posteos desde el state
+  qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
+  for (var i = 0; i < state.comentarios.length; i++) {
+    qs("#visor-de-comentarios").innerHTML +=
+      "<div class='card'><div class='card-body'><p class='journal-entry'>" +
+      '<span class="timeStamp">' +
+      fechaHora(state.comentarios[i].hora) +
+      " - " +
+      state.comentarios[i].user.apodo +
+      " ha comentado: </span><br />" +
+      state.comentarios[i].texto +
+      "</p></div></div>";
+  }
 }
 
 // Recuperar info de la base de datos:
@@ -529,6 +542,7 @@ function cargarReporteDeDB(repId) {
       encabezadoModoEdit();
       if (state.reaccion.smiles.length > 0) {
         mostrarReaccion();
+        mostrarComentarios();
       }
     });
 }
@@ -619,10 +633,7 @@ function setup() {
     var id = params.get("_id");
     cargarReporteDeDB(id);
 
-    qs("#btn-guardar-estado").addEventListener("click", function (e) {
-      e.preventDefault();
-      guardarCambios();
-    });
+    qs("#btn-guardar-estado").setAttribute("style", "display: none");
 
     qs("#btn-nav-guardar").addEventListener("click", function (e) {
       e.preventDefault();
