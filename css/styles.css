@@ -10,7 +10,7 @@
 
 body,
 header,
-#main-container {
+section {
   background-color: #faf8eb;
 }
 
@@ -69,7 +69,7 @@ header {
 
 footer {
   background-color: rgb(33, 37, 41);
-  padding: 20px;
+  padding: 60px 10px;
   margin: 0;
 }
 
@@ -86,15 +86,28 @@ footer ul li {
   padding: 10px;
 }
 
+.footer-reporte h3 {
+  color: rgb(101, 230, 191);
+}
+
+.footer-reporte .explicacion-seccion {
+  color: rgb(252, 252, 252);
+}
+
+.footer-reporte label {
+  color: white;
+}
+
 #main-container {
   padding-top: 56px;
+  background-color: rgb(33, 37, 41);
 }
 
 .columna {
   padding: 0px 20px;
 }
 
-/* NavBar */
+/* NavBar ------------------------------------------------*/
 
 .nav-round-btn-icon {
   vertical-align: middle;
@@ -136,7 +149,7 @@ footer ul li {
   padding: 2px;
 }
 
-/* Botones*/
+/* Botones---------------------------------------------------------*/
 .custom-btn-dark-blue {
   padding: 10px;
   background-color: rgb(49, 55, 71);
@@ -147,13 +160,25 @@ footer ul li {
   font-size: 0.9em;
   box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
+
+.custom-btn-azul-claro {
+  padding: 10px;
+  background-color: rgb(48, 143, 172);
+  border-radius: 1px;
+  color: rgb(253, 253, 253);
+  border: none;
+  margin: 10px 0;
+  font-size: 0.9em;
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
 .btn-default {
   border: solid;
   border-width: 1px;
   background: white;
   border-color: rgba(49, 55, 71, 0.3);
 }
-/*- - - -  S E C C I O N E S - - - - */
+/*------------ SECCIONES -------------------------------------- */
 
 #nav-planilla-ensayo .navbar-brand {
   color: rgb(248, 109, 16);
@@ -175,11 +200,12 @@ footer ul li {
   min-width: 34px;
 }
 
-/* Journal (Registros del experimento) */
+/* Journal (Registros del experimento)-------------------------------- */
+
 .timeStamp {
   color: rgb(58, 113, 175);
   font-weight: 400;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .icono-entrada-journal {
@@ -190,10 +216,12 @@ footer ul li {
 .journal-entry {
   background: white;
   margin: 0;
-  padding: 10px;
+  padding: 0px 10px;
+  font-size: 0.8em;
 }
 
 #visor-de-registros {
+  padding: 10px;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -207,35 +235,38 @@ footer ul li {
 
 .entrada-journal-card .card-body {
   padding: 10px;
-  
 }
 .entrada-journal-card .card-header {
   background-color: white;
   border: none;
+  padding: 10px;
 }
 
 .entrada-journal-card .card-footer {
   padding: 10px;
   border: none;
   background: rgb(250, 249, 248);
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: rgb(79, 139, 139);
   box-shadow: inset 0px 2px 4px rgba(119, 113, 99, 0.1);
 }
 
 .j-entry-username {
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 0.7em;
   padding: 0px 10px;
 }
 
-/* Comentarios */
+/* Comentarios----------------------------------------------- */
+
 #visor-de-comentarios {
   max-height: 80vh;
   overflow-y: auto;
+  padding: 10px;
+  background-color: #faf8eb;
 }
 
-/* Kekule */
+/* Kekule ----------------------------------------------------*/
 
 #chem-editor {
   overflow-x: auto;
@@ -314,7 +345,7 @@ footer ul li {
   color: rgb(248, 109, 16);
 }
 
-/* Version de escritorio */
+/* Version de escritorio --------------------------------------*/
 
 @media only screen and (min-width: 768px) {
   h1 {
@@ -343,5 +374,23 @@ footer ul li {
 
   .custom-btn-dark-blue {
     font-size: 1em;
+  }
+
+  .timeStamp {
+    font-size: 0.8em;
+  }
+
+  .journal-entry {
+    font-size: 0.9em;
+  }
+  .entrada-journal-card .card-footer {
+    font-size: 0.9em;
+  }
+
+  .j-entry-username {
+    font-size: 0.8em;
+  }
+  .entrada-journal-card .card-footer {
+    font-size: 0.8em;
   }
 }

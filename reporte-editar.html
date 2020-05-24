@@ -101,7 +101,10 @@
         </li>
       </ul>
     </nav>
-    <div class="container-fluid" id="main-container">
+    <div
+      class="container-fluid"
+      id="main-container"
+    >
       <header>
         <div class="row">
           <div class="col-md-1"></div>
@@ -559,10 +562,10 @@
         </div>
       </section>
       <!--Conclusiones-->
-      <section id="sec-conclusiones">
+      <section id="sec-conclusiones" style="padding-bottom: 60px;">
         <div class="row" id="form-conclusiones">
           <div class="col-md-1"></div>
-          <div class="col-md-10 columna">
+          <div class="col-md-10">
             <h3>Conclusiones</h3>
             <div class="form-group">
               <textarea
@@ -583,18 +586,34 @@
         <div class="col-md-1"></div>
       </section>
       <!--Comentarios y discusión-->
-      <section id="sec-comentarios">
+
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <button
+            class="custom-btn-dark-blue btn btn-block"
+            id="btn-guardar-estado"
+          >
+            Guardar Cambios
+          </button>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <footer class="footer-reporte" id="sec-comentarios">
         <div class="row" id="form-journal">
           <div class="col-md-1"></div>
           <div class="col-md-10 columna">
             <h3>Comentarios y discusión</h3>
-            <p>
+            <p class="explicacion-seccion">
               En esta sección puedes agregar comentarios. Se podrá comentar el
               reporte incluso cuando el mismo se encuentre finalizado. Utiliza
               esta sección para interactuar con tu equipo, hacer aclaraciones o
               para discutir los resultados del experimento
             </p>
-            <div id="visor-de-comentarios"></div>
+            <div
+              id="visor-de-comentarios"
+              style="background-color: #faf8eb;"
+            ></div>
             <hr />
             <form action="#">
               <div class="form-group">
@@ -608,7 +627,7 @@
                   id="txtarea-registro"
                 ></textarea>
                 <button
-                  class="custom-btn-dark-blue"
+                  class="custom-btn-azul-claro"
                   id="btn-agregar-comentario"
                 >
                   Agregar comentario
@@ -623,19 +642,7 @@
           <div class="col-md-12 columna"></div>
         </div>
         <div class="col-md-1"></div>
-      </section>
-      <div class="row" style="padding-bottom: 60px;">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <button
-            class="custom-btn-dark-blue btn btn-block"
-            id="btn-guardar-estado"
-          >
-            Guardar Cambios
-          </button>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
+      </footer>
     </div>
 
     <!-- Kekule -->
