@@ -7,7 +7,7 @@ function fechaHora(date) {
   var hora = ("0" + date.getHours()).slice(-2);
   var minutos = ("0" + date.getMinutes()).slice(-2);
   var segundos = ("0" + date.getSeconds()).slice(-2);
-  var dia = ("0" + (date.getDate() + 1)).slice(-2);
+  var dia = ("0" + (date.getDate())).slice(-2);
   var mes = ("0" + (date.getMonth() + 1)).slice(-2);
   var anio = date.getFullYear();
   return (
