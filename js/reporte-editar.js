@@ -371,8 +371,33 @@ function nuevoComentario() {
       apodo: user.apodo,
     },
   });
-  qs("#comentario").value = ""; //limpio el campo
   mostrarComentarios();
+  limpiarCampos("#sec-comentarios");
+}
+
+function actualizarComentario(index) {
+  state.comentarios[index].texto = qs("#comentario");
+  mostrarComentarios();
+  limpiarCampos("#sec-comentarios");
+  // Vuelvo la funcion del boton a crear nuevo
+  qs("#btn-agregar-comentario").innerText = "Agregar comentario";
+  qs("#btn-agregar-comentario").setAttribute("onclick", "nuevoComentario()");
+}
+
+function borrarComentario(index) {
+  // Eliminar reactivo del array
+  state.comentarios.splice(index, 1);
+  // Regenerar tabla reactivos
+  mostrarComentarios();
+}
+
+function editarComentario(index) {
+  qs("#comentario").value = state.comentarios[index].texto;
+  qs("#btn-agregar-comentario").innerText = "Aplicar cambios";
+  qs("#btn-agregar-comentario").setAttribute(
+    "onclick",
+    "actualizarComentario(" + index + ")"
+  );
 }
 
 // Leer campos:
@@ -780,10 +805,10 @@ qs("#btn-agregar-entrada").addEventListener("click", function (e) {
 });
 
 // Comentarios:
-qs("#btn-agregar-comentario").addEventListener("click", function (e) {
-  e.preventDefault();
-  nuevoComentario();
-});
+// qs("#btn-agregar-comentario").addEventListener("click", function (e) {
+//   e.preventDefault();
+//   nuevoComentario();
+// });
 
 // Main--------------------------------------------
 
