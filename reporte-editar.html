@@ -101,10 +101,7 @@
         </li>
       </ul>
     </nav>
-    <div
-      class="container-fluid"
-      id="main-container"
-    >
+    <div class="container-fluid" id="main-container">
       <header>
         <div class="row">
           <div class="col-md-1"></div>
@@ -559,6 +556,160 @@
             </div>
           </div>
           <div class="col-md-1"></div>
+        </div>
+      </section>
+      <!--Productos-->
+      <section id="sec-productos">
+        <div class="row" id="form-productps">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h3>Productos</h3>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10" id="col-tabla-reactivos">
+            <h4>Tabla de Productos</h4>
+            <p>
+              Introduce en esta tabla todos los productos que se han obtenido en
+              el experimento
+            </p>
+            <table
+              class="table table-responsive-md table-striped"
+              id="tabla-productos"
+            >
+              <thead class="thead-dark">
+                <tr>
+                  <th></th>
+                  <th style="color: rgb(248, 131, 53);">Código</th>
+                  <th style="color: rgb(89, 198, 231);">Descripción</th>
+                  <th style="color: rgb(89, 198, 231);">Cantidad</th>
+                  <th style="color: rgb(89, 198, 231);">Pureza [%p/p]</th>
+                  <th style="color: rgb(89, 198, 231);">Clase</th>
+                  <th style="color: rgb(89, 198, 231);">Destino</th>
+                </tr>
+              </thead>
+              <tbody id="body-tabla-productos"></tbody>
+            </table>
+            <hr />
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h4>Agregar un producto</h4>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+
+        <div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="codigo-producto">Código:</label>
+                <input
+                  type="text"
+                  name="codigo-producto"
+                  id="codigo-producto"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="descripcion-producto">Descripción:</label>
+                <input
+                  type="text"
+                  name="descripcion-prpoducto"
+                  id="descripcion-propducto"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cantidad-producto">Cantidad:</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    step="any"
+                    name="cantidad-producto"
+                    id="cantidad-producto"
+                    class="form-control col-sm-8 col-lg-9"
+                  />
+                  <select
+                    class="form-control col-sm-4 col-lg-3"
+                    name="unidad-cant-prod"
+                    id="unidad-cant-prod"
+                  >
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="kg">kg</option>
+                    <option value="l">l</option>
+                    <option value="ml">ml</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 columna">
+              <div class="form-group">
+                <label for="pureza-producto">Pureza:</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    step="any"
+                    name="pureza-producto"
+                    id="pureza-producto"
+                    class="form-control col-sm-8 col-lg-9"
+                  />
+                  <select
+                    class="form-control col-sm-4 col-lg-3"
+                    name="unidad-pza-prod"
+                    id="unidad-pza-prod"
+                  >
+                    <option value="%p/p">%p/p</option>
+                    <option value="%p/v">%p/p</option>
+                    <option value="molar">molar</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="clase-producto">Clase:</label>
+                <input
+                  type="text"
+                  name="clase-producto"
+                  id="clase-producto"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="destino-producto">Destino:</label>
+                <input
+                  type="text"
+                  name="destino-producto"
+                  id="destino-producto"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <!-- <div class="form-group" id=""> -->
+              <button
+                class="custom-btn-dark-blue"
+                id="btn-agregar-producto"
+                onclick="crearProducto()"
+              >
+                Agregar producto
+              </button>
+              <!-- </div> -->
+            </div>
+            <div class="col-md-1"></div>
+          </div>
         </div>
       </section>
       <!--Conclusiones-->
