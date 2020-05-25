@@ -83,8 +83,10 @@
               <a class="dropdown-item" href="#sec-seguridad">Seguridad</a>
               <a class="dropdown-item" href="#sec-equipo">Equipo</a>
               <a class="dropdown-item" href="#sec-journal">Journal</a>
-              <a class="dropdown-item" href="#sec-resultados">Resultados</a>
+              <a class="dropdown-item" href="#sec-productos">Productos</a>
+              <a class="dropdown-item" href="#sec-ambiental">Ambiental</a>
               <a class="dropdown-item" href="#sec-conclusiones">Conclusiones</a>
+              <a class="dropdown-item" href="#sec-comentarios">Comentarios</a>
             </div>
           </li>
         </ul>
@@ -476,88 +478,6 @@
           <div class="col-md-12 columna"></div>
         </div>
       </section>
-      <!-- Resultados y ambiental -->
-      <section id="sec-resultados">
-        <div class="row" id="form-resultados">
-          <div class="col-md-1"></div>
-          <div class="col-md-5 columna">
-            <!--Resultados-->
-            <h3>Resultados</h3>
-            <div class="form-group">
-              <label for="masa-producto">Masa obtenida de producto (g):</label>
-              <input
-                type="number"
-                name="masa-producto"
-                id="masa-producto"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="pureza-producto">Pureza del producto (% p/p):</label>
-              <input
-                type="number"
-                name="pureza-producto"
-                id="pureza-producto"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="masa-teorica">Masa teórica a obtener (g):</label>
-              <input
-                type="number"
-                name="masa-teorica"
-                id="masa-teorica"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="rendimiento">Rendimiento (%):</label>
-              <input
-                type="number"
-                name="rendimiento"
-                id="rendimiento"
-                class="form-control"
-              />
-            </div>
-          </div>
-          <div class="col-md-5 columna">
-            <!--Ambiental-->
-            <h3>Ambiental</h3>
-            <div class="form-group">
-              <label for="efluentes-organicos"
-                >Masa de efluentes orgánicos (g):</label
-              >
-              <input
-                type="number"
-                name="efluentes-organicos"
-                id="efluentes-organicos"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="efluentes-acuosos"
-                >Masa de efluentes acuosos (g):</label
-              >
-              <input
-                type="number"
-                name="efluentes-acuosos"
-                id="efluentes-acuosos"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="factorE">Factor E:</label>
-              <input
-                type="number"
-                name="factorE"
-                id="factorE"
-                class="form-control"
-              />
-            </div>
-          </div>
-          <div class="col-md-1"></div>
-        </div>
-      </section>
       <!--Productos-->
       <section id="sec-productos">
         <div class="row" id="form-productps">
@@ -570,7 +490,7 @@
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-10" id="col-tabla-reactivos">
-            <h4>Tabla de Productos</h4>
+            <h4>Tabla de Productos:</h4>
             <p>
               Introduce en esta tabla todos los productos que se han obtenido en
               el experimento
@@ -599,7 +519,7 @@
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-10">
-            <h4>Agregar un producto</h4>
+            <h4>Agregar un producto:</h4>
           </div>
           <div class="col-md-1"></div>
         </div>
@@ -621,8 +541,8 @@
                 <label for="descripcion-producto">Descripción:</label>
                 <input
                   type="text"
-                  name="descripcion-prpoducto"
-                  id="descripcion-propducto"
+                  name="descripcion-producto"
+                  id="descripcion-producto"
                   class="form-control"
                 />
               </div>
@@ -652,13 +572,13 @@
             </div>
             <div class="col-md-5 columna">
               <div class="form-group">
-                <label for="pureza-producto">Pureza:</label>
+                <label for="pza-producto">Pureza:</label>
                 <div class="input-group">
                   <input
                     type="number"
                     step="any"
-                    name="pureza-producto"
-                    id="pureza-producto"
+                    name="pza-producto"
+                    id="pza-producto"
                     class="form-control col-sm-8 col-lg-9"
                   />
                   <select
@@ -712,6 +632,25 @@
           </div>
         </div>
       </section>
+      <!-- Ambiental -->
+      <section id="sec-ambiental">
+        <div class="row" id="form-resultados">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h3>Ambiental</h3>
+            <div class="form-group">
+              <label for="factorE">Factor E:</label>
+              <input
+                type="number"
+                name="factorE"
+                id="factorE"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </section>
       <!--Conclusiones-->
       <section id="sec-conclusiones" style="padding-bottom: 60px;">
         <div class="row" id="form-conclusiones">
@@ -753,7 +692,7 @@
       <footer class="footer-reporte" id="sec-comentarios">
         <div class="row" id="form-journal">
           <div class="col-md-1"></div>
-          <div class="col-md-10 columna">
+          <div class="col-md-10">
             <h3>Comentarios y discusión</h3>
             <p class="explicacion-seccion">
               En esta sección puedes agregar comentarios. Se podrá comentar el

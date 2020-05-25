@@ -10,7 +10,7 @@ var state = {
   seguridad: "",
   equipo: "",
   registros: [],
-  resultados: {},
+  productos: [],
   ambiental: {},
   conclusiones: "",
   comentarios: [],
@@ -159,13 +159,13 @@ function escalarExperimento(factor) {
 }
 
 function cargarCamposReactivo(r) {
-  (qs("#nombre-reactivo").value = r.nombre),
-    (qs("#origen-reactivo").value = r.origen),
-    (qs("#masa-reactivo").value = r.masa);
+  qs("#nombre-reactivo").value = r.nombre;
+  qs("#origen-reactivo").value = r.origen;
+  qs("#masa-reactivo").value = r.masa;
   qs("#pureza-reactivo").value = r.pureza;
-  (qs("#pm-reactivo").value = r.pm),
-    (qs("#moles-reactivo").value = r.moles),
-    (qs("#rm-reactivo").value = r.rm);
+  qs("#pm-reactivo").value = r.pm;
+  qs("#moles-reactivo").value = r.moles;
+  qs("#rm-reactivo").value = r.rm;
 }
 
 function crearReactivo() {
@@ -200,6 +200,114 @@ function editarReactivo(index) {
   // Cargar este reactivo en los campos de edicion
   // modificar la funcion del boton de guardado para que al clickear
   // actualice la entrada en lugar de crear una nueva
+}
+
+// Tabla de productos
+
+function nuevoProducto() {
+  console.log("pureza", qs("#pza-producto").value);
+  var data = {
+    codigo: qs("#codigo-producto").value,
+    descripcion: qs("#descripcion-producto").value,
+    cantidad: {
+      valor: Number(qs("#cantidad-producto").value),
+      unidad: qs("#unidad-cant-prod").value,
+    },
+    pureza: {
+      valor: Number(qs("#pza-producto").value),
+      unidad: qs("#unidad-pza-prod").value,
+    },
+    clase: qs("#clase-producto").value,
+    destino: qs("#destino-producto").value,
+  };
+  console.log("nuevo producto:", data);
+  return data;
+}
+
+function generarFilasTablaProductos(productos) {
+  console.log("voy a mostrar estos productos: ", productos);
+  filas = "";
+  for (var i = 0; i < productos.length; i++) {
+    //
+    filas +=
+      "<tr>" +
+      "<td><button onclick='editarProducto(" +
+      i +
+      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      i +
+      "'><i class='far fa-edit'></i></button>" +
+      "<button onclick='borrarProducto(" +
+      i +
+      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      i +
+      "'><i class='far fa-trash-alt'></i></button></td>" +
+      "<td>" +
+      productos[i].codigo +
+      "</td>" +
+      "<td>" +
+      productos[i].descripcion +
+      "</td>" +
+      "<td>" +
+      tableNumber(productos[i].cantidad.valor) +
+      " " +
+      productos[i].cantidad.unidad +
+      "</td>" +
+      "<td>" +
+      tableNumber(productos[i].pureza.valor) +
+      " " +
+      productos[i].pureza.unidad +
+      "</td>" +
+      "<td>" +
+      productos[i].clase +
+      "</td>" +
+      "<td>" +
+      productos[i].destino +
+      "</td>" +
+      "</tr>";
+  }
+  return filas;
+}
+
+function cargarCamposProducto(p) {
+  qs("#codigo-producto").value = p.codigo;
+  qs("#descripcion-producto").value = p.descripcion;
+  qs("#cantidad-producto").value = Number(p.cantidad.valor);
+  qs("#unidad-cant-prod").value = p.cantidad.unidad;
+  qs("#pza-producto").value = Number(p.pureza.valor);
+  qs("#unidad-pza-prod").value = p.pureza.unidad;
+  qs("#clase-producto").value = p.clase;
+  qs("#destino-producto").value = p.destino;
+}
+
+function crearProducto() {
+  state.productos.push(nuevoProducto());
+  mostrarProductos();
+}
+
+function actualizarProducto(index) {
+  state.productos[index] = nuevoProducto();
+  mostrarProductos();
+  // Vuelvo la funcion del boton a crear nuevo
+  qs("#btn-agregar-producto").innerText = "Agregar producto";
+  qs("#btn-agregar-producto").setAttribute("onclick", "crearProducto()");
+}
+
+function borrarProducto(index) {
+  console.log("borrando producto", state.productos[index]);
+  // Eliminar reactivo del array
+  state.productos.splice(index, 1);
+  // Regenerar tabla reactivos
+  mostrarProductos();
+}
+
+function editarProducto(index) {
+  console.log("editando producto", state.productos[index]);
+  cargarCamposProducto(state.productos[index]);
+  qs("#btn-agregar-producto").innerText = "Aplicar cambios";
+  qs("#btn-agregar-producto").setAttribute(
+    "onclick",
+    "actualizarProducto(" + index + ")"
+  );
 }
 
 // Journal
@@ -262,20 +370,9 @@ function leerEncabezado() {
   };
 }
 
-function leerResultados() {
-  return {
-    masaProducto: qs("#masa-producto").value,
-    purezaProducto: qs("#pureza-producto").value,
-    masaTeorica: qs("#masa-teorica").value,
-    rendimiento: qs("#rendimiento").value,
-  };
-}
-
 function leerAmbiental() {
   return {
-    efsOrganicos: qs("#efluentes-organicos").value,
-    efsAcuosos: qs("#efluentes-acuosos").value,
-    factorE: qs("#rendimiento").value,
+    factorE: qs("#factorE").value,
   };
 }
 
@@ -298,8 +395,8 @@ function leerTodosLosCampos(noheader = false) {
     seguridad: qs("#seguridad").value,
     equipo: qs("#equipo").value,
     registros: state.registros,
-    resultados: leerResultados(),
     ambiental: leerAmbiental(),
+    productos: state.productos,
     conclusiones: qs("#conclusiones").value,
     comentarios: state.comentarios,
   };
@@ -422,7 +519,6 @@ function soloEncabezado() {
 function soloCamposRef() {
   console.log("solo campos ref");
   qs("#sec-journal").setAttribute("style", "display: none;");
-  qs("#sec-resultados").setAttribute("style", "display: none;");
   qs("#sec-conclusiones").setAttribute("style", "display: none;");
   qs("#chem-editor").setAttribute("style", "display: none;");
 }
@@ -489,14 +585,20 @@ function mostrarRegistros() {
       "<p class='journal-entry'>" +
       state.registros[i].texto +
       "</p></div>" +
-      "<div class='card-footer d-flex flex-column flex-sm-row justify-content-between'>"+
-      "<span><strong>T: </strong>56.4°C</span>"+
-      "<span><strong>P: </strong>0.89 bar</span>"+
-      "<span><strong>V: </strong>546 ml</span>"+
-      "<span><strong>%Dosificación: </strong>50 %</span>"+
-      "<span><strong>Muestra: </strong>435</span>"+
+      "<div class='card-footer d-flex flex-column flex-sm-row justify-content-between'>" +
+      "<span><strong>T: </strong>56.4°C</span>" +
+      "<span><strong>P: </strong>0.89 bar</span>" +
+      "<span><strong>V: </strong>546 ml</span>" +
+      "<span><strong>%Dosificación: </strong>50 %</span>" +
+      "<span><strong>Muestra: </strong>435</span>" +
       "</div></div>";
   }
+}
+
+function mostrarProductos() {
+  qs("#body-tabla-productos").innerHTML = generarFilasTablaProductos(
+    state.productos
+  );
 }
 
 function mostrarReporte() {
@@ -574,6 +676,7 @@ function cargarReporteDeDB(repId) {
       if (state.reaccion.smiles.length > 0) {
         mostrarReaccion();
         mostrarComentarios();
+        mostrarProductos();
       }
     });
 }
