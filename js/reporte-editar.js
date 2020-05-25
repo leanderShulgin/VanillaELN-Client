@@ -376,7 +376,7 @@ function nuevoComentario() {
 }
 
 function actualizarComentario(index) {
-  state.comentarios[index].texto = qs("#comentario");
+  state.comentarios[index].texto = qs("#comentario").value;
   mostrarComentarios();
   limpiarCampos("#sec-comentarios");
   // Vuelvo la funcion del boton a crear nuevo
