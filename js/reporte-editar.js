@@ -82,6 +82,23 @@ function generarOpcionesProyectos(proyectos) {
   }
   return options;
 }
+
+// Reacción:
+function saveReaction() {
+  // requiere composer.js y kekule!
+  var obj = getFullDocument();
+  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
+  //   console.log("Kekule JSON: ", typeof molJson);
+  var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
+  var smiles = Kekule.IO.saveFormatData(rxn, "smi");
+  console.log(smiles);
+  painterMolecule2D(rxn);
+  qs("#reaccion-smiles").innerText = smiles;
+  state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
+  console.log("Reaccion actualizó el state:", state);
+  composer.newDoc();
+}
+
 // Tabla de reactivos
 
 function nuevoReactivo() {
@@ -170,12 +187,14 @@ function cargarCamposReactivo(r) {
 
 function crearReactivo() {
   state.reactivos.push(nuevoReactivo());
+  limpiarCampos("#sec-reactivos");
   qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
 }
 
 function actualizarReactivo(index) {
   state.reactivos[index] = nuevoReactivo();
   mostrarReactivos();
+  limpiarCampos("#sec-reactivos");
   // Vuelvo la funcion del boton a crear nuevo
   qs("#btn-agregar-reactivo").innerText = "Agregar reactivo";
   qs("#btn-agregar-reactivo").setAttribute("onclick", "crearReactivo()");
@@ -282,11 +301,13 @@ function cargarCamposProducto(p) {
 function crearProducto() {
   state.productos.push(nuevoProducto());
   mostrarProductos();
+  limpiarCampos("#sec-productos");
 }
 
 function actualizarProducto(index) {
   state.productos[index] = nuevoProducto();
   mostrarProductos();
+  limpiarCampos("#sec-productos");
   // Vuelvo la funcion del boton a crear nuevo
   qs("#btn-agregar-producto").innerText = "Agregar producto";
   qs("#btn-agregar-producto").setAttribute("onclick", "crearProducto()");
@@ -402,22 +423,6 @@ function leerTodosLosCampos(noheader = false) {
   };
 }
 
-// Reacción:
-function saveReaction() {
-  // requiere composer.js y kekule!
-  var obj = getFullDocument();
-  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
-  //   console.log("Kekule JSON: ", typeof molJson);
-  var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
-  var smiles = Kekule.IO.saveFormatData(rxn, "smi");
-  console.log(smiles);
-  painterMolecule2D(rxn);
-  qs("#reaccion-smiles").innerText = smiles;
-  state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
-  console.log("Reaccion actualizó el state:", state);
-  composer.newDoc();
-}
-
 // Actualizacion y guardado:
 
 function actualizarState(newReport = true) {
@@ -476,6 +481,27 @@ function guardarCambios() {
 }
 
 // Display
+
+function limpiarCampos(sectionIdQuery) {
+  var inputs = qs(sectionIdQuery).getElementsByTagName("input");
+  var textareas = qs(sectionIdQuery).getElementsByTagName("textarea");
+  console.log("inputs:", inputs);
+  console.log("textareas:", textareas);
+  if (inputs.length > 0) {
+    for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].type === "text") {
+        inputs[i].value = "";
+      } else if (inputs[i].type === "number") {
+        inputs[i].value = null;
+      }
+    }
+  }
+  if (textareas.length > 0) {
+    for (var j = 0; j < textareas.length; j++) {
+      textareas[j].value = "";
+    }
+  }
+}
 
 function encabezadoModoEdit() {
   //Deshabilito los campos del encabezado
