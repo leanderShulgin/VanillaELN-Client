@@ -675,8 +675,14 @@ function mostrarComentarios() {
       state.comentarios[i].user.apodo +
       " ha comentado: </span>" +
       "<span class='cont-btn-entrada-journal'>" +
-      "<i class='far fa-edit icono-entrada-journal'></i>" +
-      "<i class='far fa-trash-alt icono-entrada-journal'></i>" +
+      "<button onclick='editarComentario(" +
+      i +
+      ")' class='btn btn-default btn-sm btn-edit-rgnt'>" +
+      "<i class='far fa-edit'></i></button>" +
+      "<button onclick='borrarComentario(" +
+      i +
+      ")'class='btn btn-default btn-sm btn-del-rgnt'>" +
+      "<i class='far fa-trash-alt'></i></button>" +
       "</span></p></div>" +
       "<div class='card-body'>" +
       "<p class='journal-entry'>" +
