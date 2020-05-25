@@ -377,6 +377,7 @@ function nuevoComentario() {
 
 function actualizarComentario(index) {
   state.comentarios[index].texto = qs("#comentario").value;
+  state.comentarios[index].editado = true;
   mostrarComentarios();
   limpiarCampos("#sec-comentarios");
   // Vuelvo la funcion del boton a crear nuevo
@@ -397,6 +398,38 @@ function editarComentario(index) {
   qs("#btn-agregar-comentario").setAttribute(
     "onclick",
     "actualizarComentario(" + index + ")"
+  );
+}
+
+function contenidoCardComentario(index, comentario) {
+  var tagEditado = "";
+  if (comentario.editado) {
+    tagEditado = " (Editado) ";
+  }
+  return (
+    "<div class='card entrada-journal-card'>" +
+    "<div class='card-header'>" +
+    "<p class='d-flex justify-content-between'>" +
+    "<span class='timeStamp'>" +
+    fechaHora(comentario.hora) +
+    tagEditado +
+    " - " +
+    comentario.user.apodo +
+    " ha comentado: </span>" +
+    "<span class='cont-btn-entrada-journal'>" +
+    "<button onclick='editarComentario(" +
+    index +
+    ")' class='btn btn-default btn-sm btn-edit-rgnt'>" +
+    "<i class='far fa-edit'></i></button>" +
+    "<button onclick='borrarComentario(" +
+    index +
+    ")'class='btn btn-default btn-sm btn-del-rgnt'>" +
+    "<i class='far fa-trash-alt'></i></button>" +
+    "</span></p></div>" +
+    "<div class='card-body'>" +
+    "<p class='journal-entry'>" +
+    comentario.texto +
+    "</p></div></div>"
   );
 }
 
@@ -665,29 +698,10 @@ function mostrarComentarios() {
   //Muestra los posteos desde el state
   qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.comentarios.length; i++) {
-    qs("#visor-de-comentarios").innerHTML +=
-      "<div class='card entrada-journal-card'>" +
-      "<div class='card-header'>" +
-      "<p class='d-flex justify-content-between'>" +
-      "<span class='timeStamp'>" +
-      fechaHora(state.comentarios[i].hora) +
-      " - " +
-      state.comentarios[i].user.apodo +
-      " ha comentado: </span>" +
-      "<span class='cont-btn-entrada-journal'>" +
-      "<button onclick='editarComentario(" +
-      i +
-      ")' class='btn btn-default btn-sm btn-edit-rgnt'>" +
-      "<i class='far fa-edit'></i></button>" +
-      "<button onclick='borrarComentario(" +
-      i +
-      ")'class='btn btn-default btn-sm btn-del-rgnt'>" +
-      "<i class='far fa-trash-alt'></i></button>" +
-      "</span></p></div>" +
-      "<div class='card-body'>" +
-      "<p class='journal-entry'>" +
-      state.comentarios[i].texto +
-      "</p></div></div>";
+    qs("#visor-de-comentarios").innerHTML += contenidoCardComentario(
+      i,
+      state.comentarios[i]
+    );
   }
 }
 
