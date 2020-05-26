@@ -47,7 +47,7 @@ function generarFilasTabla(data) {
       data[i].objetivo +
       "</td>" +
       "<td>" +
-      data[i].resultados.rendimiento +
+      "" +
       "</td>" +
       "<td>" +
       data[i].conclusiones +
