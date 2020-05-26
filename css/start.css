@@ -11,10 +11,7 @@ header {
 .start-box {
   border-radius: 3px;
   box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.4);
-  /* min-height: 40%; */
-  /* margin-top: 20px; */
   padding: 15px;
-  margin-bottom: 20px
 }
 .start-box h4 {
   color: white;
@@ -45,16 +42,25 @@ header {
 .table-striped-orange > tbody > tr:nth-child(2n + 1) > td {
   background-color: rgb(255, 210, 152);
 }
+.texto-dashboard {
+  color: #faf8eb;
+}
+#titulo-dashboard {
+  color: rgb(101, 230, 191);
+}
 
-/* #box-proyectos {
-} */
+#box-proyectos {
+  height: 100%;
+}
+
+
 
 #box-proyectos-thead {
   background-color: rgb(97, 78, 65);
   color: white;
 }
 
-/* Box usuario */
+/* Box usuario--------------------------------------------------- */
 #box-usuario {
   background-color: #faf8eb;
 }
