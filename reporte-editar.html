@@ -450,33 +450,217 @@
           <div class="col-md-1"></div>
           <div class="col-md-10">
             <h3 style="margin-bottom: 20px;">Journal</h3>
-
+            <p>
+              En el Journal puedes llevar un registro de lo que ocurre en el
+              experimento. Crea entradas registrando acciones y observaciones.
+              Puedes incluir también los valores de tus mediciones y llevar un
+              registro de la toma de muestras.
+            </p>
             <div id="visor-de-registros"></div>
             <hr />
-            <form action="#">
-              <div class="form-group">
-                <label for="registro"
-                  >Utiliza la caja de texto de abajo para registrar todo lo que
-                  haces y observas durante el experimento:</label
-                >
-                <textarea
-                  name="registro"
-                  id="registro"
-                  cols="30"
-                  rows="5"
-                  class="form-control"
-                  id="txtarea-registro"
-                ></textarea>
-                <button class="custom-btn-dark-blue" id="btn-agregar-entrada">
-                  Agregar entrada
-                </button>
-              </div>
-            </form>
+            <div class="form-group">
+              <label for="registro">Ingresa un registro:</label>
+              <textarea
+                name="registro"
+                id="registro"
+                cols="30"
+                rows="5"
+                class="form-control"
+                id="txtarea-registro"
+              ></textarea>
+            </div>
           </div>
           <div class="col-md-1"></div>
         </div>
+        <div class="row" id="cont-campos-datos-journal" style="display: none;">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <h4>Muestra</h4>
+            <div class="form-group">
+              <span class="form-text text-muted">
+                Utiliza este campo cuando necesites registrar la toma de una
+                muestra para análisis en tu experimento. Puedes asignarle un
+                código identificatorio y añadir asociarla a un archivo mediante
+                un link</span
+              >
+              <label for="j-muestra-codigo">Codigo:</label>
+              <input
+                type="text"
+                id="j-muestra-codigo"
+                name="j-muestra-codigo"
+                class="form-control input-sm"
+              />
+            </div>
+            <div class="form-group">
+              <label for="j-muestra-codigo">Descripción:</label>
+              <input
+                type="text"
+                id="j-muestra-descripcion"
+                name="j-muestra-descripcion"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="j-muestra-link">Link:</label>
+              <input
+                type="text"
+                id="j-muestra-link"
+                name="j-muestra-link"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <h4>Datos</h4>
+            <div class="form-group" id="j-dato1-group">
+              <span class="form-text text-muted">
+                Con los campos de abajo puedes agregar hasta 3 mediciones de
+                datos numéricos, por ejemplo la temperatura o el porcentaje de
+                agregado de un reactivo. Los resultados se muestran al pie de la
+                entrada de texto</span
+              >
+              <label for="j-dato1-clase"></label>
+              <div class="input-group">
+                <select
+                  name="j-dato1-clase"
+                  id="j-dato1-clase"
+                  class="form-control"
+                >
+                  <option value="">Dato 1</option>
+                  <option value="T">Temperatura</option>
+                  <option value="P">Presión</option>
+                  <option value="M">Masa</option>
+                  <option value="V">Volumen</option>
+                  <option value="Mol">Moles</option>
+                  <option value="percent">Porcentaje</option>
+                </select>
+                <input type="number" class="form-control" id="j-dato1" />
+                <select
+                  name="j-dato1-unidad"
+                  id="j-dato1-unidad"
+                  class="form-control"
+                >
+                  <option value="">Unidad</option>
+                  <option value="C">°C</option>
+                  <option value="K">°C</option>
+                  <option value="mBar">mbar</option>
+                  <option value="Bar">bar</option>
+                  <option value="PSI">psi</option>
+                  <option value="mg">mg</option>
+                  <option value="g">g</option>
+                  <option value="kg">kg</option>
+                  <option value="ml">ml</option>
+                  <option value="l">l</option>
+                  <option value="mmol">mmol</option>
+                  <option value="mol">mol</option>
+                  <option value="%">%</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" id="j-dato2-group">
+              <label for="j-dato2-clase"></label>
+              <div class="input-group">
+                <select
+                  name="j-dato2-clase"
+                  id="j-dato2-clase"
+                  class="form-control"
+                >
+                  <option value="">Dato 2</option>
+                  <option value="T">Temperatura</option>
+                  <option value="P">Presión</option>
+                  <option value="M">Masa</option>
+                  <option value="V">Volumen</option>
+                  <option value="Mol">Moles</option>
+                  <option value="percent">Porcentaje</option>
+                </select>
+                <input type="number" class="form-control" id="j-dato2" />
+                <select
+                  name="j-dato2-unidad"
+                  id="j-dato2-unidad"
+                  class="form-control"
+                >
+                  <option value="">Unidad</option>
+                  <option value="C">°C</option>
+                  <option value="K">°C</option>
+                  <option value="mBar">mbar</option>
+                  <option value="Bar">bar</option>
+                  <option value="PSI">psi</option>
+                  <option value="mg">mg</option>
+                  <option value="g">g</option>
+                  <option value="kg">kg</option>
+                  <option value="ml">ml</option>
+                  <option value="l">l</option>
+                  <option value="mmol">mmol</option>
+                  <option value="mol">mol</option>
+                  <option value="%">%</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" id="j-dato3-group">
+              <label for="j-dato3-clase"></label>
+              <div class="input-group">
+                <select
+                  name="j-dato3-clase"
+                  id="j-dato3-clase"
+                  class="form-control"
+                >
+                  <option value="">Dato 3</option>
+                  <option value="T">Temperatura</option>
+                  <option value="P">Presión</option>
+                  <option value="M">Masa</option>
+                  <option value="V">Volumen</option>
+                  <option value="Mol">Moles</option>
+                  <option value="percent">Porcentaje</option>
+                </select>
+                <input type="number" class="form-control" id="j-dato3" />
+                <select
+                  name="j-dato3-unidad"
+                  id="j-dato3-unidad"
+                  class="form-control"
+                >
+                  <option value="">Unidad</option>
+                  <option value="C">°C</option>
+                  <option value="K">°C</option>
+                  <option value="mBar">mbar</option>
+                  <option value="Bar">bar</option>
+                  <option value="PSI">psi</option>
+                  <option value="mg">mg</option>
+                  <option value="g">g</option>
+                  <option value="kg">kg</option>
+                  <option value="ml">ml</option>
+                  <option value="l">l</option>
+                  <option value="mmol">mmol</option>
+                  <option value="mol">mol</option>
+                  <option value="%">%</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-1"></div>
+        </div>
         <div class="row">
-          <div class="col-md-12 columna"></div>
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <div class="form-group">
+              <button
+                class="custom-btn-dark-blue"
+                id="btn-agregar-registro"
+                onclick="nuevoRegistro()"
+              >
+                Agregar entrada
+              </button>
+              <button
+                id="btn-toggle-campos-datos-journal"
+                class="custom-btn-dark-blue"
+                style="background-color: white; color: rgb(49, 55, 71);"
+                onclick="toggleCamposDatosJournal()"
+              >
+                Mostrar Datos
+              </button>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
         </div>
       </section>
       <!--Productos-->
@@ -505,7 +689,7 @@
                   <th style="color: rgb(248, 131, 53);">Código</th>
                   <th style="color: rgb(89, 198, 231);">Descripción</th>
                   <th style="color: rgb(89, 198, 231);">Cantidad</th>
-                  <th style="color: rgb(89, 198, 231);">Pureza [%p/p]</th>
+                  <th style="color: rgb(89, 198, 231);">Pureza</th>
                   <th style="color: rgb(89, 198, 231);">Clase</th>
                   <th style="color: rgb(89, 198, 231);">Destino</th>
                   <th></th>
@@ -586,7 +770,7 @@
                     class="form-control col-sm-4 col-lg-3"
                     name="unidad-pza-prod"
                     id="unidad-pza-prod"
-                  ><option value=""></option>
+                    ><option value=""></option>
                     <option value="%p/p">%p/p</option>
                     <option value="%p/v">%p/v</option>
                     <option value="molar">molar</option>

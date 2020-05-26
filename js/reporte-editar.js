@@ -341,16 +341,16 @@ function editarProducto(index) {
   );
 }
 
-// Journal
+// Journal ----------------------------------------------------------------
 
 function nuevoRegistro() {
-  /* Maneja el agregado de una nueva entrada al registro de experimentos
-      y agrega una etiqueta de fecha y hora al registro.
-  */
   var ahora = new Date();
   state.registros.push({
     hora: ahora,
     texto: qs("#registro").value,
+    datos: [],
+    muestras: [],
+    editado: false,
     user: {
       id: user._id,
       nombre: user.nombre,
@@ -359,11 +359,55 @@ function nuevoRegistro() {
       apodo: user.apodo,
     },
   });
-  qs("#registro").value = ""; //limpio el campo
+  // qs("#registro").value = ""; //limpio el campo
+  limpiarCampos("#sec-journal");
+  qs("#cont-campos-datos-journal").setAttribute("style", "display: none");
+  qs("#btn-toggle-campos-datos-journal").innerText = "Mostrar datos";
   mostrarRegistros();
 }
 
-// Comentarios y discusion
+function actualizarRegistro(index) {
+  state.registros[index].texto = qs("#comentario").value;
+  state.registros[index].editado = true;
+  
+  mostrarRegistros();
+  limpiarCampos("#sec-journal");
+
+  qs("#btn-agregar-registro").innerText = "Agregar comentario";
+  qs("#btn-agregar-registro").setAttribute("onclick", "nuevoRegistro()");
+  qs("#cont-campos-datos-journal").setAttribute("style", "display: none");
+  qs("#btn-toggle-campos-datos-journal").innerText = "Mostrar datos";
+}
+
+function borrarRegistro(index) {
+  // Eliminar el registro del array
+  state.registros.splice(index, 1);
+  // Regenerar lista de registros
+  mostrarRegistros();
+}
+
+function editarRegistro(index) {
+  qs("#registro").value = state.registros[index].texto;
+  qs("#btn-agregar-registros").innerText = "Aplicar cambios";
+  qs("#btn-agregar-registros").setAttribute(
+    "onclick",
+    "actualizarComentario(" + index + ")"
+  );
+}
+
+function toggleCamposDatosJournal() {
+  var display = qs("#cont-campos-datos-journal").style.display;
+  console.log("display:", display);
+  if (display === "none") {
+    qs("#cont-campos-datos-journal").setAttribute("style", "display: flex");
+    qs("#btn-toggle-campos-datos-journal").innerText = "Ocultar datos";
+  } else {
+    qs("#cont-campos-datos-journal").setAttribute("style", "display: none");
+    qs("#btn-toggle-campos-datos-journal").innerText = "Mostrar datos";
+  }
+}
+
+// Comentarios y discusion ------------------------------------------------
 
 function nuevoComentario() {
   /* Maneja el agregado de una nueva entrada al registro de experimentos
@@ -443,7 +487,7 @@ function contenidoCardComentario(index, comentario) {
   );
 }
 
-// Leer campos:
+// Leer campos --------------------------------------------------------------
 
 function leerEncabezado() {
   return {
@@ -491,7 +535,7 @@ function leerTodosLosCampos(noheader = false) {
   };
 }
 
-// Actualizacion y guardado:
+// Actualizacion y guardado --------------------------------------------------
 
 function actualizarState(newReport = true) {
   if (newReport) {
@@ -829,10 +873,10 @@ qs("#btn-post-rxn").addEventListener("click", function (e) {
 });
 
 // Journal:
-qs("#btn-agregar-entrada").addEventListener("click", function (e) {
-  e.preventDefault();
-  nuevoRegistro();
-});
+// qs("#btn-agregar-registro").addEventListener("click", function (e) {
+//   e.preventDefault();
+//   nuevoRegistro();
+// });
 
 // Comentarios:
 // qs("#btn-agregar-comentario").addEventListener("click", function (e) {

@@ -161,6 +161,15 @@ footer ul li {
   box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
+.custom-btn {
+  padding: 10px;
+  border-radius: 1px;
+  border: none;
+  margin: 10px 0;
+  font-size: 0.9em;
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
 .custom-btn-azul-claro {
   padding: 10px;
   background-color: rgb(48, 143, 172);
