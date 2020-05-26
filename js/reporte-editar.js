@@ -99,7 +99,7 @@ function saveReaction() {
   composer.newDoc();
 }
 
-// Tabla de reactivos
+// Tabla de reactivos ---------------------------------------------------
 
 function nuevoReactivo() {
   var data = {
@@ -231,7 +231,7 @@ function editarReactivo(index) {
   // actualice la entrada en lugar de crear una nueva
 }
 
-// Tabla de productos
+// Tabla de productos ---------------------------------------------------
 
 function nuevoProducto() {
   console.log("pureza", qs("#pza-producto").value);
@@ -260,16 +260,6 @@ function generarFilasTablaProductos(productos) {
     //
     filas +=
       "<tr>" +
-      "<td><button onclick='editarProducto(" +
-      i +
-      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
-      i +
-      "'><i class='far fa-edit'></i></button>" +
-      "<button onclick='borrarProducto(" +
-      i +
-      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
-      i +
-      "'><i class='far fa-trash-alt'></i></button></td>" +
       "<td>" +
       productos[i].codigo +
       "</td>" +
@@ -292,6 +282,16 @@ function generarFilasTablaProductos(productos) {
       "<td>" +
       productos[i].destino +
       "</td>" +
+      "<td><button onclick='editarProducto(" +
+      i +
+      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      i +
+      "'><i class='far fa-edit'></i></button>" +
+      "<button onclick='borrarProducto(" +
+      i +
+      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      i +
+      "'><i class='far fa-trash-alt'></i></button></td>" +
       "</tr>";
   }
   return filas;
