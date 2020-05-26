@@ -122,17 +122,17 @@ function generarFilasTabla(reactivos) {
   for (var i = 0; i < reactivos.length; i++) {
     //
     filas +=
-      "<tr>" +
-      "<td><button onclick='editarReactivo(" +
-      i +
-      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
-      i +
-      "'><i class='far fa-edit'></i></button>" +
-      "<button onclick='borrarReactivo(" +
-      i +
-      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
-      i +
-      "'><i class='far fa-trash-alt'></i></button></td>" +
+      // "<tr>" +
+      // "<td><button onclick='editarReactivo(" +
+      // i +
+      // ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      // i +
+      // "'><i class='far fa-edit'></i></button>" +
+      // "<button onclick='borrarReactivo(" +
+      // i +
+      // ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      // i +
+      // "'><i class='far fa-trash-alt'></i></button></td>" +
       "<td>" +
       reactivos[i].nombre +
       "</td>" +
@@ -154,6 +154,16 @@ function generarFilasTabla(reactivos) {
       "<td>" +
       tableNumber(reactivos[i].rm) +
       "</td>" +
+      "<td><button onclick='editarReactivo(" +
+      i +
+      ")' class='btn btn-default btn-sm btn-edit-rgnt' id='edit-rgnt-" +
+      i +
+      "'><i class='far fa-edit'></i></button>" +
+      "<button onclick='borrarReactivo(" +
+      i +
+      ")'class='btn btn-default btn-sm btn-del-rgnt' id='del-rgnt-" +
+      i +
+      "'><i class='far fa-trash-alt'></i></button></td>" +
       "</tr>";
   }
   return filas;
