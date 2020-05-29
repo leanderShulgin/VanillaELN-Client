@@ -227,7 +227,12 @@
             class="col-md-10 d-flex flex-column justify-content-between align-items-center"
           >
             <div style="margin: auto;">
-              <button class="btn btn-default" id="btn-toggle-kekule-editor">
+              <button
+                class="btn custom-btn-dark-blue"
+                style="background-color: white; color: rgb(49, 55, 71);"
+                id="btn-toggle-kekule-editor"
+                onclick="toggleComposer('#composer-container','#btn-post-rxn')"
+              >
                 Mostrar/Ocultar Editor
               </button>
             </div>
@@ -235,8 +240,12 @@
               id="kekule-editor-container"
               class="kekule-editor d-flex flex-column justify-content-between align-items-center"
             >
-              <div id="composer-container"></div>
-              <button id="btn-post-rxn" class="btn custom-btn-dark-blue">
+              <div id="composer-container" style="display: none;"></div>
+              <button
+                id="btn-post-rxn"
+                class="btn custom-btn-dark-blue"
+                style="display: none;"
+              >
                 Postear moléculas
               </button>
             </div>

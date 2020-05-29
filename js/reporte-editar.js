@@ -32,6 +32,7 @@ var user = {
 /* Aquí guardo la info del proyecto al que corresponde el reporte */
 var proyecto = {};
 var listadoProyectos = [];
+var composer; //contiene el composer de kekule
 
 /* Config */
 
@@ -83,7 +84,7 @@ function generarOpcionesProyectos(proyectos) {
   return options;
 }
 
-// Reacción:
+// Reacción
 function saveReaction() {
   // requiere composer.js y kekule!
   var obj = getFullDocument();
@@ -97,6 +98,19 @@ function saveReaction() {
   state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
   console.log("Reaccion actualizó el state:", state);
   composer.newDoc();
+}
+
+function toggleComposer(contElem, toggleBtn) {
+  //muestra y oculta el composer. El contElem
+  // debe ser una query de css.
+  if (qs(contElem).style.display == "none") {
+    qs(contElem).setAttribute("style", "display:flex");
+    composer = new Kekule.Editor.Composer(qs(contElem));
+    qs(toggleBtn).setAttribute("style", "display: inline;");
+  } else {
+    qs(contElem).setAttribute("style", "display: none;");
+    qs(toggleBtn).setAttribute("style", "display: none;");
+  }
 }
 
 // Tabla de reactivos ---------------------------------------------------
@@ -855,17 +869,17 @@ qs("#btn-repeat").addEventListener("click", function (e) {
   window.location.href = "./reporte-editar.html?ref=" + params.get("_id");
 });
 
-qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
-  console.log("click");
-  e.preventDefault();
-  if (qs("#composer-container").style.display == "none") {
-    qs("#composer-container").setAttribute("style", "display: block;");
-    qs("#btn-post-rxn").setAttribute("style", "display: inline;");
-  } else {
-    qs("#composer-container").setAttribute("style", "display: none;");
-    qs("#btn-post-rxn").setAttribute("style", "display: none;");
-  }
-});
+// qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
+//   console.log("click");
+//   e.preventDefault();
+//   if (qs("#composer-container").style.display == "none") {
+//     qs("#composer-container").setAttribute("style", "display: block;");
+//     qs("#btn-post-rxn").setAttribute("style", "display: inline;");
+//   } else {
+//     qs("#composer-container").setAttribute("style", "display: none;");
+//     qs("#btn-post-rxn").setAttribute("style", "display: none;");
+//   }
+// });
 
 // Tabla de reactivos:
 
