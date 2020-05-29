@@ -345,11 +345,13 @@ function editarProducto(index) {
 
 function nuevoRegistro() {
   var ahora = new Date();
+  var datos = leerDatosJournal();
+  var muestras = leerMuestrasJournal();
   state.registros.push({
     hora: ahora,
     texto: qs("#registro").value,
-    datos: [],
-    muestras: [],
+    datos: datos,
+    muestras: muestras,
     editado: false,
     user: {
       id: user._id,
@@ -369,7 +371,7 @@ function nuevoRegistro() {
 function actualizarRegistro(index) {
   state.registros[index].texto = qs("#comentario").value;
   state.registros[index].editado = true;
-  
+
   mostrarRegistros();
   limpiarCampos("#sec-journal");
 
@@ -393,6 +395,14 @@ function editarRegistro(index) {
     "onclick",
     "actualizarComentario(" + index + ")"
   );
+}
+
+function leerDatosJournal() {
+  var datos = [];
+}
+
+function leerMuestrasJournal() {
+  var muestras = [];
 }
 
 function toggleCamposDatosJournal() {
@@ -724,11 +734,11 @@ function mostrarRegistros() {
       state.registros[i].texto +
       "</p></div>" +
       "<div class='card-footer d-flex flex-column flex-sm-row justify-content-between'>" +
-      "<span><strong>T: </strong>56.4°C</span>" +
-      "<span><strong>P: </strong>0.89 bar</span>" +
-      "<span><strong>V: </strong>546 ml</span>" +
-      "<span><strong>%Dosificación: </strong>50 %</span>" +
-      "<span><strong>Muestra: </strong>435</span>" +
+      "<span class='etiqueta-muestra-journal-footer'><strong style='color: rgb(248, 109, 16);'>Muestra: </strong>435</span>" +
+      "<span class='etiqueta-journal-footer'><strong>T: </strong>56.4°C</span>" +
+      "<span class='etiqueta-journal-footer'><strong>P: </strong>0.89 bar</span>" +
+      "<span class='etiqueta-journal-footer'><strong>V: </strong>546 ml</span>" +
+      "<span class='etiqueta-journal-footer'><strong>%Dosificación: </strong>50 %</span>" +
       "</div></div>";
   }
 }

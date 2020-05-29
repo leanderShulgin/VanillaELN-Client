@@ -255,9 +255,13 @@ footer ul li {
   padding: 10px;
   border: none;
   background: rgb(250, 249, 248);
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: rgb(79, 139, 139);
   box-shadow: inset 0px 2px 4px rgba(119, 113, 99, 0.1);
+}
+
+.entrada-journal-card .card-footer span {
+  padding: 0px 5px;
 }
 
 .j-entry-username {
