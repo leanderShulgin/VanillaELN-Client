@@ -138,7 +138,7 @@ function nuevoReactivo() {
   return data;
 }
 
-function generarFilasTabla(reactivos) {
+function generarFilasReactivos(reactivos) {
   console.log("voy a mostrar estos reactivos: ", reactivos);
   filas = "";
   for (var i = 0; i < reactivos.length; i++) {
@@ -204,7 +204,7 @@ function escalarExperimento(factor) {
       state.reactivos[i].moles = state.reactivos[i].moles * factor;
     }
   }
-  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
 }
 
 function cargarCamposReactivo(r) {
@@ -220,7 +220,7 @@ function cargarCamposReactivo(r) {
 function crearReactivo() {
   state.reactivos.push(nuevoReactivo());
   limpiarCampos("#sec-reactivos");
-  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
 }
 
 function actualizarReactivo(index) {
@@ -624,7 +624,7 @@ function guardarCambios() {
     });
 }
 
-// Display
+// Modos display ------------------------------------------------------------ 
 
 function limpiarCampos(sectionIdQuery) {
   var inputs = qs(sectionIdQuery).getElementsByTagName("input");
@@ -675,7 +675,7 @@ function encabezadoModoEdit() {
     proyecto.nombreProyecto;
 }
 
-function soloEncabezado() {
+function modoNuevoReporte() {
   var secciones = document.getElementsByTagName("section");
   var secId = "";
   for (var i = 0; i < secciones.length; i++) {
@@ -686,7 +686,7 @@ function soloEncabezado() {
   }
 }
 
-function soloCamposRef() {
+function modoRepetir() {
   secciones = [
     "#sec-journal",
     "#sec-conclusiones",
@@ -699,7 +699,7 @@ function soloCamposRef() {
   }
 }
 
-// Mostrar info en la planilla
+// Mostrar info en la planilla -----------------------------------------------
 
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
@@ -724,7 +724,7 @@ function mostrarCamposUnicos() {
 }
 
 function mostrarReactivos() {
-  qs("#body-tabla-reactivos").innerHTML = generarFilasTabla(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
 }
 
 function mostrarReaccion() {
@@ -885,18 +885,6 @@ qs("#btn-repeat").addEventListener("click", function (e) {
   window.location.href = "./reporte-editar.html?ref=" + params.get("_id");
 });
 
-// qs("#btn-toggle-kekule-editor").addEventListener("click", function (e) {
-//   console.log("click");
-//   e.preventDefault();
-//   if (qs("#composer-container").style.display == "none") {
-//     qs("#composer-container").setAttribute("style", "display: block;");
-//     qs("#btn-post-rxn").setAttribute("style", "display: inline;");
-//   } else {
-//     qs("#composer-container").setAttribute("style", "display: none;");
-//     qs("#btn-post-rxn").setAttribute("style", "display: none;");
-//   }
-// });
-
 // Tabla de reactivos:
 
 document
@@ -940,7 +928,7 @@ function setup() {
     qs("#btn-repeat").setAttribute("style", "display: none;");
     qs("#nav-sec-rep-editar").setAttribute("style", "display: none;");
 
-    soloCamposRef();
+    modoRepetir();
     cargarRefDeDB(params.get("ref"));
 
     qs("#btn-guardar-estado").addEventListener("click", function (e) {
@@ -952,7 +940,7 @@ function setup() {
     qs("#btn-nav-guardar").setAttribute("style", "display: none;");
   } else {
     // Nuevo reporte
-    soloEncabezado();
+    modoNuevoReporte();
     listarProyectos();
     state.encabezado = ahora;
     qs("#fecha").value = yyyymmdd(ahora);
