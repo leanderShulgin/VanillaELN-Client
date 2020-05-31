@@ -85,18 +85,16 @@ function generarOpcionesProyectos(proyectos) {
 }
 
 // Reacción
-function saveReaction() {
+function salvarReaccionEnState() {
   // requiere composer.js y kekule!
-  var obj = getFullDocument();
+  var obj = composer.getChemObj();
   var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
-  //   console.log("Kekule JSON: ", typeof molJson);
-  var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
-  var smiles = Kekule.IO.saveFormatData(rxn, "smi");
-  console.log(smiles);
-  painterMolecule2D(rxn);
-  qs("#reaccion-smiles").innerText = smiles;
+  var smiles = Kekule.IO.saveFormatData(obj, "smi");
+
   state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
-  console.log("Reaccion actualizó el state:", state);
+
+  painterMolecule2D(obj);
+  qs("#reaccion-smiles").innerText = smiles;
   composer.newDoc();
 }
 
@@ -117,7 +115,7 @@ function editarMoleculas(contElem, toggleBtn) {
   var mol = Kekule.IO.loadFormatData(state.reaccion.kekule, "Kekule-JSON");
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
-    var composer = new Kekule.Editor.Composer(qs(contElem));
+    composer = new Kekule.Editor.Composer(qs(contElem));
     qs(toggleBtn).setAttribute("style", "display: inline;");
   }
   composer.setChemObj(mol);
@@ -902,9 +900,6 @@ document
   });
 
 //Reaccion
-qs("#btn-post-rxn").addEventListener("click", function (e) {
-  saveReaction();
-});
 
 // Journal:
 // qs("#btn-agregar-registro").addEventListener("click", function (e) {
