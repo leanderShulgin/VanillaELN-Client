@@ -113,6 +113,11 @@ function toggleComposer(contElem, toggleBtn) {
   }
 }
 
+function editarReaccion() {
+  var mol = Kekule.IO.loadFormatData(state.reaccion.kekule, "Kekule-JSON");
+  composer.setChemObj(mol);
+}
+
 // Tabla de reactivos ---------------------------------------------------
 
 function nuevoReactivo() {

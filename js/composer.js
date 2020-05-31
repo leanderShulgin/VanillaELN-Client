@@ -1,7 +1,7 @@
 /*-------- EDITOR (COMPOSER)----------- */
-// var composer = new Kekule.Editor.Composer(
-//   document.getElementById("composer-container")
-// );
+var composer = new Kekule.Editor.Composer(
+  document.getElementById("composer-container")
+);
 
 
 //configuracion:
@@ -85,6 +85,8 @@ function painterMolecule2D(mol) {
   // at last, draw the molecule at the center of context
   painter.draw(context, { x: dim.width / 2, y: dim.height / 2 });
 }
+
+// Funciones químicas:
 
 function calcularPM(mol) {
   var flattenMol = mol.getFlattenedShadowFragment(true); // expand all possible subgroups in molecule first
