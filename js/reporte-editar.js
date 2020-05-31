@@ -687,10 +687,16 @@ function soloEncabezado() {
 }
 
 function soloCamposRef() {
-  console.log("solo campos ref");
-  qs("#sec-journal").setAttribute("style", "display: none;");
-  qs("#sec-conclusiones").setAttribute("style", "display: none;");
-  qs("#chem-editor").setAttribute("style", "display: none;");
+  secciones = [
+    "#sec-journal",
+    "#sec-conclusiones",
+    "#sec-comentarios",
+    "#sec-productos",
+    "#sec-ambiental",
+  ];
+  for (var i = 0; i < secciones.length; i++) {
+    qs(secciones[i]).setAttribute("style", "display: none;");
+  }
 }
 
 // Mostrar info en la planilla
@@ -850,22 +856,24 @@ function cargarRefDeDB(repId) {
       return res.json();
     })
     .then(function (rawData) {
+      var ahora = new Date();
       var data = cleanData(rawData);
       proyecto = data.proyecto;
       state.encabezado = data.reporte.encabezado;
       state.encabezado.numReporte = proyecto.reportes + 1;
-      //Asignar fecha de hoy
+      state.encabezado.fecha = ahora;
+      state.reaccion = data.reporte.reaccion;
       state.objetivo = data.reporte.objetivo;
       state.reactivos = data.reporte.reactivos;
       state.seguridad = data.reporte.seguridad;
       state.equipo = data.reporte.equipo;
-      mostrarReporte();
-      encabezadoModoEdit();
-      var ahora = new Date();
-      state.encabezado = ahora;
-      qs("#fecha").value = yyyymmdd(ahora);
 
-      // cargar campos
+      mostrarReporte();
+      if (state.reaccion.smiles.length > 0) {
+        mostrarReaccion();
+      }
+      encabezadoModoEdit();
+      qs("#fecha").value = yyyymmdd(ahora);
     });
 }
 
@@ -930,8 +938,11 @@ function setup() {
   } else if (modoRepeat) {
     // Nuevo reporte desde ref
     qs("#btn-repeat").setAttribute("style", "display: none;");
+    qs("#nav-sec-rep-editar").setAttribute("style", "display: none;");
+
     soloCamposRef();
     cargarRefDeDB(params.get("ref"));
+
     qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
       console.log("llamando a crear reporte");
