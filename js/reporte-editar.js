@@ -113,8 +113,13 @@ function toggleComposer(contElem, toggleBtn) {
   }
 }
 
-function editarReaccion() {
+function editarMoleculas(contElem, toggleBtn) {
   var mol = Kekule.IO.loadFormatData(state.reaccion.kekule, "Kekule-JSON");
+  if (qs(contElem).style.display == "none") {
+    qs(contElem).setAttribute("style", "display:flex");
+    var composer = new Kekule.Editor.Composer(qs(contElem));
+    qs(toggleBtn).setAttribute("style", "display: inline;");
+  }
   composer.setChemObj(mol);
 }
 
