@@ -511,9 +511,14 @@ function nuevoComentario() {
       y agrega una etiqueta de fecha y hora al registro.
   */
   var ahora = new Date();
-  var obj = composerComs.getChemObj();
-  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
-  var smiles = Kekule.IO.saveFormatData(obj, "smi");
+
+  var molJson = "";
+  var smiles = [""];
+  if (composerComs != undefined) {
+    var obj = composerComs.getChemObj();
+    molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
+    smiles = Kekule.IO.saveFormatData(obj, "smi").split(".");
+  }
 
   state.comentarios.push({
     hora: ahora,
@@ -526,7 +531,7 @@ function nuevoComentario() {
       apodo: user.apodo,
     },
     kekule: molJson,
-    smiles: smiles.split("."),
+    smiles: smiles,
   });
   mostrarComentarios();
   limpiarCampos("#sec-comentarios");
