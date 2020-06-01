@@ -82,6 +82,7 @@ function listarProyectos() {
     })
     .then(function (rawData) {
       var proyectos = cleanData(rawData);
+      // Muestro solo un proyecto preseleccionado
       if (nuevoDesdeProyecto) {
         console.log("great");
         var match;
@@ -94,7 +95,9 @@ function listarProyectos() {
         proyectos = [match];
         qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
         asignarNumeroReporte(proyectos);
-      } else {
+      }
+      // Muestro todas las opciones de proyectos
+      else {
         qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
         asignarNumeroReporte(proyectos);
       }
