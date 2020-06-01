@@ -710,6 +710,7 @@ function encabezadoModoEdit() {
     state.encabezado.numProyecto +
     " - " +
     proyecto.nombreProyecto;
+  qs("#btn-repeat").setAttribute("style", "display: '';");
 }
 
 function modoNuevoReporte() {
