@@ -81,8 +81,6 @@ function listarProyectos() {
     })
     .then(function (rawData) {
       var proyectos = cleanData(rawData);
-      console.log("La base de datos devolvió estos proyectos:", proyectos);
-
       qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
       asignarNumeroReporte(proyectos);
       // listadoProyectos = proyectos; //guardo info de proyectos para funcion de select
@@ -169,12 +167,12 @@ function nuevoReactivo() {
     rm: Number(qs("#rm-reactivo").value),
     limitante: false,
   };
-  console.log("nuevo reactivo:", data);
+  // console.log("nuevo reactivo:", data);
   return data;
 }
 
 function generarFilasReactivos(reactivos) {
-  console.log("voy a mostrar estos reactivos: ", reactivos);
+  // console.log("voy a mostrar estos reactivos: ", reactivos);
   filas = "";
   for (var i = 0; i < reactivos.length; i++) {
     //
@@ -227,10 +225,10 @@ function generarFilasReactivos(reactivos) {
 }
 
 function escalarExperimento(factor) {
-  console.log(
-    "vamos a escalar el experimento por el siguiente factor: ",
-    factor
-  );
+  // console.log(
+  //   "vamos a escalar el experimento por el siguiente factor: ",
+  //   factor
+  // );
   for (var i = 0; i < state.reactivos.length; i++) {
     if (typeof state.reactivos[i].masa === "number") {
       state.reactivos[i].masa = state.reactivos[i].masa * factor;
@@ -272,7 +270,7 @@ function actualizarReactivo(index) {
 }
 
 function borrarReactivo(index) {
-  console.log("borrando reactivo", state.reactivos[index]);
+  // console.log("borrando reactivo", state.reactivos[index]);
   // Eliminar reactivo del array
   state.reactivos.splice(index, 1);
   // Regenerar tabla reactivos
@@ -280,7 +278,7 @@ function borrarReactivo(index) {
 }
 
 function editarReactivo(index) {
-  console.log("editando reactivo", state.reactivos[index]);
+  // console.log("editando reactivo", state.reactivos[index]);
   cargarCamposReactivo(state.reactivos[index]);
   qs("#btn-agregar-reactivo").innerText = "Aplicar cambios";
   qs("#btn-agregar-reactivo").setAttribute(
@@ -295,7 +293,7 @@ function editarReactivo(index) {
 // Tabla de productos ---------------------------------------------------
 
 function nuevoProducto() {
-  console.log("pureza", qs("#pza-producto").value);
+  // console.log("pureza", qs("#pza-producto").value);
   var data = {
     codigo: qs("#codigo-producto").value,
     descripcion: qs("#descripcion-producto").value,
@@ -310,12 +308,12 @@ function nuevoProducto() {
     clase: qs("#clase-producto").value,
     destino: qs("#destino-producto").value,
   };
-  console.log("nuevo producto:", data);
+  // console.log("nuevo producto:", data);
   return data;
 }
 
 function generarFilasTablaProductos(productos) {
-  console.log("voy a mostrar estos productos: ", productos);
+  // console.log("voy a mostrar estos productos: ", productos);
   filas = "";
   for (var i = 0; i < productos.length; i++) {
     //
@@ -385,7 +383,7 @@ function actualizarProducto(index) {
 }
 
 function borrarProducto(index) {
-  console.log("borrando producto", state.productos[index]);
+  // console.log("borrando producto", state.productos[index]);
   // Eliminar reactivo del array
   state.productos.splice(index, 1);
   // Regenerar tabla reactivos
@@ -393,7 +391,7 @@ function borrarProducto(index) {
 }
 
 function editarProducto(index) {
-  console.log("editando producto", state.productos[index]);
+  // console.log("editando producto", state.productos[index]);
   cargarCamposProducto(state.productos[index]);
   qs("#btn-agregar-producto").innerText = "Aplicar cambios";
   qs("#btn-agregar-producto").setAttribute(
@@ -468,7 +466,7 @@ function leerMuestrasJournal() {
 
 function toggleCamposDatosJournal() {
   var display = qs("#cont-campos-datos-journal").style.display;
-  console.log("display:", display);
+  // console.log("display:", display);
   if (display === "none") {
     qs("#cont-campos-datos-journal").setAttribute("style", "display: flex");
     qs("#btn-toggle-campos-datos-journal").innerText = "Ocultar datos";
@@ -614,13 +612,13 @@ function actualizarState(newReport = true) {
   } else {
     state = leerTodosLosCampos((noheader = true));
 
-    console.log("actualizarState dice: Este es el nuevo state", state);
+    // console.log("actualizarState dice: Este es el nuevo state", state);
   }
 }
 
 function crearReporte() {
   actualizarState();
-  console.log("se va a guardar lo siguiente: ", state);
+  // console.log("se va a guardar lo siguiente: ", state);
   var miInit = {
     method: "POST",
     body: JSON.stringify(state),
@@ -633,14 +631,14 @@ function crearReporte() {
     })
     .then(function (rawData) {
       var data = cleanData(rawData);
-      console.log("se ha creado el siguiente documento: ", data);
+      // console.log("se ha creado el siguiente documento: ", data);
       window.location.href = "./reporte-editar.html?_id=" + data._id;
     });
 }
 
 function guardarCambios() {
   actualizarState((newReport = false));
-  console.log("se va a guardar lo siguiente: ", state);
+  // console.log("se va a guardar lo siguiente: ", state);
   var repId = params.get("_id");
   var miInit = {
     method: "PUT",
@@ -655,8 +653,8 @@ function guardarCambios() {
     .then(function (rawData) {
       var data = cleanData(rawData);
       state = data.reporte;
-      console.log("reloading! nuevo reporte: ", data.reporte);
-      console.log("info del proyecto: ", data.proyecto);
+      // console.log("reloading! nuevo reporte: ", data.reporte);
+      // console.log("info del proyecto: ", data.proyecto);
       proyecto = data.proyecto;
       mostrarReporte();
       encabezadoModoEdit();
@@ -668,8 +666,8 @@ function guardarCambios() {
 function limpiarCampos(sectionIdQuery) {
   var inputs = qs(sectionIdQuery).getElementsByTagName("input");
   var textareas = qs(sectionIdQuery).getElementsByTagName("textarea");
-  console.log("inputs:", inputs);
-  console.log("textareas:", textareas);
+  // console.log("inputs:", inputs);
+  // console.log("textareas:", textareas);
   if (inputs.length > 0) {
     for (var i = 0; i < inputs.length; i++) {
       if (inputs[i].type === "text") {
@@ -716,13 +714,16 @@ function encabezadoModoEdit() {
 
 function modoNuevoReporte() {
   var secciones = document.getElementsByTagName("section");
-  var secId = "";
+  // dejo ver solo las secciones iniciales:
   for (var i = 0; i < secciones.length; i++) {
-    if (secciones[i].getAttribute("id") != "sec-encabezado") {
-      console.log(secciones[i].getAttribute("id"));
+    var secID = secciones[i].getAttribute("id");
+    if (secID != "sec-encabezado" && secID != "sec-crear-reporte") {
+      // console.log(secciones[i].getAttribute("id"));
       secciones[i].setAttribute("style", "display: none;");
     }
   }
+  //Oculto seleccion de secciones
+  qs("#navbarNavDropdown").setAttribute("style", "display: none;");
 }
 
 function modoRepetir() {
@@ -777,7 +778,7 @@ function mostrarReaccion() {
 }
 
 function mostrarRegistros() {
-  console.log("registros:", state.registros);
+  // console.log("registros:", state.registros);
   //Muestra los posteos desde el state
   qs("#visor-de-registros").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.registros.length; i++) {
@@ -827,7 +828,7 @@ function mostrarReporte() {
 }
 
 function mostrarComentarios() {
-  console.log("comentarios:", state.comentarios);
+  // console.log("comentarios:", state.comentarios);
   //Muestra los posteos desde el state
   qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.comentarios.length; i++) {
@@ -837,23 +838,6 @@ function mostrarComentarios() {
     );
   }
 }
-
-// function mostrarComentarios() {
-//   console.log("comentarios:", state.comentarios);
-//   //Muestra los posteos desde el state
-//   qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
-//   for (var i = 0; i < state.comentarios.length; i++) {
-//     qs("#visor-de-comentarios").innerHTML +=
-//       "<div class='card'><div class='card-body'><p class='journal-entry'>" +
-//       '<span class="timeStamp">' +
-//       fechaHora(state.comentarios[i].hora) +
-//       " - " +
-//       state.comentarios[i].user.apodo +
-//       " ha comentado: </span><br />" +
-//       state.comentarios[i].texto +
-//       "</p></div></div>";
-//   }
-// }
 
 // Recuperar info de la base de datos:
 
@@ -872,8 +856,8 @@ function cargarReporteDeDB(repId) {
     .then(function (rawData) {
       var data = cleanData(rawData);
       state = data.reporte;
-      console.log("nuevo reporte de la db: ", data.reporte);
-      console.log("info del proyecto: ", data.proyecto);
+      // console.log("nuevo reporte de la db: ", data.reporte);
+      // console.log("info del proyecto: ", data.proyecto);
       proyecto = data.proyecto;
       mostrarReporte();
       encabezadoModoEdit();
@@ -977,7 +961,7 @@ function setup() {
 
     qs("#btn-guardar-estado").addEventListener("click", function (e) {
       e.preventDefault();
-      console.log("llamando a crear reporte");
+      // console.log("llamando a crear reporte");
       crearReporte();
     });
     qs("#btn-guardar-estado").innerText = "Crear Reporte";
