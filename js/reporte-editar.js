@@ -64,6 +64,7 @@ var queryString = window.location.search;
 var params = new URLSearchParams(queryString);
 var modoEdit = params.has("_id");
 var modoRepeat = params.has("ref");
+var nuevoDesdeProyecto = params.has("num");
 
 /* FUNCIONES----------------------------------------------------------- */
 
@@ -81,8 +82,23 @@ function listarProyectos() {
     })
     .then(function (rawData) {
       var proyectos = cleanData(rawData);
-      qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
-      asignarNumeroReporte(proyectos);
+      if (nuevoDesdeProyecto) {
+        console.log("great");
+        var match;
+        for (i = 0; i < proyectos.length; i++) {
+          if (Number(proyectos[i].num === Number(params.get("num")))) {
+            match = proyectos[i];
+            break;
+          }
+        }
+        proyectos = [match];
+        qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
+        asignarNumeroReporte(proyectos);
+      } else {
+        qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
+        asignarNumeroReporte(proyectos);
+      }
+
       // listadoProyectos = proyectos; //guardo info de proyectos para funcion de select
     });
 }

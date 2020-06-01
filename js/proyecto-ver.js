@@ -95,6 +95,11 @@ function cargarProyecto() {
     });
 }
 
+function nuevoReporteDesdeProyecto() {
+  var num = leerParamDeUrl("num");
+  window.location.href = "./reporte-editar.html?num=" + num;
+}
+
 /* Auxiliares */
 
 // Eventos
