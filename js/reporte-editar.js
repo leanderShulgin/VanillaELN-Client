@@ -50,8 +50,8 @@ var user = {
 /* Aquí guardo la info del proyecto al que corresponde el reporte */
 var proyecto = {};
 // var listadoProyectos = [];
-var composer; //contiene el composer de kekule
-var composerComs;
+var composer; //contiene el composer de la reaccion
+var composerComs; //contiene el composer de los comentarios
 
 /* Config */
 
@@ -511,6 +511,10 @@ function nuevoComentario() {
       y agrega una etiqueta de fecha y hora al registro.
   */
   var ahora = new Date();
+  var obj = composerComs.getChemObj();
+  var molJson = Kekule.IO.saveFormatData(obj, "Kekule-JSON");
+  var smiles = Kekule.IO.saveFormatData(obj, "smi");
+
   state.comentarios.push({
     hora: ahora,
     texto: qs("#comentario").value,
@@ -521,9 +525,12 @@ function nuevoComentario() {
       titulo: user.titulo,
       apodo: user.apodo,
     },
+    kekule: molJson,
+    smiles: smiles.split("."),
   });
   mostrarComentarios();
   limpiarCampos("#sec-comentarios");
+  console.log("nuevo comentario", state.comentarios);
 }
 
 function actualizarComentario(index) {
