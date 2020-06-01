@@ -51,6 +51,7 @@ var user = {
 var proyecto = {};
 // var listadoProyectos = [];
 var composer; //contiene el composer de kekule
+var composerComs;
 
 /* Config */
 
@@ -551,7 +552,7 @@ function editarComentario(index) {
   );
 }
 
-function contenidoCardComentario(index, comentario) {
+function generarCardComentario(index, comentario) {
   var tagEditado = "";
   if (comentario.editado) {
     tagEditado = " (Editado) ";
@@ -581,6 +582,21 @@ function contenidoCardComentario(index, comentario) {
     comentario.texto +
     "</p></div></div>"
   );
+}
+
+function toggleComposerComs(contElem) {
+  //muestra y oculta el composer de la seccion comentarios.
+
+  // Si esta oculto:
+  if (qs(contElem).style.display == "none") {
+    qs(contElem).setAttribute("style", "display:flex");
+    composerComs = new Kekule.Editor.Composer(qs(contElem));
+  }
+  // Si se está mostrando:
+  else {
+    qs(contElem).setAttribute("style", "display: none;");
+    composerComs.newDoc();
+  }
 }
 
 // Leer campos --------------------------------------------------------------
@@ -860,7 +876,7 @@ function mostrarComentarios() {
   //Muestra los posteos desde el state
   qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.comentarios.length; i++) {
-    qs("#visor-de-comentarios").innerHTML += contenidoCardComentario(
+    qs("#visor-de-comentarios").innerHTML += generarCardComentario(
       i,
       state.comentarios[i]
     );
