@@ -151,16 +151,20 @@ function salvarReaccionEnState() {
 }
 
 function toggleComposer(contElem, btnSalvar = "none") {
-  //muestra y oculta el composer. El contElem
-  // debe ser una query de css.
+  //muestra y oculta el composer.
+
+  // Si esta oculto:
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
     composer = new Kekule.Editor.Composer(qs(contElem));
     if (btnSalvar != "none") {
       qs(btnSalvar).setAttribute("style", "display: inline;");
     }
-  } else {
+  }
+  // Si se está mostrando:
+  else {
     qs(contElem).setAttribute("style", "display: none;");
+    composer.newDoc();
     if (btnSalvar != "none") {
       qs(btnSalvar).setAttribute("style", "display: none;");
     }

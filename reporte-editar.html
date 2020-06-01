@@ -244,21 +244,26 @@
           <div
             class="col-md-10 d-flex flex-column justify-content-between align-items-center"
           >
-            <div style="margin: auto;">
-              <button
-                class="btn custom-btn-dark-blue"
-                style="background-color: white; color: rgb(49, 55, 71);"
-                id="btn-toggle-kekule-editor"
-                onclick="toggleComposer('#composer-container','#btn-post-rxn')"
-              >
-                Mostrar/Ocultar Editor
-              </button>
-            </div>
+            <button
+              class="btn custom-btn-dark-blue"
+              style="background-color: white; color: rgb(49, 55, 71);"
+              id="btn-toggle-kekule-editor"
+              onclick="toggleComposer('#composer-container','#btn-post-rxn')"
+            >
+              Mostrar/Ocultar Editor
+            </button>
+            <!-- <div style="margin: auto;">
+
+            </div> -->
             <div
               id="kekule-editor-container"
               class="kekule-editor d-flex flex-column justify-content-between align-items-center"
             >
-              <div id="composer-container" style="display: none;"></div>
+              <div
+                id="composer-container"
+                class="composer-container"
+                style="display: none;"
+              ></div>
               <button
                 id="btn-post-rxn"
                 class="btn custom-btn-dark-blue"
@@ -963,11 +968,15 @@
           <div
             class="col-md-10 d-flex flex-column justify-content-between align-items-center"
           >
+            <!-- id="kekule-editor-container" -->
             <div
-              id="kekule-editor-container"
               class="kekule-editor d-flex flex-column justify-content-between align-items-center"
             >
-              <div id="composer-container-com" style="display: none;"></div>
+              <div
+                id="composer-container-com"
+                class="composer-container"
+                style="display: none;"
+              ></div>
               <button
                 id="btn-post-chem-com"
                 class="btn custom-btn-dark-blue"
@@ -979,10 +988,6 @@
             </div>
           </div>
           <div class="col-md-1"></div>
-        </div>
-        <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-12 columna"></div>
         </div>
         <div class="col-md-1"></div>
       </section>
