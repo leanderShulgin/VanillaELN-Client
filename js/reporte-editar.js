@@ -150,25 +150,29 @@ function salvarReaccionEnState() {
   composer.newDoc();
 }
 
-function toggleComposer(contElem, toggleBtn) {
+function toggleComposer(contElem, btnSalvar = "none") {
   //muestra y oculta el composer. El contElem
   // debe ser una query de css.
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
     composer = new Kekule.Editor.Composer(qs(contElem));
-    qs(toggleBtn).setAttribute("style", "display: inline;");
+    if (btnSalvar != "none") {
+      qs(btnSalvar).setAttribute("style", "display: inline;");
+    }
   } else {
     qs(contElem).setAttribute("style", "display: none;");
-    qs(toggleBtn).setAttribute("style", "display: none;");
+    if (btnSalvar != "none") {
+      qs(btnSalvar).setAttribute("style", "display: none;");
+    }
   }
 }
 
-function editarMoleculas(contElem, toggleBtn) {
+function editarMoleculas(contElem, btnSalvar) {
   var mol = Kekule.IO.loadFormatData(state.reaccion.kekule, "Kekule-JSON");
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
     composer = new Kekule.Editor.Composer(qs(contElem));
-    qs(toggleBtn).setAttribute("style", "display: inline;");
+    qs(btnSalvar).setAttribute("style", "display: inline;");
   }
   composer.setChemObj(mol);
 }
@@ -623,7 +627,7 @@ function leerTodosLosCampos(noheader = false) {
   };
 }
 
-// Actualizacion y guardado --------------------------------------------------
+// Actualizacion y guardado -------------------------------------------------
 
 function actualizarState(newReport = true) {
   if (newReport) {
@@ -759,7 +763,7 @@ function modoRepetir() {
   }
 }
 
-// Mostrar info en la planilla -----------------------------------------------
+// Mostrar info en la planilla ----------------------------------------------
 
 function mostrarEncabezado() {
   //Carga campos del encabezado desde el state
@@ -922,7 +926,7 @@ function cargarRefDeDB(repId) {
     });
 }
 
-/* EVENTOS----------------------------------------------  */
+/* EVENTOS--------------------------------------------------------------  */
 
 // Display
 qs("#btn-repeat").addEventListener("click", function (e) {

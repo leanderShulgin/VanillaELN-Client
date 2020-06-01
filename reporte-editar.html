@@ -936,11 +936,45 @@
                 id="txtarea-registro"
               ></textarea>
               <button
-                class="custom-btn-azul-claro"
+                class="custom-btn-dark-blue"
+                style="
+                  background-color: rgb(151, 252, 247);
+                  color: rgb(49, 55, 71);
+                "
                 id="btn-agregar-comentario"
                 onclick="nuevoComentario()"
               >
                 Agregar comentario
+              </button>
+              <button
+                class="custom-btn-dark-blue"
+                style="background-color: white; color: rgb(49, 55, 71);"
+                id="btn-toggle-kekule-editor"
+                onclick="toggleComposer('#composer-container-com')"
+              >
+                Mostrar/Ocultar Editor
+              </button>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row" id="chem-editor">
+          <div class="col-md-1"></div>
+          <div
+            class="col-md-10 d-flex flex-column justify-content-between align-items-center"
+          >
+            <div
+              id="kekule-editor-container"
+              class="kekule-editor d-flex flex-column justify-content-between align-items-center"
+            >
+              <div id="composer-container-com" style="display: none;"></div>
+              <button
+                id="btn-post-chem-com"
+                class="btn custom-btn-dark-blue"
+                style="display: none;"
+                onclick="salvarReaccionEnState()"
+              >
+                Postear moléculas
               </button>
             </div>
           </div>
@@ -952,7 +986,7 @@
         </div>
         <div class="col-md-1"></div>
       </section>
-      <footer class="footer-reporte" id="sec-comentarios">
+      <footer class="footer-reporte">
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-12"></div>
