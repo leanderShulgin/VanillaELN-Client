@@ -1,6 +1,24 @@
-/* En el state se va guardando el estado actual de la planilla. 
-Cuando se le da guarda se actualiza el state y se envía a la base de datos
-via la api. */
+/* APP PARA LA CREACION DE UN REPORTE DE LABORATORIO
+-----------------------------------------------------
+
+La planilla de reporte tiene 3 modos: nuevo reporte, repetición y edición
+
+Nuevo reporte: sólo muestra los campos del encabezado y objetivo. Al guardar los cambios
+se crea el documento en la base de datos y se abre la planilla completa para comenzar a trabajar.
+
+Repetición: se crea un nuevo reporte, pero en este caso los campos del encabezado, objetivo, condiciones del
+experimento, reacción y reactivos se toman del reporte desde el cual se clickeó el botón "repetir".
+Los campos de proyecto, número de reporte y fecha se generan automáticamente y no se pueden editar.
+Los demás campos son editables. Cuando se da a guardar se crea un nuevo reporte en la base de datos y se
+muestra la planilla completa para comentas a trabajar.
+
+Edición: en esta vista todos los campos están disponibles para ser editados, excepto el encabezado.
+
+En el state actua como punto de recolección de información que viene o va
+entre el cliente y la api. El ingreso de información actualiza el state, y el 
+guardado lo sincroniza con la base de datos. La carga de info de la db actualiza
+el state y luego renderiza la info en la planilla
+*/
 
 var state = {
   encabezado: {},
@@ -31,7 +49,7 @@ var user = {
 
 /* Aquí guardo la info del proyecto al que corresponde el reporte */
 var proyecto = {};
-var listadoProyectos = [];
+// var listadoProyectos = [];
 var composer; //contiene el composer de kekule
 
 /* Config */
@@ -47,7 +65,7 @@ var params = new URLSearchParams(queryString);
 var modoEdit = params.has("_id");
 var modoRepeat = params.has("ref");
 
-/* FUNCIONES----------------------------------------------- */
+/* FUNCIONES----------------------------------------------------------- */
 
 // Encabezado
 
@@ -62,10 +80,12 @@ function listarProyectos() {
       return res.json();
     })
     .then(function (rawData) {
-      var data = cleanData(rawData);
-      console.log("La base de datos devolvió estos proyectos:", data);
-      qs("#num-proyecto").innerHTML = generarOpcionesProyectos(data);
-      listadoProyectos = data; //guardo info de proyectos para funcion de select
+      var proyectos = cleanData(rawData);
+      console.log("La base de datos devolvió estos proyectos:", proyectos);
+
+      qs("#num-proyecto").innerHTML = generarOpcionesProyectos(proyectos);
+      asignarNumeroReporte(proyectos);
+      // listadoProyectos = proyectos; //guardo info de proyectos para funcion de select
     });
 }
 function generarOpcionesProyectos(proyectos) {
@@ -84,7 +104,22 @@ function generarOpcionesProyectos(proyectos) {
   return options;
 }
 
-// Reacción
+function asignarNumeroReporte(proyectos) {
+  qs("#num-reporte").setAttribute("disabled", true);
+  // Asigno el primer valor:
+  if (proyectos.length > 0) {
+    qs("#num-reporte").value = proyectos[0].reportes + 1;
+  }
+  qs("#num-proyecto").addEventListener("change", function () {
+    for (var i = 0; i < proyectos.length; i++) {
+      if (Number(proyectos[i].num) === Number(qs("#num-proyecto").value)) {
+        qs("#num-reporte").value = proyectos[i].reportes + 1;
+      }
+    }
+  });
+}
+
+// Reacción ------------------------------------------------------------
 function salvarReaccionEnState() {
   // requiere composer.js y kekule!
   var obj = composer.getChemObj();
@@ -204,7 +239,9 @@ function escalarExperimento(factor) {
       state.reactivos[i].moles = state.reactivos[i].moles * factor;
     }
   }
-  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(
+    state.reactivos
+  );
 }
 
 function cargarCamposReactivo(r) {
@@ -220,7 +257,9 @@ function cargarCamposReactivo(r) {
 function crearReactivo() {
   state.reactivos.push(nuevoReactivo());
   limpiarCampos("#sec-reactivos");
-  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(
+    state.reactivos
+  );
 }
 
 function actualizarReactivo(index) {
@@ -624,7 +663,7 @@ function guardarCambios() {
     });
 }
 
-// Modos display ------------------------------------------------------------ 
+// Modos display ------------------------------------------------------------
 
 function limpiarCampos(sectionIdQuery) {
   var inputs = qs(sectionIdQuery).getElementsByTagName("input");
@@ -724,7 +763,9 @@ function mostrarCamposUnicos() {
 }
 
 function mostrarReactivos() {
-  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(state.reactivos);
+  qs("#body-tabla-reactivos").innerHTML = generarFilasReactivos(
+    state.reactivos
+  );
 }
 
 function mostrarReaccion() {
@@ -913,6 +954,7 @@ document
 
 function setup() {
   var ahora = new Date();
+  // -- MODO EDIT --
   if (modoEdit) {
     var id = params.get("_id");
     cargarReporteDeDB(id);
@@ -923,7 +965,9 @@ function setup() {
       e.preventDefault();
       guardarCambios();
     });
-  } else if (modoRepeat) {
+  }
+  // -- MODO REPETICION --
+  else if (modoRepeat) {
     // Nuevo reporte desde ref
     qs("#btn-repeat").setAttribute("style", "display: none;");
     qs("#nav-sec-rep-editar").setAttribute("style", "display: none;");
@@ -938,8 +982,9 @@ function setup() {
     });
     qs("#btn-guardar-estado").innerText = "Crear Reporte";
     qs("#btn-nav-guardar").setAttribute("style", "display: none;");
-  } else {
-    // Nuevo reporte
+  }
+  // -- MODO NUEVO REPORTE --
+  else {
     modoNuevoReporte();
     listarProyectos();
     state.encabezado = ahora;
