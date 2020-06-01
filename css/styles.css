@@ -334,6 +334,13 @@ footer ul li {
   margin: 10px 0;
 }
 
+/* Seccion comentarios */
+#sec-comentarios {
+  background-color: rgb(33, 37, 41);
+  padding: 60px 10px;
+  margin: 0;
+}
+
 /*-----Scrollbar-----*/
 
 ::-webkit-scrollbar {

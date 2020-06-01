@@ -694,7 +694,7 @@ function encabezadoModoEdit() {
     campos[i].disabled = true;
   }
   //Muestro la info del proyecto
-  document.getElementById("proyecto-group").innerHTML =
+  qs("#proyecto-group").innerHTML =
     "<div class='form-group'><label>Proyecto: </label><select class='form-control' disabled='true' id='num-proyecto'><option value='" +
     +proyecto.num +
     "'>" +
@@ -703,9 +703,9 @@ function encabezadoModoEdit() {
     proyecto.nombreProyecto +
     "</option></select></div>";
   //Muestro info en el título:
-  document.getElementById("titulo-reporte-edit").innerText =
+  qs("#titulo-reporte-edit").innerText =
     "Reporte nro: " + state.encabezado.numReporte;
-  document.getElementById("subtitulo-reporte-edit").innerText =
+  qs("#subtitulo-reporte-edit").innerText =
     "Proyecto: " +
     state.encabezado.numProyecto +
     " - " +
@@ -917,7 +917,7 @@ document
   .getElementById("btn-scale-experiment")
   .addEventListener("click", function (e) {
     e.preventDefault();
-    var factor = document.getElementById("scale-factor").value;
+    var factor = qs("#scale-factor").value;
     escalarExperimento(factor);
   });
 
@@ -983,7 +983,7 @@ function setup() {
     qs("#btn-nav-guardar").setAttribute("style", "display: none;");
   }
   //Muestro info en el título:
-  document.getElementById("titulo-reporte-edit").innerText = "Nuevo Reporte";
+  qs("#titulo-reporte-edit").innerText = "Nuevo Reporte";
 }
 
 setup();
