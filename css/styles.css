@@ -280,7 +280,9 @@ footer ul li {
 }
 
 /* Kekule ----------------------------------------------------*/
-
+.K-Chem-Composer-Bottom-Region {
+  display: flex;
+}
 #chem-editor {
   overflow-x: auto;
 }

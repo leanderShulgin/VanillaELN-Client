@@ -1,7 +1,7 @@
 /*-------- EDITOR (COMPOSER)----------- */
-var composer = new Kekule.Editor.Composer(
-  document.getElementById("composer-container")
-);
+// var composer = new Kekule.Editor.Composer(
+//   document.getElementById("composer-container")
+// );
 
 
 //configuracion:

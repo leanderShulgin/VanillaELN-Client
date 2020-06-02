@@ -158,6 +158,20 @@ function toggleComposer(contElem, btnSalvar = "none") {
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
     composer = new Kekule.Editor.Composer(qs(contElem));
+    ancho = window.innerWidth;
+    alto = window.innerHeight;
+    console.log("ancho:", ancho);
+    if (alto > ancho || ancho < 500) {
+      ancho = 2 * ancho;
+      alto = 0.8 * alto;
+    } else if (ancho < 650) {
+      ancho = 1.5 * ancho;
+      alto = 0.8 * alto;
+    } else {
+      ancho = 0.8 * ancho;
+      alto = 0.8 * alto;
+    }
+    composer.setDimension(ancho, alto);
     if (btnSalvar != "none") {
       qs(btnSalvar).setAttribute("style", "display: inline;");
     }
