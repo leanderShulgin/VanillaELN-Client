@@ -119,7 +119,7 @@ function chemViewer(mol, container) {
   var ancho = 0.99 * contElem.clientWidth;
   var alto = 0.99 * contElem.clientHeight;
   if (ancho < 400) {
-    ancho = 400;
+    // ancho = 400;
     console.log("reduciendo zoom en reaccion");
     chemView.setZoom(0.5);
   } else if (ancho < 900) {
