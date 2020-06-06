@@ -279,6 +279,10 @@ footer ul li {
   background-color: #faf8eb;
 }
 
+.com-mol-viewer {
+  width: 100%;
+}
+
 /* Kekule ----------------------------------------------------*/
 .K-Chem-Composer-Bottom-Region {
   display: flex;

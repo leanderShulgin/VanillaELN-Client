@@ -110,7 +110,10 @@ function pintarMolecula2D(mol, container) {
 }
 
 function chemViewer(mol, container) {
-  console.log("chemviewer dice hola");
+  console.log(
+    "chemviewer dice que va a buscar el siguiente container: ",
+    container
+  );
   var contElem = document.querySelector(container);
   var chemView = new Kekule.ChemWidget.Viewer(contElem);
   var ancho = 0.99 * contElem.clientWidth;
@@ -119,7 +122,7 @@ function chemViewer(mol, container) {
     ancho = 400;
     console.log("reduciendo zoom en reaccion");
     chemView.setZoom(0.5);
-  } else if(ancho < 900) {
+  } else if (ancho < 900) {
     chemView.setZoom(0.7);
   }
   chemView

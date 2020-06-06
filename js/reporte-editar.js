@@ -609,7 +609,9 @@ function generarCardComentario(index, comentario) {
     "<div class='card-body'>" +
     "<p class='journal-entry'>" +
     comentario.texto +
-    "</p></div></div>"
+    "</p><div class='com-mol-viewer' id='com-mol-viewer-" +
+    index +
+    "'></div></div></div>"
   );
 }
 
@@ -903,7 +905,6 @@ function mostrarReporte() {
 }
 
 function mostrarComentarios() {
-  // console.log("comentarios:", state.comentarios);
   //Muestra los posteos desde el state
   qs("#visor-de-comentarios").innerHTML = ""; //limpio el visor
   for (var i = 0; i < state.comentarios.length; i++) {
@@ -911,6 +912,19 @@ function mostrarComentarios() {
       i,
       state.comentarios[i]
     );
+  }
+  var viewerQuery = "";
+  var mol = "";
+  for (var i = 0; i < state.comentarios.length; i++) {
+    // Si hay moleculas, renderizarlas:
+    if (state.comentarios[i].smiles[0] != "") {
+      viewerQuery = "#com-mol-viewer-" + i;
+      mol = Kekule.IO.loadFormatData(
+        state.comentarios[i].kekule,
+        "Kekule-JSON"
+      );
+      chemViewer(mol, viewerQuery);
+    }
   }
 }
 
