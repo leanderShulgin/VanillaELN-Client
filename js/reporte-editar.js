@@ -146,7 +146,7 @@ function salvarReaccionEnState() {
 
   state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
 
-  painterMolecule2D(obj);
+  pintarMolecula2D(obj, "viewer");
   qs("#reaccion-smiles").innerText = smiles;
   composer.newDoc();
 }
@@ -157,7 +157,8 @@ function toggleComposer(contElem, btnSalvar = "none") {
   // Si esta oculto:
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
-    composer = new Kekule.Editor.Composer(qs(contElem));
+    // composer = new Kekule.Editor.Composer(qs(contElem));
+    composer = crearComposer(contElem);
     ancho = window.innerWidth;
     alto = window.innerHeight;
     console.log("ancho:", ancho);
@@ -190,7 +191,8 @@ function editarMoleculas(contElem, btnSalvar) {
   var mol = Kekule.IO.loadFormatData(state.reaccion.kekule, "Kekule-JSON");
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
-    composer = new Kekule.Editor.Composer(qs(contElem));
+    // composer = new Kekule.Editor.Composer(qs(contElem));
+    composer = crearComposer(contElem);
     qs(btnSalvar).setAttribute("style", "display: inline;");
   }
   composer.setChemObj(mol);
@@ -616,7 +618,8 @@ function toggleComposerComs(contElem) {
   // Si esta oculto:
   if (qs(contElem).style.display == "none") {
     qs(contElem).setAttribute("style", "display:flex");
-    composerComs = new Kekule.Editor.Composer(qs(contElem));
+    // composerComs = new Kekule.Editor.Composer(qs(contElem));
+    composerComs = crearComposer(contElem);
   }
   // Si se está mostrando:
   else {
@@ -843,7 +846,7 @@ function mostrarReaccion() {
   var molJson = state.reaccion.kekule;
   var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
   var smiles = state.reaccion.smiles.join(".");
-  painterMolecule2D(rxn);
+  pintarMolecula2D(rxn, "viewer");
   qs("#reaccion-smiles").innerText = smiles;
 }
 
