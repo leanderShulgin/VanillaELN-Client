@@ -146,7 +146,8 @@ function salvarReaccionEnState() {
 
   state.reaccion = { kekule: molJson, smiles: smiles.split(".") };
 
-  pintarMolecula2D(obj, "#imagen-reaccion");
+  // pintarMolecula2D(obj, "#imagen-reaccion");
+  chemViewer(obj, "#imagen-reaccion");
   qs("#reaccion-smiles").innerText = smiles;
   composer.newDoc();
 }
@@ -846,7 +847,8 @@ function mostrarReaccion() {
   var molJson = state.reaccion.kekule;
   var rxn = Kekule.IO.loadFormatData(molJson, "Kekule-JSON");
   var smiles = state.reaccion.smiles.join(".");
-  pintarMolecula2D(rxn, "#imagen-reaccion");
+  chemViewer(rxn, "#imagen-reaccion");
+  // pintarMolecula2D(rxn, "#imagen-reaccion");
   qs("#reaccion-smiles").innerText = smiles;
 }
 

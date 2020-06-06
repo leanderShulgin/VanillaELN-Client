@@ -109,6 +109,27 @@ function pintarMolecula2D(mol, container) {
   painter.draw(context, { x: dim.width / 2, y: dim.height / 2 });
 }
 
+function chemViewer(mol, container) {
+  console.log("chemviewer dice hola");
+  var contElem = document.querySelector(container);
+  var chemView = new Kekule.ChemWidget.Viewer(contElem);
+  var ancho = 0.99 * contElem.clientWidth;
+  var alto = 0.99 * contElem.clientHeight;
+  if (ancho < 400) {
+    ancho = 400;
+    console.log("reduciendo zoom en reaccion");
+    chemView.setZoom(0.5);
+  } else if(ancho < 900) {
+    chemView.setZoom(0.7);
+  }
+  chemView
+    .setDimension(ancho, alto)
+    .setEnableToolbar(true)
+    .setEnableDirectInteraction(true)
+    .setEnableEdit(false)
+    .setToolButtons(["molDisplayType", "zoomIn", "zoomOut"]);
+  chemView.setChemObj(mol);
+}
 // Funciones químicas:
 
 function calcularPM(mol) {
