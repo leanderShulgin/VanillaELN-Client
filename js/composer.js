@@ -38,7 +38,11 @@ function crearComposer(container) {
   newComposer.setCommonToolButtons(appConfig.commonButtons);
   newComposer.setChemToolButtons(appConfig.chemToolButtons);
 
-  newComposer.setStyleToolComponentNames(["color", "textDirection", "textAlign"]);
+  newComposer.setStyleToolComponentNames([
+    "color",
+    "textDirection",
+    "textAlign",
+  ]);
   // hide style toolbar totally
   newComposer.setEnableStyleToolbar(false);
 
@@ -89,8 +93,7 @@ function pintarMolecula2D(mol, container) {
   //Dibuja una molecula en 2 dimensiones
   var renderType = Kekule.Render.RendererType.R2D; //R3D  // do 2D or 3D drawing
   // parent element, we will draw inside it
-  var mainContainer = document.getElementById(container);
-  var parentElem = document.getElementById("imagen-reaccion");
+  var parentElem = document.querySelector(container);
   // Esta linea limpia el contenido previo del div.
   Kekule.DomUtils.clearChildContent(parentElem);
 
@@ -99,7 +102,7 @@ function pintarMolecula2D(mol, container) {
 
   // create context inside parentElem
   var dim = Kekule.HtmlElementUtils.getElemOffsetDimension(parentElem); // get width/height of parent element
-  console.log(dim);
+  console.log("las dimensiones para dibujar las moleculas son:", dim);
   var context = painter.createContext(parentElem, dim.width, dim.height); // create context fulfill parent element
 
   // at last, draw the molecule at the center of context
